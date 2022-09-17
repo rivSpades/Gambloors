@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en"> <!-- specify the page language in html tag -->
+<html lang="en">
+  <!-- specify the page language in html tag -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -8,63 +9,74 @@
 
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet"/>
-<script src='js/script.js'> </script>
-<script
-    defer
-    src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"></script> <!-- smooth scrolling fix for safari -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="./css/dice.css" rel="stylesheet" />
+    <script src="./js/script.js"></script>
+    <script
+      defer
+      src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
+    ></script>
+    <!-- smooth scrolling fix for safari -->
     <title>Dice Game</title>
   </head>
 
   <body>
-
-    <main class="index-main" >
-<div class="dice-container">
-
-<div class="roll-under-container">
-<h3 class="container-title">Roll Under</h3>
-<div class="value-container">
-<output class="output-value roll-under-value"  id="rangewindow"></output>
-</div>
-</div>
-  <div class="slider-container">
-        <input type="range" min="0" max="100" value=50 class="slider" id="myRangeWindow" oninput="rangewindow.value=value">
-
+    <main class="index-main">
+      <div class="dice-container">
+        <div class="roll-under-container">
+          <h3 class="container-title">Roll Under</h3>
+          <div class="value-container">
+            <output
+              class="output-value roll-under-value"
+              id="rangewindow"
+            ></output>
+          </div>
+        </div>
+        <div class="slider-container">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            value="50"
+            class="slider"
+            id="myRangeWindow"
+            oninput="rangewindow.value=value"
+          />
         </div>
 
         <div class="betsize-container">
           <h3 class="container-title">Amount to Bet $</h3>
-<input class="bet-size-value" type="number" value="50" min="40" max="4000">
-
+          <input
+            class="bet-size-value"
+            type="number"
+            value="50"
+            min="40"
+            max="4000"
+          />
         </div>
-<div class="roll-btn-container">
-        <button class="roll-btn general-btn">Roll Dice</button>
-
-</div>
-
-
-
+        <div class="roll-btn-container">
+          <button class="roll-btn general-btn">Roll Dice</button>
+        </div>
 
         <div class="payout-container">
-          <h3 class="container-title">Payout on Win </h3>
-            <div class="value-container">
-            <p class="output-payout-value output-value"> </p>
-              
-
+          <h3 class="container-title">Payout on Win</h3>
+          <div class="value-container">
+            <p class="output-payout-value output-value"></p>
           </div>
         </div>
 
         <div class="win-chance-container">
           <h3 class="container-title">Win Chance</h3>
-<div class="value-container">
-            <p class="output-win-chance-value output-value">  </p>
-</div>
+          <div class="value-container">
+            <p class="output-win-chance-value output-value"></p>
+          </div>
         </div>
-
-</div>
-</main>
+      </div>
+    </main>
   </body>
 </html>

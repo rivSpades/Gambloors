@@ -1,37 +1,60 @@
-/* we should do this by default */
-/* reset all the margins and paddings to zero in every element.  this universal selector has lower priority */
-/*margins cannot be added to <a> elements*/
+/*
+
+- Font sizes (px)
+10 / 12 / 14 / 16 / 18 / 20 / 24 / 30 / 36 / 44 / 52 / 62 / 74 / 86 / 98
+
+- Font weights
+Default: 400
+Medium: 500
+Semi-bold: 600
+Bold: 700
+
+- Line heights
+Default: 1
+Small: 1.05
+Medium: 1.2
+Paragraph default: 1.6
+Large: 1.8
+
+- Letter spacing
+
+0.8px
+
+- BORDER-RADIUS
+
+Default: 5px
+Medium: 11px
+
+- Spacing system (px)
+2 / 4 / 8 / 12 / 16 / 24 / 32 / 48 / 64 / 80 / 96 / 128
+
+*/
+
+:root {
+  --color-bk-body--: #242423;
+  --color-bk-btn--: #f5cb5c;
+  --color-btn--: #ffffff;
+}
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box; /* when the elements are side by side , prevents that the total width of the elemens inside a parent container has more width than the total of the parent container. So with this avoids that an elem would go down
-when they dont fit in the parent container, whenever we change the margin or the padding,  keeping the total width intact , and the elements side by side, so we never have a total width of the elements > parent container width */
+  box-sizing: border-box;
 }
 
 *:focus {
-  /* this will style the focus state of all elements */
   outline: none;
-  /*outline:4px dotted orange;*/
-  /*outline-offset:8px;*/
-  /*box-shadow:0 0 0 8px orange;*/
 }
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
   font-size: 62.5%;
   scroll-behavior: smooth;
-
-  /*scroll-behavior: smooth; in case we want a smooth scrolling */
 }
 
 body {
-  background-color: #242423;
+  background-color: var(--color-bk-body--);
   font-family: "Barlow", sans-serif;
-}
-
-.flex-container {
-  display: flex;
 }
 
 main {
@@ -40,12 +63,67 @@ main {
   margin-left: auto;
   margin-right: auto;
   margin-top: 40vh;
+  background-color: brown;
 }
 
-/*General Btns */
-.general-btn {
+/**************************/
+/* HEADER */
+/**************************/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.4rem 3.2rem;
+}
+
+.header-left {
+  display: flex;
+  gap: 2.4rem;
+}
+
+.logo {
+  height: 6.2rem;
+  width: 15rem;
+}
+
+.side-bar-btn {
+  color: var(--color-btn--);
+  width: 100%;
+  height: 3.6rem;
   cursor: pointer;
-  background-color: #f5cb5c;
+}
+
+/**************************/
+/* NAVIGATION */
+/**************************/
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 4.8rem;
+}
+
+.main-nav-btn {
+  border: none;
+  cursor: pointer;
+  background-color: var(--color-bk-btn--);
+  color: var(--color-btn--);
+  font-size: 1.2rem;
+  letter-spacing: 0.08rem;
+  height: 3.6rem;
+  width: 8.6rem;
+  line-height: 1;
+  border-radius: 0.5rem;
+  text-align: center;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: Barlow;
+}
+
+/*.general-btn {
+  cursor: pointer;
+  background-color: var(--color-btn--);
   color: #e8eddf;
   border: none;
   width: 100%;
@@ -59,100 +137,11 @@ main {
 }
 
 .general-btn:hover {
-  background-color: #ddb753;
+  background-color: var(--color-btn--);
 }
 .general-btn:link,
 .general-btn:visited {
-  transition: background-color 2s; /*-> it will change the background color with a delay of 1s if we setup the hover*/
-
-  /*transition: all 1s; -> it will change the background color and the text color with a delay of 1s if we setup the hover*/
-}
-
-.dice-container {
-  /*background-color: #333533;*/
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  color: #f5cb5c;
-  row-gap: 2rem;
-}
-
-.container-title {
-  font-weight: 700;
-}
-
-.value-container {
-  background-color: #333533;
-  width: 50%;
-  padding: 0.5rem;
-}
-
-.output-value {
-  color: #e8eddf;
-}
-
-.bet-size-value[type="number"] {
-  background-color: #333533;
-  color: #e8eddf;
-  padding: 0.5rem;
-  width: 100%;
-  font-size: 1rem;
-  border: none;
-}
-
-.roll-under-container {
-  grid-column: 2 /3;
-}
-
-.payout-container {
-  grid-column: 1 /2;
-  grid-row: 1/2;
-}
-
-.win-chance-container {
-  grid-column: 3 /4;
-  grid-row: 1/2;
-}
-
-.betsize-container {
-  grid-column: 2 /3;
-  justify-self: center;
-  width: 100%;
-}
-
-.roll-btn-container {
-  grid-row: 4/5;
-  grid-column: 2 /3;
-}
-
-.slider-container {
-  grid-column: 1 /-1;
-  width: 100%;
-  justify-self: center;
-}
-
-.slider {
-  margin-top: 3rem;
-  width: 100%;
-  background: white;
-  outline: none;
-  opacity: 0.7;
-  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover*/
-  transition: opacity 0.2s;
-  border-radius: 0.5rem;
-  display: block;
-}
-.slider:hover {
-  opacity: 1; /* Fully shown on mouse-over */
-}
-
-.slider::-moz-range-thumb {
-  width: 15%;
-  border-radius: 0.5rem;
-  background: white;
-  cursor: pointer;
-}
-
-.slider-header {
-  display: flex;
-  gap: 0.5rem;
-}
+  transition: background-color 2s; /*-> it will change the background color with a delay of 1s if we setup the hover
+*/
+/*transition: all 1s; -> it will change the background color and the text color with a delay of 1s if we setup the hover
+}*/

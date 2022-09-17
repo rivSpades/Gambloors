@@ -10,27 +10,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link href="css/main.css" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
     <script>
-      src = "js/script.js";
+      src = "./js/script.js";
     </script>
     <script
       defer
       src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
     ></script>
     <!-- smooth scrolling fix for safari -->
+
     <title>The Basic Language of the Web: HTML</title>
   </head>
 
   <body>
-    <header>test</header>
+    <header class="header">
+      <div class="header-left">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke-width="1.5"
+          stroke="currentColor"
+          class="side-bar-btn"
+        >
+          <path
+            class="side-bar-btn--icon"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+          />
+        </svg>
 
-    <article></article>
-    <aside></aside>
-
+        <a href="#">
+          <img class="logo" alt="Gambloors logo" src="./img/logo.png" />
+        </a>
+      </div>
+      <nav class="main-nav">
+        <ul class="main-nav-list">
+          <li><button class="main-nav-btn">Login</button></li>
+          <li><button class="main-nav-btn">Register</button></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <article></article>
+      <aside></aside>
+    </main>
     <footer></footer>
   </body>
 </html>

@@ -2,9 +2,11 @@
   "name": "gambloors",
   "version": "1.0.0",
   "description": "Casino",
-  "main": "index.js",
+  "default": "src/index.html",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --dist-dir ./dist"
   },
   "author": "Gambloors",
   "license": "ISC",
