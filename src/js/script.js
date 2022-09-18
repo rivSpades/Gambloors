@@ -1,42 +1,16 @@
 'use strict';
-window.onload=function(){
+const sidebarContainer = document.querySelector('.side-bar-btn-container');
 
+sidebarContainer.addEventListener('click', function (e) {
+  const sidebarBtnClose = document.querySelector('.side-bar-btn--close');
+  const sidebarBtnOpen = document.querySelector('.side-bar-btn--open');
+  const sideNav = document.querySelector('.sider');
+  const main = document.querySelector('main');
 
-
-
-const calcWinChance = rollUnder => ((1/(100/rollUnder))*100).toFixed(0);
-const calcPayout=(rollUnder,betsize,edge) =>{
-  return (betsize*((100-edge)/rollUnder)).toFixed(0);
-}
-
-
-
-const edge=2;
-document.querySelector('.output-payout-value').textContent= calcPayout(50,50,edge)+'$';
-document.querySelector('.output-win-chance-value').textContent = calcWinChance(50)+'%';
-document.querySelector('.roll-under-value').value=document.querySelector('.slider').value
-
-
-document.querySelector('.slider').addEventListener('input',function(){
-
-  const rollUnder= document.querySelector('.roll-under-value').value;
-  const betSize= document.querySelector('.bet-size-value').value;
-
-  document.querySelector('.output-win-chance-value').textContent = calcWinChance(rollUnder)+'%';
-  document.querySelector('.output-payout-value').textContent= calcPayout(rollUnder,betSize,edge)+'$';
-
+  sidebarBtnClose.classList.toggle('hidden');
+  sidebarBtnOpen.classList.toggle('hidden');
+  sideNav.classList.toggle('hide-sidebar');
+  sideNav.classList.toggle('show-sidebar');
+  main.classList.toggle('slide-out');
+  main.classList.toggle('slide-in');
 });
-
-
-document.querySelector('.bet-size-value').addEventListener('input',function(){
-const betSize= document.querySelector('.bet-size-value').value;
-const rollUnder= document.querySelector('.roll-under-value').value;
-document.querySelector('.output-payout-value').textContent= calcPayout(rollUnder,betSize,edge)+'$';
-
-});
-
-
-
-
-
-}
