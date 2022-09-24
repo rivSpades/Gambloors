@@ -30,6 +30,10 @@ Medium: 11px
 
 */
 
+/**************************/
+/* GENERAL */
+/**************************/
+
 :root {
   --color-bk-body--: #242423;
   --color-bk-btn--: #f5cb5c;
@@ -42,6 +46,7 @@ Medium: 11px
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
 }
 
 *:focus {
@@ -54,25 +59,15 @@ html {
   scroll-behavior: smooth;
 }
 
-body {
-  background-color: var(--color-bk-body--);
-  font-family: 'Barlow', sans-serif;
-}
-
-main {
-  width: 50%;
-  height: auto;
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 40vh;
-  background-color: brown;
-}
-
 a:visited,
 a:link {
   color: var(--color-btn--);
   text-decoration: none;
 }
+
+/**************************/
+/* TOGGLE CLASSES */
+/**************************/
 
 .hidden {
   display: none;
@@ -88,9 +83,15 @@ a:link {
 }
 
 .slide-out {
-  grid-column: 1/3;
+  width: 95vw;
+  transform: translateX(-13vw);
   grid-row: 1/2;
-  justify-self: center;
+}
+
+.slide-out--footer {
+  width: 100vw;
+  z-index: 1;
+  grid-row: 2/3;
 }
 
 .slide-in {
@@ -108,6 +109,7 @@ a:link {
 /* HEADER */
 /**************************/
 .header {
+  /*height:8.71vh*/
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -151,7 +153,7 @@ a:link {
 }
 
 /**************************/
-/* MAIN NAVIGATION */
+/* NAVIGATION-MAIN */
 /**************************/
 
 .main-nav-list {
@@ -179,27 +181,7 @@ a:link {
 }
 
 /**************************/
-/* BODY */
-/**************************/
-
-.body {
-  display: grid;
-  grid-template-columns: 0.15fr 0.85fr;
-  height: 100vh;
-}
-
-main,
-footer {
-  transition: all 1s;
-}
-
-footer {
-  grid-column: 2 / -1;
-  grid-row: 2/3;
-}
-
-/**************************/
-/* SIDER */
+/* NAVIGATION - SIDER */
 /**************************/
 .sider {
   background-color: var(--color-bk-nav--);
@@ -209,13 +191,9 @@ footer {
   border-right-style: solid;
   border-width: 0.01px;
   padding: 1.6rem 1.6rem;
-  transition: all 1s;
+  transition: ease-out 1s;
 }
-.side-nav {
-}
-/**************************/
-/* SIDE NAVIGATION */
-/**************************/
+
 .side-nav-list {
   list-style: none;
   display: flex;
@@ -237,6 +215,90 @@ footer {
 }
 .side-nav-text-container {
   height: 100%;
+}
+
+/**************************/
+/* BODY */
+/**************************/
+body {
+  font-family: 'Barlow', sans-serif;
+}
+.body {
+  display: grid;
+  grid-template-columns: 0.15fr 0.85fr;
+  background-color: var(--color-bk-body--);
+}
+
+/**************************/
+/* MAIN */
+/**************************/
+
+main {
+  width: 90%;
+  transition: ease-out 1s;
+  height: 83.29vh; /* 100-8.71-margin-top */
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 8vh;
+  /*background-color: brown;*/
+  margin-bottom: 8vh;
+}
+/**************************/
+/* FOOTER GRID */
+/**************************/
+footer {
+  transition: ease-out 1s;
+  grid-column: 1/3;
+  background-color: var(--color-bk-body--);
+}
+
+.footer--grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+
+  justify-items: center;
+  align-items: start;
+  padding: 2.4rem 0;
+  border-top-color: var(--color-border--);
+  border-top-style: solid;
+
+  border-width: 0.01px;
+}
+
+.footer-heading {
+  font-size: 1.6rem;
+  color: var(--color-btn--);
+  font-weight: 400;
+  margin-bottom: 1.2rem;
+}
+
+.social-links-list {
+  list-style: none;
+  display: flex;
+  gap: 0.8rem;
+}
+
+.footer-icon {
+  /*background-color: var(--color-bk-body--);*/
+  padding: 0.2rem;
+}
+
+.footer-icon svg {
+  width: 2.4rem;
+  height: 2.4rem;
+}
+
+.footer-nav-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+}
+
+.footer-nav-link {
+  color: #929291 !important; /*overwrite the a general element*/
+  font-size: 1.2rem;
+  font-weight: 400;
 }
 
 /*.general-btn {

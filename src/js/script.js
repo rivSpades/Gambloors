@@ -5,7 +5,8 @@ sidebarContainer.addEventListener('click', function (e) {
   const sidebarBtnClose = document.querySelector('.side-bar-btn--close');
   const sidebarBtnOpen = document.querySelector('.side-bar-btn--open');
   const sideNav = document.querySelector('.sider');
-  const main = document.querySelector('main');
+  const main = document.querySelector('.main-container');
+  const footer = document.querySelector('.footer-container');
 
   sidebarBtnClose.classList.toggle('hidden');
   sidebarBtnOpen.classList.toggle('hidden');
@@ -13,4 +14,6 @@ sidebarContainer.addEventListener('click', function (e) {
   sideNav.classList.toggle('show-sidebar');
   main.classList.toggle('slide-out');
   main.classList.toggle('slide-in');
+  footer.classList.toggle('slide-out--footer');
+  footer.classList.toggle('slide-in');
 });
