@@ -40,6 +40,8 @@ Medium: 11px
   --color-bk-nav--: #202020;
   --color-btn--: #ffffff;
   --color-border--: #3a3a39;
+  --color-bk-card--: #060606;
+  --color-article--: #cdcdcd;
 }
 
 * {
@@ -69,6 +71,31 @@ a:link {
   display: none;
 }
 
+.btn-general {
+  border: none;
+  cursor: pointer;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-family: Barlow;
+  letter-spacing: 0.08rem;
+  line-height: 1;
+  text-align: center;
+}
+
+.btn-highlight {
+  background-color: var(--color-bk-btn--);
+  color: var(--color-btn--);
+}
+
+.btn-secondary {
+  background-color: transparent;
+  color: var(--color-btn--);
+  border: solid;
+  border-width: 0.01rem;
+  border-color: var(--color-border--);
+}
+
 /**************************/
 /* TOGGLE CLASSES */
 /**************************/
@@ -81,14 +108,16 @@ a:link {
   /*animation*/
   pointer-events: none; /*unacessible to mouse and keyboard */
   transform: translateX(-100%);
-  grid-column: -2/1;
+  /*grid-column: -3/-2;*/
 
   visibility: hidden; /*hide from screen reader */
 }
 
 .slide-out {
   width: 100vw;
-  transform: translateX(-10.5vw);
+  /*transform: translateX(-10.5vw);*/
+  transform: translateX(-16.29rem);
+
   grid-row: 1/2;
 }
 
@@ -167,20 +196,10 @@ a:link {
 }
 
 .main-nav-btn {
-  border: none;
-  cursor: pointer;
-  background-color: var(--color-bk-btn--);
-  color: var(--color-btn--);
   font-size: 1.2rem;
-  letter-spacing: 0.08rem;
+
   height: 3.6rem;
   width: 8.6rem;
-  line-height: 1;
-  border-radius: 0.5rem;
-  text-align: center;
-  font-weight: 700;
-  text-transform: uppercase;
-  font-family: Barlow;
 }
 
 /**************************/
@@ -249,7 +268,7 @@ main {
 }
 
 .main-container {
-  width: 95%;
+  width: 60%;
   /*background-color: brown;*/
   margin-left: auto;
   margin-right: auto;
@@ -263,13 +282,13 @@ main {
 /**************************/
 footer {
   width: 100vw;
-  min-height: 300px;
+  min-height: 40vh;
   background-color: var(--color-bk-body--);
 }
 
 .footer--grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
   justify-items: center;
   align-items: start;

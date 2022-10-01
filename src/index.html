@@ -14,6 +14,7 @@
       rel="stylesheet"
     />
     <link href="./css/main.css" rel="stylesheet" />
+    <link href="./css/home.css" rel="stylesheet" />
     <script defer src="js/script.js"></script>
     <script
       defer
@@ -64,8 +65,16 @@
       </div>
       <nav class="main-nav">
         <ul class="main-nav-list">
-          <li><button class="main-nav-btn">Login</button></li>
-          <li><button class="main-nav-btn">Register</button></li>
+          <li>
+            <button class="main-nav-btn btn-general btn-secondary">
+              Login
+            </button>
+          </li>
+          <li>
+            <button class="main-nav-btn btn-general btn-highlight">
+              Register
+            </button>
+          </li>
         </ul>
       </nav>
     </header>
@@ -183,9 +192,69 @@
       </div>
 
       <main class="slide-out">
-        <div class="main-container">
-          <article></article>
-          <aside></aside>
+        <div class="main-container main-home">
+          <section class="promotions">
+            <div class="promotion-slider">
+              <div class="promotion-slider--card">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="slider-arrow"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                  />
+                </svg>
+
+                <div class="promotion-slider--card---left"></div>
+
+                <div class="promotion-slider--card---right">
+                  <h1 class="promotion-card-title">
+                    Bonus Rewards for Some of The West’s Toughest Jobs
+                  </h1>
+
+                  <article class="promotion-card-description">
+                    There’s high reward for high risk on the frontier.
+                  </article>
+                  <div class="promotion-card-buttons">
+                    <button class="btn-card btn-general btn-secondary">
+                      Read More
+                    </button>
+                    <button class="btn-card btn-general btn-highlight">
+                      Claim Offer
+                    </button>
+                  </div>
+                </div>
+
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  class="slider-arrow"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </div>
+              <div class="promotion-slider--track">
+                <ul class="slide-tracker-list">
+                  <li>
+                    <button
+                      class="btn-slide-tracker btn-slide-tracker--selected"
+                    ></button>
+                  </li>
+                  <li><button class="btn-slide-tracker"></button></li>
+                  <li><button class="btn-slide-tracker"></button></li>
+                </ul>
+              </div>
+            </div>
+          </section>
         </div>
 
         <footer class="footer-container slide-out--footer">
