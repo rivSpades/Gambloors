@@ -56,7 +56,7 @@ Medium: 11px
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
-  font-size: 62.5%;
+  font-size: 62.5%; /*78.5% */
   scroll-behavior: smooth;
   height: 100%;
 }
@@ -149,7 +149,7 @@ a:link {
   background-color: var(--color-bk-nav--);
   border-bottom-color: var(--color-border--);
   border-bottom-style: solid;
-  border-width: 0.01px;
+  border-width: 0.001rem;
 }
 
 .header-left {
@@ -211,7 +211,7 @@ a:link {
 
   border-right-color: var(--color-border--);
   border-right-style: solid;
-  border-width: 0.01px;
+  border-width: 0.001rem;
   padding: 1.6rem 1.6rem;
   transition: ease-out 1s;
 }
@@ -296,7 +296,7 @@ footer {
   border-top-color: var(--color-border--);
   border-top-style: solid;
 
-  border-width: 0.01px;
+  border-width: 0.001rem;
 }
 
 .footer-heading {

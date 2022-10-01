@@ -56,7 +56,7 @@ Medium: 11px
   display: flex;
   height: 100%;
   border: transparent;
-  border-width: 0.01px;
+  border-width: 0.001rem;
 
   border-radius: 0.5rem;
 }
