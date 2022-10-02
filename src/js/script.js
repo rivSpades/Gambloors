@@ -62,8 +62,8 @@ const promotionSlider = function () {
     cardSelected.classList.remove('hidden');
 
     cardSelected.firstElementChild.style.backgroundImage = `linear-gradient(
-      rgba(36, 36, 35, 0.3),
-      rgba(36, 36, 35, 0.3)
+      rgba(36, 36, 35, 0.2),
+      rgba(36, 36, 35, 0.4)
     ),
     url('https://www.bitsler.com/static/img/sliders/${cardSelected.dataset.url}')`;
   };
