@@ -43,21 +43,24 @@ Medium: 11px
 
 .promotions {
   /* width: 96rem;*/
-  height: 46%;
-}
-.promotion-slider {
-  height: 100%;
+  /*height: 46%;*/
+
+  width: 50vw;
+  height: 36%;
+  margin-left: auto;
+  margin-right: auto;
+
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
 }
 
-.promotion-slider--card {
+.promotions--slider {
   display: flex;
   height: 100%;
   border: transparent;
   border-width: 0.001rem;
-
+  width: 100%;
   border-radius: 0.5rem;
 }
 .promotion-card-image {
@@ -74,15 +77,22 @@ Medium: 11px
   stroke: var(--color-article--);
   align-self: center;
   cursor: pointer;
+  z-index: 1;
 }
 
+.promotion-slider--card {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: ease 1s;
+}
 .promotion-slider--card---left {
   flex-basis: 70%;
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
       rgba(36, 36, 35, 0.3),
       rgba(36, 36, 35, 0.3)
     ),
-    url('https://www.bitsler.com/static/img/sliders/welcome-bonus.ace05fb3.jpg');
+    url('https://www.bitsler.com/static/img/sliders/welcome-bonus.ace05fb3.jpg');*/
   background-size: 100% 100%;
 }
 
@@ -92,7 +102,7 @@ Medium: 11px
   border-bottom-right-radius: 0.5rem;
   border-top-right-radius: 0.5rem;
   display: grid;
-  grid-template-rows: 1fr 1fr auto;
+  grid-template-rows: 0.1fr 1fr auto;
   padding: 2rem;
   border: solid;
   border-color: var(--color-border--);
@@ -103,11 +113,11 @@ Medium: 11px
   color: var(--color-btn--);
   font-family: inherit;
   font-weight: 700;
-  font-size: 2rem;
+  font-size: 1.6rem;
 }
 
 .promotion-card-description {
-  font-size: 1.4rem;
+  font-size: 1.2rem;
   font-weight: 400;
   color: var(--color-article--);
 }
