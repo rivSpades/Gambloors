@@ -35,6 +35,9 @@ Medium: 11px
 /**************************/
 
 .main-home {
+  display: flex;
+  flex-direction: column;
+  gap: 16vh;
 }
 
 /**************************/
@@ -159,4 +162,92 @@ Medium: 11px
 
 .btn-slide-tracker--selected {
   background-color: var(--color-article--);
+}
+
+/**************************/
+/* LOBBY */
+/**************************/
+.lobby {
+  width: 50vw;
+  margin-left: auto;
+  margin-right: auto;
+
+  padding: 2.4rem;
+}
+.games-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.game-container {
+  width: 24rem;
+  height: 16rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0 0.1rem 0.4rem;
+}
+
+.games-header {
+  color: var(--color-btn--);
+
+  font-weight: 500;
+  font-size: 1.4rem;
+  display: flex;
+  gap: 1.6rem;
+  text-transform: uppercase;
+}
+
+.games-arrow {
+  height: 2rem;
+  stroke-width: 1.8;
+}
+
+.game--card-container {
+  justify-content: center;
+  display: flex;
+
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.game-card {
+  height: 12rem;
+  width: 12rem;
+  background-image: linear-gradient(
+      rgba(36, 36, 35, 0.1),
+      rgba(36, 36, 35, 0.5)
+    ),
+    url('/src/img/dice.png');
+  opacity: 80%;
+  background-size: 100% 100%;
+
+  margin: auto;
+}
+
+.game--card-container:hover {
+  border: solid;
+  border-width: 0.001rem;
+  border-color: var(--color-bk-btn--);
+  border-radius: 0.5rem;
+}
+
+.game-container:hover .game-card {
+  scale: 1.1;
+  opacity: 100%;
+  transition: all ease 0.3s;
+}
+
+.game-description-container {
+  padding: 1.2rem;
+}
+.game-description--text {
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--color-btn--);
+  text-align: center;
+  font-size: 1.2rem;
+}
+
+.game-container:hover .game-description--text {
+  color: var(--color-bk-btn--);
 }
