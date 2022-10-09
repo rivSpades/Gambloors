@@ -56,8 +56,8 @@ Medium: 11px
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
-  font-size: 62.5%; /*78.5% */
-  /*font-size: 78.5%;*/
+  /*font-size: 62.5%; /*78.5% */
+  font-size: 78.5%;
   scroll-behavior: smooth;
   height: 100%;
 }
@@ -288,14 +288,16 @@ main {
 /* FOOTER GRID */
 /**************************/
 footer {
-  width: 100vw;
+  width: 100%;
   min-height: 40vh;
   background-color: var(--color-bk-body--);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .footer--grid-container {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
 
   justify-items: center;
   align-items: start;
