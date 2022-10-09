@@ -171,7 +171,7 @@ Medium: 11px
   width: 50vw;
   margin-left: auto;
   margin-right: auto;
-  height: 50vh;
+
   padding: 2.4rem;
   box-shadow: rgba(0, 0, 0, 0.07) 0 0.1rem 0.2rem;
 }
@@ -239,7 +239,6 @@ Medium: 11px
 }
 
 .game-description-container {
-  padding: 1.2rem;
 }
 .game-description--text {
   text-transform: uppercase;
