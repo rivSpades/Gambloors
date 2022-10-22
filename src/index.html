@@ -13,9 +13,13 @@
       href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
+
     <link href="./css/main.css" rel="stylesheet" />
     <link href="./css/home.css" rel="stylesheet" />
+    <link href="./css/dice.css" rel="stylesheet" />
+
     <script defer src="js/script.js"></script>
+    <script defer src="js/dice.js"></script>
     <script
       defer
       src="https://unpkg.com/smoothscroll-polyfill@0.4.4/dist/smoothscroll.min.js"
@@ -192,162 +196,60 @@
       </div>
 
       <main class="slide-out">
-        <div class="main-container main-home">
-          <section class="promotions">
-            <div class="promotions--slider">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                class="slider-arrow slider-arrow--left"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M15.75 19.5L8.25 12l7.5-7.5"
-                />
-              </svg>
-              <div
-                class="promotion-slider--card"
-                data-card="0"
-                data-url="welcome-bonus.ace05fb3.jpg"
-              >
-                <div class="promotion-slider--card---left"></div>
-
-                <div class="promotion-slider--card---right">
-                  <h1 class="promotion-card-title">Bonus Rewards</h1>
-
-                  <article class="promotion-card-description">
-                    There’s high reward for high risk on the frontier.
-                  </article>
-                  <div class="promotion-card-buttons">
-                    <button class="btn-card btn-general btn-secondary">
-                      Read More
-                    </button>
-                    <button class="btn-card btn-general btn-highlight">
-                      Claim Offer
-                    </button>
-                  </div>
+        <div class="main-container">
+          <section class="game-dice centralize-content">
+            <div class="dice-container">
+              <div class="dice-payout-container dice-card">
+                <p class="dice-container-title">Payout on Win</p>
+                <div class="dice-value-container">
+                  <p class="dice-output-payout-value dice-output-value">0</p>
                 </div>
               </div>
 
-              <div
-                class="promotion-slider--card hidden"
-                data-card="1"
-                data-url="rakeback_autumn_promo.7e4252e3.jpg"
-              >
-                <div class="promotion-slider--card---left"></div>
-
-                <div class="promotion-slider--card---right">
-                  <h1 class="promotion-card-title">The Quick Draw Club</h1>
-
-                  <article class="promotion-card-description">
-                    Membership in The Quick Draw Club entitles you to rewards,
-                    bonuses and items to help live life on the fringe of the
-                    law.
-                  </article>
-                  <div class="promotion-card-buttons">
-                    <button class="btn-card btn-general btn-secondary">
-                      Read More
-                    </button>
-                    <button class="btn-card btn-general btn-highlight">
-                      Claim Offer
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <div
-                class="promotion-slider--card hidden"
-                data-card="2"
-                data-url="vip.6680a453.png"
-              >
-                <div class="promotion-slider--card---left"></div>
-
-                <div class="promotion-slider--card---right">
-                  <h1 class="promotion-card-title">VIP Program Rakeback</h1>
-
-                  <article class="promotion-card-description">
-                    Rank up , earn rakeback and chest rewards with our vip
-                    program.
-                  </article>
-                  <div class="promotion-card-buttons">
-                    <button class="btn-card btn-general btn-secondary">
-                      Read More
-                    </button>
-                    <button class="btn-card btn-general btn-highlight">
-                      Claim Offer
-                    </button>
-                  </div>
-                </div>
-              </div>
-
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                class="slider-arrow slider-arrow--right"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                />
-              </svg>
-            </div>
-            <div class="promotion-slider--track">
-              <ul class="slide-tracker-list">
-                <!-- placeholders
-                <li>
-                  <button
-                    class="btn-slide-tracker btn-slide-tracker--selected"
-                  ></button>
-                </li>
-                <li><button class="btn-slide-tracker"></button></li>
-                <li><button class="btn-slide-tracker"></button></li>
-                -->
-              </ul>
-            </div>
-          </section>
-
-          <section class="lobby">
-            <div class="games-section">
-              <div class="games-header">
-                <p class="games--header-title">Gambloors Originals</p>
-                <div class="games-header--arrows">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="slider-arrow games-arrow"
+              <div class="dice-rollunder-container dice-card">
+                <p class="dice-container-title">Roll Under</p>
+                <div class="dice-value-container">
+                  <output
+                    class="dice-output-value dice-roll-value"
+                    id="rangewindow"
+                    >50</output
                   >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M15.75 19.5L8.25 12l7.5-7.5"
-                    />
-                  </svg>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    class="slider-arrow games-arrow"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                    />
-                  </svg>
                 </div>
               </div>
-              <div class="game-container">
-                <div class="game--card-container">
-                  <div class="game-card"></div>
+
+              <div class="dice-winchance-container dice-card">
+                <p class="dice-container-title">Win Chance</p>
+                <div class="dice-value-container">
+                  <p class="dice-output-winchance-value dice-output-value">0</p>
                 </div>
-                <div class="game-description-container">
-                  <p class="game-description--text">Dice</p>
-                </div>
+              </div>
+
+              <div class="dice-slider-container">
+                <input
+                  type="range"
+                  min="1"
+                  max="100"
+                  value="50"
+                  class="dice-slider"
+                  id="myRangeWindow"
+                  oninput="rangewindow.value=value"
+                />
+              </div>
+
+              <div class="dice-betsize-container">
+                <p class="dice-container-title">Bet Amount</p>
+                <input
+                  class="dice-betsize-form-value"
+                  type="number"
+                  value="50"
+                  min="40"
+                  max="4000"
+                />
+              </div>
+              <div class="dice-rollbtn-container">
+                <button class="dice-roll-btn btn-general btn-highlight">
+                  Roll Dice
+                </button>
               </div>
             </div>
           </section>
