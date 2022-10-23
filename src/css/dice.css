@@ -82,11 +82,36 @@ Medium: 11px
 .dice-slider-container {
   grid-column: 1 /-1;
   width: 100%;
+  position: relative;
+}
+
+.dice-slider-bubble {
+  position: absolute;
+  left: 0%; /*it will match the exact random value generated*/
+
+  bottom: 30%;
+  width: 3.5rem;
+  height: 3.5rem;
+
+  display: none;
+
+  justify-content: center;
+  align-items: center;
+  transform: rotate(45deg) translateX(-75%);
+  background-color: green;
+  filter: drop-shadow(16px 16px 20px #242423);
+  opacity: 0.5;
+  transition: left 2s;
+}
+
+.dice-slider-bubble-value {
+  transform: rotate(-45deg);
 }
 
 .dice-slider {
   margin-top: 3rem;
   width: 100%;
+  -webkit-appearance: none; /*need to add this or the background don't change*/
   background: white;
   outline: none;
   opacity: 0.7;
@@ -94,6 +119,18 @@ Medium: 11px
   transition: opacity 0.2s;
   border-radius: 0.5rem;
   display: block;
+  border: solid;
+  border-color: var(--color-border--);
+  border-width: 0.4rem;
+}
+
+.dice-slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: var(--color-bk-btn--);
+  cursor: pointer;
 }
 
 .dice-betsize-container {
