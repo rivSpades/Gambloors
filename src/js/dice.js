@@ -91,17 +91,21 @@ window.onload = function () {
   document
     .querySelector('.dice-btn-rollchange')
     .addEventListener('click', function () {
+      document
+        .querySelector('.dice-roll-container')
+        .classList.toggle('dice-roll-container--rotate');
       const currentRoll = document.querySelector(
         '.dice-roll-container .dice-container-title'
       ).textContent;
-      currentRoll === 'Roll Under'
-        ? (document.querySelector(
-            '.dice-roll-container .dice-container-title'
-          ).textContent = 'Roll Over')
-        : (document.querySelector(
-            '.dice-roll-container .dice-container-title'
-          ).textContent = 'Roll Under');
-
+      setTimeout(function () {
+        currentRoll === 'Roll Under'
+          ? (document.querySelector(
+              '.dice-roll-container .dice-container-title'
+            ).textContent = 'Roll Over')
+          : (document.querySelector(
+              '.dice-roll-container .dice-container-title'
+            ).textContent = 'Roll Under');
+      }, 500);
       //dice reset//
       document.querySelector('.dice-slider-bubble').style.display = 'none';
       document.querySelector('.dice-output-payout-value').textContent =
