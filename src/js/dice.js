@@ -105,7 +105,7 @@ window.onload = function () {
           : (document.querySelector(
               '.dice-roll-container .dice-container-title'
             ).textContent = 'Roll Under');
-      }, 500);
+      }, 300);
       //dice reset//
       document.querySelector('.dice-slider-bubble').style.display = 'none';
       document.querySelector('.dice-output-payout-value').textContent =
