@@ -69,7 +69,8 @@ window.onload = function () {
       const currentRoll = document.querySelector(
         '.dice-roll-container .dice-container-title'
       ).textContent;
-
+      const betSize = document.querySelector('.dice-betsize-form-value').value;
+      if (!betSize) return;
       document.querySelector('.dice-slider-bubble').style.display = 'flex';
 
       getComputedStyle(document.querySelector('.dice-slider-bubble')).left ===
@@ -96,9 +97,10 @@ window.onload = function () {
       document
         .querySelector('.dice-roll-container')
         .classList.toggle('dice-roll-container--rotate');
-      let currentRoll = document.querySelector(
+      const currentRoll = document.querySelector(
         '.dice-roll-container .dice-container-title'
       ).textContent;
+      const currentValueSlider = document.querySelector('.dice-slider').value;
       setTimeout(function () {
         currentRoll === 'Roll Under'
           ? (document.querySelector(
@@ -107,21 +109,23 @@ window.onload = function () {
           : (document.querySelector(
               '.dice-roll-container .dice-container-title'
             ).textContent = 'Roll Under');
+
+        document.querySelector('.dice-slider').value =
+          50 + (50 - currentValueSlider);
+        document.querySelector('.dice-roll-value').value =
+          document.querySelector('.dice-slider').value;
       }, 300);
       //dice reset//
-      currentRoll = document.querySelector(
+      /*currentRoll = document.querySelector(
         '.dice-roll-container .dice-container-title'
-      ).textContent;
-      const currentValueSlider = document.querySelector('.dice-slider').value;
+      ).textContent;*/
+
       document.querySelector('.dice-slider-bubble').style.display = 'none';
       /*document.querySelector('.dice-output-payout-value').textContent =
         calcPayout(50, 50, edge) + '$';*/
       /*document.querySelector('.dice-output-winchance-value').textContent =
         calcWinChance(50) + '%';*/
-      document.querySelector('.dice-slider').value =
-        50 + (50 - currentValueSlider);
-      document.querySelector('.dice-roll-value').value =
-        document.querySelector('.dice-slider').value;
+
       /* document.querySelector('.dice-betsize-form-value').value = 50;*/
     });
 };
