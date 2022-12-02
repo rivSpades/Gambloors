@@ -56,8 +56,8 @@ Medium: 11px
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
-  font-size: 62.5%; /*78.5% */
-  /*font-size: 78.3%;*/
+  /* font-size: 62.5%; /*78.5% */
+  font-size: 78.3%;
   scroll-behavior: smooth;
   height: 100%;
 }

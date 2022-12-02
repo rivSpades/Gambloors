@@ -227,8 +227,6 @@ Medium: 11px
   transition: all ease 0.3s;
 }
 
-.game-description-container {
-}
 .game-description--text {
   text-transform: uppercase;
   font-weight: 700;
