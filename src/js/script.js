@@ -26,7 +26,7 @@ sidebarContainer.addEventListener('click', function (e) {
 /* PROMOTION SLIDER */
 /**************************/
 
-const promotionSlider = function () {
+/*const promotionSlider = function () {
   const cards = document.querySelectorAll('.promotion-slider--card');
   let currentCard = 0;
   const totalCards = cards.length;
@@ -117,3 +117,4 @@ const promotionSlider = function () {
 };
 
 promotionSlider();
+*/

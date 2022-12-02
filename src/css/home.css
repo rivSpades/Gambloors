@@ -89,11 +89,7 @@ Medium: 11px
 }
 .promotion-slider--card---left {
   flex-basis: 70%;
-  /* background-image: linear-gradient(
-      rgba(36, 36, 35, 0.3),
-      rgba(36, 36, 35, 0.3)
-    ),
-    url('https://www.bitsler.com/static/img/sliders/welcome-bonus.ace05fb3.jpg');*/
+
   background-size: 100% 100%;
 }
 
