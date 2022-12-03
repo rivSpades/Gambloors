@@ -75,7 +75,7 @@ class PromotionsSliderView extends View {
       rgba(36, 36, 35, 0.2),
       rgba(36, 36, 35, 0.4)
     ),
-    url('/src/img/${targetCard.dataset.url}')`;
+    url('https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/${targetCard.dataset.url}')`;
   }
 
   generateSlideTrackerButtons() {

@@ -1,3 +1,3 @@
-import ControllerPromotionsSlider from './controller.js';
+import controllerPromotionsSlider from './controller.js';
 
-ControllerPromotionsSlider.init();
+controllerPromotionsSlider.init();

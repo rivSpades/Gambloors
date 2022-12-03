@@ -1,10 +1,10 @@
-class PromotionsModel {
+class importModel {
   state = {
-    promotionsData: '',
-    totalCards: '',
+    importData: '',
+    results: '',
     constructor() {},
   };
-  loadPromotions() {
+  loadData() {
     //this should be get by api routing /promotions
     return [
       {
@@ -33,15 +33,15 @@ class PromotionsModel {
   }
 
   load() {
-    this.state.promotionsData = this.loadPromotions();
-    this.state.totalCards = this.loadPromotions().length;
+    this.state.importData = this.loadData();
+    this.state.results = this.loadData().length;
   }
 }
 
-class PromotionsSliderModel extends PromotionsModel {
+class promotionsSliderModel extends importModel {
   state = {
-    promotionsData: '',
-    totalCards: '',
+    importData: '',
+    results: '',
     currentCard: 0,
   };
   constructor() {
@@ -49,13 +49,13 @@ class PromotionsSliderModel extends PromotionsModel {
   }
 
   slideNextCard() {
-    this.state.currentCard === this.state.totalCards - 1
+    this.state.currentCard === this.state.results - 1
       ? (this.state.currentCard = 0)
       : this.state.currentCard++;
   }
   slidePrevCard() {
     this.state.currentCard === 0
-      ? (this.state.currentCard = this.state.totalCards - 1)
+      ? (this.state.currentCard = this.state.results - 1)
       : this.state.currentCard--;
   }
 
@@ -64,9 +64,9 @@ class PromotionsSliderModel extends PromotionsModel {
   }
 
   load() {
-    this.state.promotionsData = this.loadPromotions();
-    this.state.totalCards = this.loadPromotions().length;
+    this.state.importData = this.loadData();
+    this.state.results = this.loadData().length;
     this.state.currentCard = 0;
   }
 }
-export default new PromotionsSliderModel();
+export default new promotionsSliderModel();

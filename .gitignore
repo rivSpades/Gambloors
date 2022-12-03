@@ -4,3 +4,5 @@ dist
 .DS_Store
 src/dice.html
 src/templates
+src/js/dice.js
+src/css/old-dice.css
