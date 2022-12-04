@@ -1,6 +1,7 @@
 import * as model from './model.js';
 import promotionsSliderView from './views/promotionsSliderView.js';
 import lobbyView from './views/lobbyView.js';
+import sideBarView from './views/sideBarView.js';
 
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
@@ -72,5 +73,11 @@ export class controllerLobby {
 
   init() {
     lobbyView.addHandlerRender(this.controlLoadLobby);
+  }
+}
+
+export class controllerSideBar {
+  init() {
+    sideBarView.addHandlerRender();
   }
 }
