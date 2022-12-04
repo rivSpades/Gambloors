@@ -38,7 +38,7 @@ class importModel {
   }
 }
 
-class promotionsSliderModel extends importModel {
+export class promotionsSliderModel extends importModel {
   state = {
     importData: '',
     results: '',
@@ -69,4 +69,19 @@ class promotionsSliderModel extends importModel {
     this.state.currentCard = 0;
   }
 }
-export default new promotionsSliderModel();
+
+export class lobbyModel extends importModel {
+  constructor() {
+    super();
+  }
+
+  loadData() {
+    return [
+      {
+        id: '0',
+        cardTitle: 'Dice',
+        imageUrl: 'dice.png',
+      },
+    ];
+  }
+}

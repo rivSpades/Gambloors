@@ -1,7 +1,11 @@
-import promotionsSliderModel from './model.js';
+import * as model from './model.js';
 import promotionsSliderView from './views/promotionsSliderView.js';
+import lobbyView from './views/lobbyView.js';
 
-class controllerPromotionsSlider {
+const promotionsSliderModel = new model.promotionsSliderModel();
+const lobbyModel = new model.lobbyModel();
+
+export class controllerPromotionsSlider {
   constructor() {}
 
   async controlLoadPromotionsSlider() {
@@ -18,7 +22,7 @@ class controllerPromotionsSlider {
 
   controlPromotionsNextSliderArrowBtn() {
     promotionsSliderModel.slideNextCard();
-    console.log(this);
+
     this.updateCard();
   }
 
@@ -53,4 +57,20 @@ class controllerPromotionsSlider {
   }
 }
 
-export default new controllerPromotionsSlider();
+export class controllerLobby {
+  async controlLoadLobby() {
+    try {
+      await lobbyModel.load();
+
+      lobbyView.render(lobbyModel.state.importData);
+
+      //window.history.pushState(null, '', `#${model.state.recipe.id}`); change url
+    } catch (err) {
+      console.log('erro no lobby', err);
+    }
+  }
+
+  init() {
+    lobbyView.addHandlerRender(this.controlLoadLobby);
+  }
+}
