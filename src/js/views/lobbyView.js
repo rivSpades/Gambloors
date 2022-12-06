@@ -1,23 +1,32 @@
 import View from './View.js';
 
 class lobbyView extends View {
-  targetElement = document.querySelector('.lobby');
+  targetElement = document.querySelector('.main-container');
 
   addHandlerRender(handler) {
     handler();
   }
+
+  render(data) {
+    const html = this.generateHtml(data);
+    this.targetElement.insertAdjacentHTML('beforeend', html);
+  }
   generateHtml(data) {
     const gameCards = data.map((el) => {
-      return `<div class="game-container"  data-card="${el.id}" data-url="${el.imageUrl}">
+      return `<a href="#dice"><div class="game-container"  data-card="${el.id}" data-url="${el.imageUrl}">
 <div class="game--card-container">
   <div class="game-card"></div>
 </div>
 <div class="game-description-container">
   <p class="game-description--text">${el.cardTitle}</p>
-</div>`;
+</div>
+</div>
+</a>`;
     });
 
-    return `<div class="games-section">
+    return `
+    <section class="lobby centralize-content">
+    <div class="games-section">
   <div class="games-header">
     <p class="games--header-title">Gambloors Originals</p>
     <div class="games-header--arrows">
@@ -48,7 +57,10 @@ class lobbyView extends View {
     </div>
   </div>
   ${gameCards}
-div>`;
+  
+  </div>
+  </section>
+`;
   }
 }
 export default new lobbyView();

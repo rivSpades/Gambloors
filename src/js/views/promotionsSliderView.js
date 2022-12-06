@@ -1,43 +1,51 @@
 import View from './View.js';
 
 class PromotionsSliderView extends View {
-  targetElement = document.querySelector('.promotions--slider');
+  targetElement = document.querySelector('.main-container');
 
   addHandlerRender(handler) {
     handler();
   }
   addHandlerNextSliderArrow(handler) {
-    addEventListener('load', function () {
-      const arrowRight = document.querySelector('.slider-arrow--right');
-
-      arrowRight.addEventListener('click', handler);
-      //arrowLeft.addEventListener('click', handler('Prev'));
-    });
+    this.observer(handler, '.slider-arrow--right');
   }
-  addHandlerPrevSliderArrow(handler) {
-    addEventListener('load', function () {
-      const arrowLeft = document.querySelector('.slider-arrow--left');
 
-      arrowLeft.addEventListener('click', handler);
-      //arrowLeft.addEventListener('click', handler('Prev'));
+  addHandlerPrevSliderArrow(handler) {
+    this.observer(handler, '.slider-arrow--left');
+  }
+
+  observer(handler, selector) {
+    const observer = new MutationObserver(function (
+      mutations,
+      mutationInstance
+    ) {
+      const el = document.querySelector(selector);
+      if (el) {
+        el.addEventListener('click', handler);
+        mutationInstance.disconnect();
+      }
+    });
+    observer.observe(document, {
+      childList: true,
+      subtree: true,
     });
   }
 
   addHandlerSlideTrackerBtns(handler) {
-    addEventListener('load', function () {
-      const slideTrackerContainer = document.querySelector(
-        '.slide-tracker-list'
-      );
+    const functionHandler = function (e) {
+      if (e.target.classList.contains('btn-slide-tracker')) {
+        //const { cardNumber: card } = e.target.dataset; //select the card dataset(data-card) from the data object
+        const cardNumber = e.target.dataset.card;
 
-      slideTrackerContainer.addEventListener('click', function (e) {
-        if (e.target.classList.contains('btn-slide-tracker')) {
-          //const { cardNumber: card } = e.target.dataset; //select the card dataset(data-card) from the data object
-          const cardNumber = e.target.dataset.card;
+        handler(cardNumber);
+      }
+    };
+    this.observer(functionHandler, '.slide-tracker-list');
+  }
 
-          handler(cardNumber);
-        }
-      });
-    });
+  clearHtml() {
+    this.targetElement.innerHTML = '';
+    this.targetElement.classList.add('main-home');
   }
 
   resetSlideTracker() {
@@ -70,6 +78,7 @@ class PromotionsSliderView extends View {
     const targetCard = document.querySelector(
       `.promotion-slider--card[data-card="${cardNumber}"]`
     );
+
     targetCard.classList.remove('hidden');
     targetCard.firstElementChild.style.backgroundImage = `linear-gradient(
       rgba(36, 36, 35, 0.2),
@@ -126,7 +135,9 @@ class PromotionsSliderView extends View {
             </div>`;
     });
 
-    return `              <svg
+    return ` <section class="promotions centralize-content">
+    <div class="promotions--slider">
+<svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
       viewBox="0 0 24 24"
@@ -152,8 +163,13 @@ class PromotionsSliderView extends View {
     />
   </svg>
   </div>
-  
-  
+  <div class="promotion-slider--track">
+      <ul class="slide-tracker-list">
+      </ul>
+      </div>
+    </section>
+    
+    
     `;
   }
 }

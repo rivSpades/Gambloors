@@ -3,8 +3,44 @@ import promotionsSliderView from './views/promotionsSliderView.js';
 import lobbyView from './views/lobbyView.js';
 import sideBarView from './views/sideBarView.js';
 
+import diceView from './views/diceView.js';
+
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
+const diceModel = new model.diceModel();
+
+export class controllerStart {
+  constructor() {}
+  startControllerSideBar = new controllerSideBar();
+  startControllerPromotionsSlider = new controllerPromotionsSlider();
+  startControllerLobby = new controllerLobby();
+  startControllerDice = new controllerDice();
+  controlStart() {
+    const url = window.location.hash.slice(1);
+
+    switch (url) {
+      case 'home':
+      case '':
+        this.startControllerPromotionsSlider.init();
+        this.startControllerLobby.init();
+        break;
+      case 'dice':
+        this.startControllerDice.init();
+        break;
+    }
+  }
+
+  init() {
+    this.controlStart();
+    this.startControllerSideBar.init();
+    addEventListener(
+      'hashchange',
+      function () {
+        this.controlStart();
+      }.bind(this)
+    );
+  }
+}
 
 export class controllerPromotionsSlider {
   constructor() {}
@@ -46,9 +82,11 @@ export class controllerPromotionsSlider {
 
   init() {
     promotionsSliderView.addHandlerRender(this.controlLoadPromotionsSlider);
+
     promotionsSliderView.addHandlerNextSliderArrow(
       this.controlPromotionsNextSliderArrowBtn.bind(this) //use bind to refer the correct object for this keyword, or this.update wont be recognize , and this will be the arrowRight from the handler
     );
+
     promotionsSliderView.addHandlerPrevSliderArrow(
       this.controlPromotionsPrevSliderArrowBtn.bind(this)
     );
@@ -79,5 +117,44 @@ export class controllerLobby {
 export class controllerSideBar {
   init() {
     sideBarView.addHandlerRender();
+  }
+}
+
+export class controllerDice {
+  controlLoadDice() {
+    diceView.render();
+    this.updateDice();
+  }
+  controlInputSlider() {
+    this.updateDice();
+  }
+  controlBtnRoll() {
+    diceModel.generateRandomNumber(1, 100);
+    diceView.updateRollResult(diceModel.state.numberGenerated);
+  }
+  controlInputBetSize() {
+    this.updateDice();
+  }
+
+  updateDice() {
+    const currentRoll = diceView.getCurrentRoll();
+
+    const rollValue = diceView.getRollValue();
+
+    const betSize = diceView.getBetSize();
+
+    diceModel.calcPayout(currentRoll, rollValue, betSize);
+    diceModel.calcWinChance(currentRoll, rollValue);
+
+    diceView.updatePayout(diceModel.state.payout);
+    diceView.updateWincChance(diceModel.state.winChance);
+  }
+  init() {
+    diceView.addHandlerRender(this.controlLoadDice.bind(this));
+    diceView.addHandlerInputSlider(this.controlInputSlider.bind(this));
+
+    diceView.addHandlerChangeRoll();
+    diceView.addHandlerBtnRoll(this.controlBtnRoll.bind(this));
+    diceView.addHandlerInputBetSize(this.controlInputSlider.bind(this));
   }
 }
