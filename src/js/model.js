@@ -2,8 +2,8 @@ class importModel {
   state = {
     importData: '',
     results: '',
-    constructor() {},
   };
+  constructor() {}
   loadData() {
     //this should be get by api routing /promotions
     return [

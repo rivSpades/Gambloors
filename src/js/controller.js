@@ -5,9 +5,13 @@ import sideBarView from './views/sideBarView.js';
 
 import diceView from './views/diceView.js';
 
+import * as helper from './helpers.js';
+
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
+
+const getToken = new helper.token();
 
 export class controllerStart {
   constructor() {}
@@ -33,6 +37,7 @@ export class controllerStart {
   init() {
     this.controlStart();
     this.startControllerSideBar.init();
+    getToken.init();
     addEventListener(
       'hashchange',
       function () {
