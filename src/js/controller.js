@@ -6,12 +6,13 @@ import sideBarView from './views/sideBarView.js';
 import diceView from './views/diceView.js';
 
 import * as helper from './helpers.js';
+import * as config from './config.js';
 
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
 
-const getToken = new helper.token();
+const getToken = new helper.request(config.TOKEN_URL, config.TOKEN_DATA);
 
 export class controllerStart {
   constructor() {}
@@ -34,10 +35,11 @@ export class controllerStart {
     }
   }
 
-  init() {
+  async init() {
     this.controlStart();
     this.startControllerSideBar.init();
-    getToken.init();
+    await getToken.post();
+
     addEventListener(
       'hashchange',
       function () {
@@ -133,8 +135,23 @@ export class controllerDice {
   controlInputSlider() {
     this.updateDice();
   }
-  controlBtnRoll() {
-    diceModel.generateRandomNumber(1, 100);
+  async controlBtnRoll() {
+    const currentRoll = diceView.getCurrentRoll();
+
+    const rollValue = diceView.getRollValue();
+
+    const betSize = diceView.getBetSize();
+
+    diceModel.generateRandomNumber(1, 100, currentRoll, rollValue, betSize); //we need to pass the token here
+    const diceExample = new helper.request(
+      'https://httpbin.org/post',
+      diceModel.state.payload
+    );
+
+    console.log(diceModel.state.payload);
+    await diceExample.post();
+    //console.log(diceExample.state.output);
+
     diceView.updateRollResult(diceModel.state.numberGenerated);
   }
   controlInputBetSize() {
@@ -154,6 +171,7 @@ export class controllerDice {
     diceView.updatePayout(diceModel.state.payout);
     diceView.updateWincChance(diceModel.state.winChance);
   }
+
   init() {
     diceView.addHandlerRender(this.controlLoadDice.bind(this));
     diceView.addHandlerInputSlider(this.controlInputSlider.bind(this));

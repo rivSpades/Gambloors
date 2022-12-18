@@ -92,6 +92,21 @@ export class diceModel {
     edge: 2,
     payout: 0,
     numberGenerated: 0,
+    diceData: {
+      numberGenerated: '',
+      betSize: '',
+      currentRoll: '',
+      rollValue: '',
+    },
+    payload: {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: '',
+      }),
+    },
   };
   constructor() {}
 
@@ -112,8 +127,16 @@ export class diceModel {
         (currentRoll === 'Roll Under' ? rollValue : 100 - rollValue))
     ).toFixed(0);
   }
-  generateRandomNumber(min, max) {
+  generateRandomNumber(min, max, currentRoll, rollValue, betSize) {
     this.state.numberGenerated =
       Math.floor(Math.random() * (max - min) + 1) + min;
+    this.state.diceData.currentRoll = currentRoll;
+    this.state.diceData.rollValue = rollValue;
+    this.state.diceData.betSize = betSize;
+    this.state.diceData.numberGenerated = this.state.numberGenerated;
+
+    this.state.payload.body = JSON.stringify({
+      data: this.state.diceData,
+    });
   }
 }

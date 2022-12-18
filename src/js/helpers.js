@@ -1,20 +1,61 @@
 import * as config from './config.js';
 
-export class token {
+export class request {
+  state = {
+    output: '',
+  };
+  #url;
+  #data;
+  constructor(url, data) {
+    this.#data = data;
+    this.#url = url;
+  }
+  async post() {
+    try {
+      const fetchData = fetch(this.#url, this.#data);
+      const res = await fetchData;
+
+      if (!res.ok)
+        throw new Error(
+          'something went wrong' + data.message + ' ' + res.status
+        );
+      const data = await res.json();
+      this.state.output = data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  async get() {
+    try {
+      const res = await fetch(this.#url);
+      if (!res.ok)
+        throw new Error(
+          'something went wrong' + data.message + ' ' + res.status
+        );
+
+      const data = await res.json();
+      this.state.output = data;
+    } catch (err) {
+      console.log(err);
+    }
+  }
+}
+
+/*export class token {
   state = {
     token: '',
   };
 
   #url = config.TOKEN_URL;
-  #tokenData = config.TOKEN_DATA;
+  #data = config.TOKEN_DATA;
 
   constructor() {}
 
   async init() {
     try {
       console.log(this.#url);
-      console.log(this.#tokenData);
-      const fetchData = fetch(this.#url, this.#tokenData);
+      console.log(this.#data);
+      const fetchData = fetch(this.#url, this.#data);
       const res = await fetchData;
       const data = await res.json();
       if (!res.ok)
@@ -22,12 +63,14 @@ export class token {
           'something went wrong' + data.message + ' ' + res.status
         );
       console.log(data);
+      this.state.token = data.token;
+      console.log(this.state.token);
       return data;
     } catch (err) {
       console.log(err);
     }
   }
-}
+}*/
 
 /*export async function makeRequest() {
   try {
