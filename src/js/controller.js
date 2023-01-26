@@ -4,6 +4,7 @@ import lobbyView from './views/lobbyView.js';
 import sideBarView from './views/sideBarView.js';
 
 import diceView from './views/diceView.js';
+import loginView from './views/loginView.js';
 
 import * as helper from './helpers.js';
 import * as config from './config.js';
@@ -11,23 +12,22 @@ import * as config from './config.js';
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
-
-const getToken = new helper.request(config.TOKEN_URL, config.TOKEN_DATA);
-
+let userLogin;
 export class controllerStart {
   constructor() {}
   startControllerSideBar = new controllerSideBar();
   startControllerPromotionsSlider = new controllerPromotionsSlider();
   startControllerLobby = new controllerLobby();
   startControllerDice = new controllerDice();
+  startControllerLogin = new controllerLogin();
   controlStart() {
     const url = window.location.hash.slice(1);
 
     switch (url) {
       case 'home':
       case '':
-        this.startControllerPromotionsSlider.init();
-        this.startControllerLobby.init();
+        //this.startControllerPromotionsSlider.init();
+        //this.startControllerLobby.init();
         break;
       case 'dice':
         this.startControllerDice.init();
@@ -37,8 +37,8 @@ export class controllerStart {
 
   async init() {
     this.controlStart();
-    this.startControllerSideBar.init();
-    await getToken.post();
+    //this.startControllerSideBar.init();
+    this.startControllerLogin.init();
 
     addEventListener(
       'hashchange',
@@ -143,10 +143,11 @@ export class controllerDice {
     const betSize = diceView.getBetSize();
 
     diceModel.generateRandomNumber(1, 100, currentRoll, rollValue, betSize); //we need to pass the token here
-    const diceExample = new helper.request(
+    /* const diceExample = new helper.request(
       'https://httpbin.org/post',
       diceModel.state.payload
-    );
+    );*/
+    const diceExample = '';
 
     console.log(diceModel.state.payload);
     await diceExample.post();
@@ -179,5 +180,40 @@ export class controllerDice {
     diceView.addHandlerChangeRoll();
     diceView.addHandlerBtnRoll(this.controlBtnRoll.bind(this));
     diceView.addHandlerInputBetSize(this.controlInputSlider.bind(this));
+  }
+}
+
+export class controllerLogin {
+  async controlLogin(email, password) {
+    //if (userLogin) return;
+
+    userLogin = new model.loginModel(email, password);
+    await userLogin.requestToken();
+
+    if (userLogin.state.token) {
+      loginView.validate(true);
+
+      loginView.addHandlerSignout(this.controlSignout.bind(this));
+    } else loginView.validate(userLogin.state.error);
+  }
+
+  controlSignout() {
+    if (!userLogin.state.token) return;
+    userLogin.signOut();
+    if (userLogin.state.token) return;
+    loginView.renderSignout();
+    loginView.addHandlerRender();
+    loginView.addHandlerRenderLogin();
+    loginView.addHandlerRenderLoginClose();
+
+    loginView.addHandlerInputForm(this.controlLogin.bind(this));
+  }
+
+  //loginView.addHandlerSignout(this.controlSignout);
+  init() {
+    loginView.addHandlerRender();
+    loginView.addHandlerRenderLogin();
+    loginView.addHandlerRenderLoginClose();
+    loginView.addHandlerInputForm(this.controlLogin.bind(this));
   }
 }

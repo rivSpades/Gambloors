@@ -1,3 +1,6 @@
+import * as config from './config.js';
+import * as helper from './helpers.js';
+
 class importModel {
   state = {
     importData: '',
@@ -102,6 +105,8 @@ export class diceModel {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
+
+        // 'Authorization': 'Bearer ' + token,
       },
       body: JSON.stringify({
         data: '',
@@ -138,5 +143,42 @@ export class diceModel {
     this.state.payload.body = JSON.stringify({
       data: this.state.diceData,
     });
+  }
+}
+
+export class loginModel {
+  state = {
+    token: '',
+    error: '',
+  };
+  #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/token/';
+  #data;
+  constructor(email, password) {
+    this.email = email;
+    this.password = password;
+    this.#data = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: {
+        //Vela quais requisitos é necessario enviar  para API e acrescentar/modificar aqui em baixo
+        email: this.email,
+        password: this.password,
+      },
+    };
+  }
+
+  async requestToken() {
+    if (this.state.token) return;
+    const res = await helper.req(this.#url, this.#data);
+    this.state.token = res.token;
+
+    this.state.error = res.error;
+  }
+
+  signOut() {
+    if (!this.state.token) return;
+    this.state.token = '';
   }
 }

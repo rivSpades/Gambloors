@@ -1,6 +1,32 @@
 import * as config from './config.js';
 
-export class request {
+export const req = async (url, data) => {
+  try {
+    const res = await axios({
+      method: data.method,
+      url: url,
+      headers: data.headers,
+      data: data.body,
+    });
+    const resData = {
+      token: res,
+      error: '',
+    };
+    console.log(resData);
+    return resData;
+  } catch (err) {
+    //console.log(err.response.data);
+    const dataArr = Object.entries(err.response.data);
+    //console.log(dataArr[0][1][0]);
+    const resData = {
+      token: '',
+      error: dataArr[0][1][0],
+    };
+    return resData;
+  }
+};
+
+export class request2 {
   state = {
     output: '',
   };

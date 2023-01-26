@@ -50,9 +50,11 @@ class PromotionsSliderView extends View {
 
   resetSlideTracker() {
     const slideTrackerBtns = document.querySelectorAll('.btn-slide-tracker');
-    slideTrackerBtns.forEach((tracker) =>
-      tracker.classList.remove('btn-slide-tracker--selected')
-    );
+    slideTrackerBtns.forEach((tracker) => {
+      //tracker.classList.remove('btn-slide-tracker--selected')
+      tracker.classList.remove('bg-white');
+      tracker.classList.add('bg-white/30');
+    });
   }
 
   resetCardSlider(cardNumber) {
@@ -69,8 +71,8 @@ class PromotionsSliderView extends View {
     const targetSlideTrackerBtn = document.querySelector(
       `.btn-slide-tracker[data-card="${cardNumber}"]`
     );
-
-    targetSlideTrackerBtn.classList.add('btn-slide-tracker--selected');
+    targetSlideTrackerBtn.classList.remove('bg-white/30');
+    targetSlideTrackerBtn.classList.add('bg-white');
   }
 
   selectCard(cardNumber) {
@@ -80,7 +82,7 @@ class PromotionsSliderView extends View {
     );
 
     targetCard.classList.remove('hidden');
-    targetCard.firstElementChild.style.backgroundImage = `linear-gradient(
+    targetCard.style.backgroundImage = `linear-gradient(
       rgba(36, 36, 35, 0.2),
       rgba(36, 36, 35, 0.4)
     ),
@@ -92,9 +94,17 @@ class PromotionsSliderView extends View {
 
     const cards = document.querySelectorAll('.promotion-slider--card');
     cards.forEach((_, i) => {
-      slideTrackerContainer.insertAdjacentHTML(
+      /* slideTrackerContainer.insertAdjacentHTML(
         'beforeend',
         `<li><button class="btn-slide-tracker" data-card="${i}"></button></li>`
+      );*/
+      slideTrackerContainer.insertAdjacentHTML(
+        'beforeend',
+        `<button
+        type="button"
+        class="w-3 h-3 rounded-full hidden md:block btn-slide-tracker"
+        data-card="${i}"
+      ></button>`
       );
     });
   }
@@ -110,7 +120,7 @@ class PromotionsSliderView extends View {
 
   generateHtml(data) {
     const promoCards = data.map((el) => {
-      return ` <div
+      /*  return ` <div
               class="promotion-slider--card"
               data-card="${el.id}"
               data-url="${el.imageUrl}"
@@ -132,10 +142,14 @@ class PromotionsSliderView extends View {
                   </button>
                 </div>
               </div>
-            </div>`;
+            </div>`;*/
+
+      return ` <div
+            class="duration-700 ease-in-out h-full md:rounded-xl promotion-slider--card"
+            data-card="${el.id}" data-url="${el.imageUrl}"></div>`;
     });
 
-    return ` <section class="promotions centralize-content">
+    /*return` <section class="promotions centralize-content">
     <div class="promotions--slider">
 <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -170,6 +184,75 @@ class PromotionsSliderView extends View {
     </section>
     
     
+    `;*/
+
+    return ` <section
+    id="indicators-carousel"
+    class="relative w-full md:w-[70vw] h-[calc(100vh-6rem)] md:h-[50vh] md:mr-auto md:ml-auto md:mt-20 md:rounded-xl"
+    data-carousel="static"
+  >
+    <!-- Carousel wrapper -->
+    <div class="relative md:rounded-xl w-full h-[inherit]">
+    
+    ${promoCards}
+
+    <div
+          class="slide-tracker-list absolute flex space-x-3 -translate-x-1/2 bottom-5 left-1/2"
+        >
+
+        </div>
+        <!-- Slider controls -->
+        <button
+          type="button"
+          class="absolute top-0 left-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none slider-arrow--left"
+        >
+          <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M15 19l-7-7 7-7"
+              ></path>
+            </svg>
+            <span class="sr-only">Previous</span>
+          </span>
+        </button>
+        <button
+          type="button"
+          class="absolute top-0 right-0 flex items-center justify-center h-full px-4 cursor-pointer group focus:outline-none slider-arrow--right"
+        >
+          <span
+            class="inline-flex items-center justify-center w-8 h-8 rounded-full sm:w-10 sm:h-10 bg-white/30 dark:bg-gray-800/30 group-hover:bg-white/50 dark:group-hover:bg-gray-800/60 dark:group-focus:ring-gray-800/70 group-focus:outline-none"
+          >
+            <svg
+              aria-hidden="true"
+              class="w-5 h-5 text-white sm:w-6 sm:h-6 dark:text-gray-800"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M9 5l7 7-7 7"
+              ></path>
+            </svg>
+            <span class="sr-only">Next</span>
+          </span>
+        </button>
+      </section>
     `;
   }
 }
