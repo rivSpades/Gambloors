@@ -13,6 +13,7 @@ const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
 let userLogin;
+
 export class controllerStart {
   constructor() {}
   startControllerSideBar = new controllerSideBar();
@@ -191,10 +192,41 @@ export class controllerLogin {
     await userLogin.requestToken();
 
     if (userLogin.state.token) {
-      loginView.validate(true);
-
+      await userLogin.requestUserDetails();
+      loginView.validateLogin(true, userLogin.state.userDetails);
       loginView.addHandlerSignout(this.controlSignout.bind(this));
-    } else loginView.validate(userLogin.state.error);
+    } else loginView.validateLogin(userLogin.state.error);
+  }
+
+  async controlRegister(name, email, password, cpassword) {
+    if (password !== cpassword)
+      return loginView.validateRegister("Passwords don't match");
+    const userRegister = new model.registerModel(name, email, password);
+
+    await userRegister.requestRegister();
+    if (
+      !userRegister.state.userDetails.email ||
+      !userRegister.state.userDetails.name ||
+      userRegister.state.error
+    )
+      loginView.validateRegister(userRegister.state.error);
+    else if (
+      userRegister.state.userDetails.email &&
+      userRegister.state.userDetails.name &&
+      !userRegister.state.error
+    ) {
+      userLogin = new model.loginModel(
+        userRegister.state.userDetails.email,
+        userRegister.state.userDetails.password
+      );
+      await userLogin.requestToken();
+
+      if (userLogin.state.token) {
+        await userLogin.requestUserDetails();
+        loginView.validateRegister(true, userLogin.state.userDetails);
+        loginView.addHandlerSignout(this.controlSignout.bind(this));
+      }
+    }
   }
 
   controlSignout() {
@@ -206,7 +238,8 @@ export class controllerLogin {
     loginView.addHandlerRenderLogin();
     loginView.addHandlerRenderLoginClose();
 
-    loginView.addHandlerInputForm(this.controlLogin.bind(this));
+    loginView.addHandlerInputFormLogin(this.controlLogin.bind(this));
+    loginView.addHandlerInputFormRegister(this.controlLogin.bind(this));
   }
 
   //loginView.addHandlerSignout(this.controlSignout);
@@ -214,6 +247,7 @@ export class controllerLogin {
     loginView.addHandlerRender();
     loginView.addHandlerRenderLogin();
     loginView.addHandlerRenderLoginClose();
-    loginView.addHandlerInputForm(this.controlLogin.bind(this));
+    loginView.addHandlerInputFormLogin(this.controlLogin.bind(this));
+    loginView.addHandlerInputFormRegister(this.controlRegister.bind(this));
   }
 }

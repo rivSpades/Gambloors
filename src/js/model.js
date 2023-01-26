@@ -150,6 +150,10 @@ export class loginModel {
   state = {
     token: '',
     error: '',
+    userDetails: {
+      email: '',
+      name: '',
+    },
   };
   #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/token/';
   #data;
@@ -172,7 +176,7 @@ export class loginModel {
   async requestToken() {
     if (this.state.token) return;
     const res = await helper.req(this.#url, this.#data);
-    this.state.token = res.token;
+    this.state.token = res.response.token;
 
     this.state.error = res.error;
   }
@@ -180,5 +184,61 @@ export class loginModel {
   signOut() {
     if (!this.state.token) return;
     this.state.token = '';
+  }
+
+  async requestUserDetails() {
+    if (!this.state.token) return;
+    const data = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.state.token}`,
+      },
+    };
+
+    const url =
+      'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/me/';
+
+    const res = await helper.req(url, data);
+    this.state.userDetails.email = res.response.email;
+    this.state.userDetails.name = res.response.name;
+  }
+}
+
+export class registerModel {
+  state = {
+    error: '',
+    userDetails: {
+      email: '',
+      name: '',
+      password: '',
+    },
+  };
+
+  #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/create/';
+  #data;
+  constructor(name, email, password) {
+    this.name = name;
+    this.email = email;
+    this.password = password;
+    this.#data = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+      },
+      body: {
+        email: this.email,
+        password: this.password,
+        name: this.name,
+      },
+    };
+  }
+
+  async requestRegister() {
+    const res = await helper.req(this.#url, this.#data);
+    this.state.userDetails.email = res.response.email;
+    this.state.userDetails.name = res.response.name;
+    this.state.userDetails.password = this.password;
+    this.state.error = res.error;
   }
 }

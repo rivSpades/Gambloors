@@ -8,18 +8,19 @@ export const req = async (url, data) => {
       headers: data.headers,
       data: data.body,
     });
+
     const resData = {
-      token: res,
+      response: res.data,
       error: '',
     };
-    console.log(resData);
+
     return resData;
   } catch (err) {
     //console.log(err.response.data);
     const dataArr = Object.entries(err.response.data);
     //console.log(dataArr[0][1][0]);
     const resData = {
-      token: '',
+      response: '',
       error: dataArr[0][1][0],
     };
     return resData;
