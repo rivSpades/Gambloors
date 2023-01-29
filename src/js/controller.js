@@ -5,14 +5,19 @@ import sideBarView from './views/sideBarView.js';
 
 import diceView from './views/diceView.js';
 import loginView from './views/loginView.js';
+import registerView from './views/registerView.js';
+import signoutView from './views/signoutView.js';
+import userdetailsView from './views/userdetailsView.js';
+import walletView from './views/walletView.js';
 
-import * as helper from './helpers.js';
 import * as config from './config.js';
 
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
 let userLogin;
+let userDetails;
+let userWallets;
 
 export class controllerStart {
   constructor() {}
@@ -21,6 +26,8 @@ export class controllerStart {
   startControllerLobby = new controllerLobby();
   startControllerDice = new controllerDice();
   startControllerLogin = new controllerLogin();
+  startControllerRegister = new controllerRegister();
+
   controlStart() {
     const url = window.location.hash.slice(1);
 
@@ -40,6 +47,7 @@ export class controllerStart {
     this.controlStart();
     //this.startControllerSideBar.init();
     this.startControllerLogin.init();
+    this.startControllerRegister.init();
 
     addEventListener(
       'hashchange',
@@ -186,21 +194,83 @@ export class controllerDice {
 
 export class controllerLogin {
   async controlLogin(email, password) {
-    //if (userLogin) return;
-
     userLogin = new model.loginModel(email, password);
+
     await userLogin.requestToken();
 
     if (userLogin.state.token) {
-      await userLogin.requestUserDetails();
-      loginView.validateLogin(true, userLogin.state.userDetails);
-      loginView.addHandlerSignout(this.controlSignout.bind(this));
+      userDetails = new model.userDetailsModel(userLogin.state.token);
+      await userDetails.requestUserDetails();
+
+      userWallets = new model.walletsModel(userLogin.state.token);
+      await userWallets.requestWallets();
+
+      loginView.validateLogin(true);
+      const startControllerUserDetails = new controllerUserDetails();
+      startControllerUserDetails.render(userDetails.state.userDetails);
+
+      const startControllerWallet = new controllerWallet();
+      startControllerWallet.render(userWallets.state.walletDetails);
+
+      const startControllerSignout = new controllerSignout();
+      startControllerSignout.init();
     } else loginView.validateLogin(userLogin.state.error);
   }
 
+  init() {
+    loginView.addHandlerRender();
+    loginView.addHandlerRenderLogin();
+    loginView.addHandlerRenderLoginClose();
+    loginView.addHandlerInputFormLogin(this.controlLogin.bind(this));
+  }
+}
+
+export class controllerSignout {
+  controlSignout() {
+    if (!userLogin.state.token) return;
+    userLogin.signOut();
+    if (userLogin.state.token) return;
+    loginView.renderAuthButtons();
+    const startControllerLogin = new controllerLogin();
+    startControllerLogin.init();
+
+    const startControllerRegister = new controllerRegister();
+    startControllerRegister.init();
+
+    userDetails = undefined;
+    userLogin = undefined;
+    userWallets = undefined;
+  }
+  init() {
+    signoutView.addHandlerSignout(this.controlSignout.bind(this));
+  }
+}
+
+export class controllerWallet {
+  render(data) {
+    walletView.renderWallet(data);
+    this.init();
+  }
+  init() {
+    walletView.addHandlerWallet();
+  }
+}
+
+export class controllerUserDetails {
+  render(data) {
+    userdetailsView.render(data);
+    this.init();
+  }
+
+  init() {
+    userdetailsView.addHandlerUserDetails();
+  }
+}
+
+export class controllerRegister {
   async controlRegister(name, email, password, cpassword) {
     if (password !== cpassword)
-      return loginView.validateRegister("Passwords don't match");
+      return registerView.validateRegister("Passwords don't match");
     const userRegister = new model.registerModel(name, email, password);
 
     await userRegister.requestRegister();
@@ -209,45 +279,27 @@ export class controllerLogin {
       !userRegister.state.userDetails.name ||
       userRegister.state.error
     )
-      loginView.validateRegister(userRegister.state.error);
+      registerView.validateRegister(userRegister.state.error);
     else if (
       userRegister.state.userDetails.email &&
       userRegister.state.userDetails.name &&
       !userRegister.state.error
     ) {
-      userLogin = new model.loginModel(
+      const startControllerLogin = new controllerLogin();
+      await startControllerLogin.controlLogin(
         userRegister.state.userDetails.email,
         userRegister.state.userDetails.password
       );
-      await userLogin.requestToken();
 
       if (userLogin.state.token) {
-        await userLogin.requestUserDetails();
-        loginView.validateRegister(true, userLogin.state.userDetails);
-        loginView.addHandlerSignout(this.controlSignout.bind(this));
+        registerView.validateRegister(true);
       }
     }
   }
-
-  controlSignout() {
-    if (!userLogin.state.token) return;
-    userLogin.signOut();
-    if (userLogin.state.token) return;
-    loginView.renderSignout();
-    loginView.addHandlerRender();
-    loginView.addHandlerRenderLogin();
-    loginView.addHandlerRenderLoginClose();
-
-    loginView.addHandlerInputFormLogin(this.controlLogin.bind(this));
-    loginView.addHandlerInputFormRegister(this.controlLogin.bind(this));
-  }
-
-  //loginView.addHandlerSignout(this.controlSignout);
   init() {
-    loginView.addHandlerRender();
-    loginView.addHandlerRenderLogin();
-    loginView.addHandlerRenderLoginClose();
-    loginView.addHandlerInputFormLogin(this.controlLogin.bind(this));
-    loginView.addHandlerInputFormRegister(this.controlRegister.bind(this));
+    registerView.addHandlerRender();
+    registerView.addHandlerRenderRegister();
+    registerView.addHandlerRenderRegisterClose();
+    registerView.addHandlerInputFormRegister(this.controlRegister.bind(this));
   }
 }

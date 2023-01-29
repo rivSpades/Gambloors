@@ -150,10 +150,6 @@ export class loginModel {
   state = {
     token: '',
     error: '',
-    userDetails: {
-      email: '',
-      name: '',
-    },
   };
   #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/token/';
   #data;
@@ -166,7 +162,6 @@ export class loginModel {
         'content-type': 'application/json',
       },
       body: {
-        //Vela quais requisitos é necessario enviar  para API e acrescentar/modificar aqui em baixo
         email: this.email,
         password: this.password,
       },
@@ -185,21 +180,33 @@ export class loginModel {
     if (!this.state.token) return;
     this.state.token = '';
   }
+}
 
-  async requestUserDetails() {
-    if (!this.state.token) return;
-    const data = {
+export class userDetailsModel {
+  #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/me/';
+  #data;
+  #token;
+  constructor(token) {
+    this.#token = token;
+    this.#data = {
       method: 'GET',
       headers: {
         'content-type': 'application/json',
-        'Authorization': `Token ${this.state.token}`,
+        'Authorization': `Token ${this.#token}`,
       },
     };
+  }
+  state = {
+    userDetails: {
+      email: '',
+      name: '',
+    },
+  };
 
-    const url =
-      'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/me/';
+  async requestUserDetails() {
+    if (!this.#token) return;
 
-    const res = await helper.req(url, data);
+    const res = await helper.req(this.#url, this.#data);
     this.state.userDetails.email = res.response.email;
     this.state.userDetails.name = res.response.name;
   }
@@ -239,6 +246,41 @@ export class registerModel {
     this.state.userDetails.email = res.response.email;
     this.state.userDetails.name = res.response.name;
     this.state.userDetails.password = this.password;
+    this.state.error = res.error;
+  }
+}
+
+export class walletsModel {
+  state = {
+    error: '',
+    walletDetails: {
+      fun: '',
+      btc: '',
+      eth: '',
+    },
+  };
+
+  #url =
+    'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/profile_user/profile/';
+  #data;
+  #token;
+  constructor(token) {
+    this.#token = token;
+
+    this.#data = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+    };
+  }
+
+  async requestWallets() {
+    const res = await helper.req(this.#url, this.#data);
+    this.state.walletDetails.fun = res.response[0].PLAY_amount;
+    this.state.walletDetails.eth = res.response[0].ETH_amount;
+    this.state.walletDetails.btc = res.response[0].BTC_amount;
     this.state.error = res.error;
   }
 }
