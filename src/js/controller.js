@@ -1,8 +1,7 @@
 import * as model from './model.js';
-import promotionsSliderView from './views/promotionsSliderView.js';
-import lobbyView from './views/lobbyView.js';
+//import promotionsSliderView from './views/promotionsSliderView.js';
+//import lobbyView from './views/lobbyView.js';
 import sideBarView from './views/sideBarView.js';
-
 import diceView from './views/diceView.js';
 import loginView from './views/loginView.js';
 import registerView from './views/registerView.js';
@@ -27,6 +26,7 @@ export class controllerStart {
   startControllerDice = new controllerDice();
   startControllerLogin = new controllerLogin();
   startControllerRegister = new controllerRegister();
+  startControllerSideBar = new controllerSideBar();
 
   controlStart() {
     const url = window.location.hash.slice(1);
@@ -45,7 +45,7 @@ export class controllerStart {
 
   async init() {
     this.controlStart();
-    //this.startControllerSideBar.init();
+    this.startControllerSideBar.init();
     this.startControllerLogin.init();
     this.startControllerRegister.init();
 

@@ -8,4 +8,5 @@ src/js/dice.js
 src/css/old-dice.css
 src/js/script.js
 src/js/appReact.js
+src/js/views/junk
 tailwind.config.js

@@ -1,22 +1,27 @@
 class sideBarView {
   addHandlerRender() {
-    const sidebarContainer = document.querySelector('.side-bar-btn-container');
+    const sidebarrBtn = document.querySelector('.sidebar-btn');
 
-    sidebarContainer.addEventListener('click', function (e) {
-      const sidebarBtnClose = document.querySelector('.side-bar-btn--close');
-      const sidebarBtnOpen = document.querySelector('.side-bar-btn--open');
-      const sideNav = document.querySelector('.sider');
-      const main = document.querySelector('main');
-      const footer = document.querySelector('.footer-container');
+    sidebarrBtn.addEventListener('click', function (e) {
+      const sideNav = document.querySelector('.nav-sidebar');
 
-      sidebarBtnClose.classList.toggle('hidden');
-      sidebarBtnOpen.classList.toggle('hidden');
-      sideNav.classList.toggle('hide-sidebar');
-      sideNav.classList.toggle('show-sidebar');
-      main.classList.toggle('slide-out');
-      main.classList.toggle('slide-in');
-      footer.classList.toggle('slide-out--footer');
-      footer.classList.toggle('slide-in');
+      sideNav.classList.toggle('-translate-x-full');
+    });
+    const sidebarNav = document.querySelector('.sidebar-nav');
+
+    sidebarNav.addEventListener('click', function (e) {
+      //console.log(e.target.parentElement);
+      if (!e.target.parentElement.classList.contains('sidebar-dropdown-btn'))
+        return;
+
+      if (e.target.parentElement.classList.contains('sidebar-dropdown-btn')) {
+        console.log(e.target.parentElement);
+        const sidebarDropdownBtn = document.querySelector(
+          '.sidebar-dropdown-btn'
+        );
+
+        e.target.parentElement.nextElementSibling.classList.toggle('hidden');
+      }
     });
   }
 }

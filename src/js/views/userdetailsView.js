@@ -38,9 +38,9 @@ class UserDetailsView {
   render(data) {
     const html = `   
         <!--Nav User Details -->
-        <div class="nav-user-details cursor-pointer">
+        <div class="nav-user-details pr-6 cursor-pointer">
         <div
-          class="user-details-avatar relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
+          class="user-details-avatar relative w-10 h-10 overflow-hidden bg-gray-100 rounded-full"
         >
           <svg
             class="absolute w-12 h-12 text-gray-400 -left-1"
@@ -56,14 +56,14 @@ class UserDetailsView {
           </svg>
         </div>
       </div>
-      <div id='user-details-dropdown' class="hidden nav-card-details absolute top-full right-0">
-        <div class="px-4 py-3 text-sm text-white dark:text-white">
-          <div>${data.name}</div>
-          <div class="font-medium truncate">${data.email}</div>
+      <div id='user-details-dropdown' class="hidden nav-card-details font-medium w-44 absolute top-[150%] right-0">
+        <div class="px-4 py-3 block  text-white">
+          <div>Hello ${data.name}</div>
+          <div >${data.email}</div>
         </div>
     
-        <div class="py-1">
-          <a href="#" class="nav-btn-signout block px-4 py-2 text-sm text-white">Sign out</a>
+        <div class="py-1  hover:bg-primary">
+          <a href="#" class="nav-btn-signout  block px-4 py-2  text-white">Sign out</a>
         </div>
       </div>`;
 

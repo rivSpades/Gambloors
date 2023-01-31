@@ -1,3 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .nav-card-details {
+    @apply z-50 bg-primary  text-lg font-bold shadow-sm shadow-black/30 w-40;
+  }
+}

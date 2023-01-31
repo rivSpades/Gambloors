@@ -38,10 +38,10 @@ class WalletView {
   renderWallet(data) {
     const html = `
         <!--NAV Wallet-->
-        <div class="nav-wallet flex-col self-center">
+        <div class="nav-wallet flex-col  self-center mr-3">
           <!--Wallet Selected-->
           <button
-            class="nav-wallet-selected gap-3 flex items-center py-2.5 px-4 text-lg font-medium text-center text-white bg-secondary shadow-sm shadow-black/30 rounded-l-lg hover:bg-primary"
+            class="nav-wallet-selected gap-3 w-40 flex items-center py-2.5 px-4 text-lg font-bold text-center text-white bg-primary shadow-sm shadow-black/30  hover:bg-primary"
             type="button"
           >
             <svg
@@ -93,10 +93,10 @@ class WalletView {
 
           <!--Wallet dropdown-->
 
-          <div id="nav-wallet-dropdown" class="hidden absolute top-[76%] nav-card-details ">
+          <div id="nav-wallet-dropdown" class="hidden absolute  top-full nav-card-details ">
             <ul
               class="py-2 text-lg text-white rounded-lg"
-              aria-labelledby="states-button"
+              
             >
               <li>
                 <button

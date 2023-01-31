@@ -32,14 +32,16 @@
     <title>Gambloors</title>
   </head>
 
-  <body class="bg-primary z-10">
+  <body class="bg-secondary z-10">
     <header
-      class="w-screen h-24 z-20 bg-secondary flex justify-between sticky top-0"
+      class="w-screen h-24 z-20 bg-primary border-b-white/10 border-b-[0.05px] flex items-center justify-between sticky top-0"
     >
-      <div class="self-center">
+      <!--NAV Left-->
+
+      <div class="nav-left self-center">
         <button
           type="button"
-          class="p-2 ml-3 text-2xl text-white rounded-lg hover:bg-primary focus:outline-none dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          class="sidebar-btn p-2 ml-3 text-2xl text-white rounded-lg hover:bg-secondary focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -61,204 +63,13 @@
       </div>
 
       <!--NAV Right-->
-      <!--NAV Wallet-->
-      <div class="hidden nav-wallet flex-col self-center">
-        <!--Wallet Selected-->
-        <button
-          class="gap-3 flex items-center py-2.5 px-4 text-lg font-medium text-center text-white bg-secondary shadow-sm shadow-black/30 rounded-l-lg hover:bg-primary"
-          type="button"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            xmlns:xlink="http://www.w3.org/1999/xlink"
-            xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"
-            xml:space="preserve"
-            width="15"
-            height="12"
-            version="1.1"
-            shape-rendering="geometricPrecision"
-            text-rendering="geometricPrecision"
-            image-rendering="optimizeQuality"
-            fill-rule="evenodd"
-            clip-rule="evenodd"
-            viewBox="0 0 4091.27 4091.73"
-          >
-            <g id="Layer_x0020_1">
-              <metadata id="CorelCorpID_0Corel-Layer" />
-              <g id="_1421344023328">
-                <path
-                  fill="#F7931A"
-                  fill-rule="nonzero"
-                  d="M4030.06 2540.77c-273.24,1096.01 -1383.32,1763.02 -2479.46,1489.71 -1095.68,-273.24 -1762.69,-1383.39 -1489.33,-2479.31 273.12,-1096.13 1383.2,-1763.19 2479,-1489.95 1096.06,273.24 1763.03,1383.51 1489.76,2479.57l0.02 -0.02z"
-                />
-                <path
-                  fill="white"
-                  fill-rule="nonzero"
-                  d="M2947.77 1754.38c40.72,-272.26 -166.56,-418.61 -450,-516.24l91.95 -368.8 -224.5 -55.94 -89.51 359.09c-59.02,-14.72 -119.63,-28.59 -179.87,-42.34l90.16 -361.46 -224.36 -55.94 -92 368.68c-48.84,-11.12 -96.81,-22.11 -143.35,-33.69l0.26 -1.16 -309.59 -77.31 -59.72 239.78c0,0 166.56,38.18 163.05,40.53 90.91,22.69 107.35,82.87 104.62,130.57l-104.74 420.15c6.26,1.59 14.38,3.89 23.34,7.49 -7.49,-1.86 -15.46,-3.89 -23.73,-5.87l-146.81 588.57c-11.11,27.62 -39.31,69.07 -102.87,53.33 2.25,3.26 -163.17,-40.72 -163.17,-40.72l-111.46 256.98 292.15 72.83c54.35,13.63 107.61,27.89 160.06,41.3l-92.9 373.03 224.24 55.94 92 -369.07c61.26,16.63 120.71,31.97 178.91,46.43l-91.69 367.33 224.51 55.94 92.89 -372.33c382.82,72.45 670.67,43.24 791.83,-303.02 97.63,-278.78 -4.86,-439.58 -206.26,-544.44 146.69,-33.83 257.18,-130.31 286.64,-329.61l-0.07 -0.05zm-512.93 719.26c-69.38,278.78 -538.76,128.08 -690.94,90.29l123.28 -494.2c152.17,37.99 640.17,113.17 567.67,403.91zm69.43 -723.3c-63.29,253.58 -453.96,124.75 -580.69,93.16l111.77 -448.21c126.73,31.59 534.85,90.55 468.94,355.05l-0.02 0z"
-                />
-              </g>
-            </g>
-          </svg>
-          <span class="font-bold">100.00</span>
-          <svg
-            aria-hidden="true"
-            class="w-4 h-4 ml-1"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              fill-rule="evenodd"
-              d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-              clip-rule="evenodd"
-            ></path>
-          </svg>
-        </button>
-        <!--Wallet dropdown-->
-        <div
-          id="dropdown-states"
-          class="absolute top-[76%] z-50 bg-secondary divide-y divide-gray-100 rounded-lg shadow-sm shadow-black/30 w-44"
-        >
-          <ul
-            class="py-2 text-lg text-white rounded-lg"
-            aria-labelledby="states-button"
-          >
-            <li>
-              <button
-                type="button"
-                class="inline-flex w-full px-4 py-2 hover:bg-primary"
-              >
-                <div class="inline-flex items-center gap-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"
-                    xml:space="preserve"
-                    width="15"
-                    height="12"
-                    version="1.1"
-                    shape-rendering="geometricPrecision"
-                    text-rendering="geometricPrecision"
-                    image-rendering="optimizeQuality"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    viewBox="0 0 784.37 1277.39"
-                  >
-                    <g id="Layer_x0020_1">
-                      <metadata id="CorelCorpID_0Corel-Layer" />
-                      <g id="_1421394342400">
-                        <g>
-                          <polygon
-                            fill="#343434"
-                            fill-rule="nonzero"
-                            points="392.07,0 383.5,29.11 383.5,873.74 392.07,882.29 784.13,650.54 "
-                          />
-                          <polygon
-                            fill="#8C8C8C"
-                            fill-rule="nonzero"
-                            points="392.07,0 -0,650.54 392.07,882.29 392.07,472.33 "
-                          />
-                          <polygon
-                            fill="#3C3C3B"
-                            fill-rule="nonzero"
-                            points="392.07,956.52 387.24,962.41 387.24,1263.28 392.07,1277.38 784.37,724.89 "
-                          />
-                          <polygon
-                            fill="#8C8C8C"
-                            fill-rule="nonzero"
-                            points="392.07,1277.38 392.07,956.52 -0,724.89 "
-                          />
-                          <polygon
-                            fill="#141414"
-                            fill-rule="nonzero"
-                            points="392.07,882.29 784.13,650.54 392.07,472.33 "
-                          />
-                          <polygon
-                            fill="#393939"
-                            fill-rule="nonzero"
-                            points="0,650.54 392.07,882.29 392.07,472.33 "
-                          />
-                        </g>
-                      </g>
-                    </g>
-                  </svg>
-                  <span class="font-bold">0</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                class="inline-flex w-full px-4 py-2 hover:bg-primary"
-              >
-                <div class="inline-flex items-center gap-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    xmlns:xlink="http://www.w3.org/1999/xlink"
-                    xmlns:xodm="http://www.corel.com/coreldraw/odm/2003"
-                    xml:space="preserve"
-                    width="15"
-                    height="12"
-                    version="1.1"
-                    shape-rendering="geometricPrecision"
-                    text-rendering="geometricPrecision"
-                    image-rendering="optimizeQuality"
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    viewBox="0 0 4091.27 4091.73"
-                  >
-                    <g id="Layer_x0020_1">
-                      <metadata id="CorelCorpID_0Corel-Layer" />
-                      <g id="_1421344023328">
-                        <path
-                          fill="#F7931A"
-                          fill-rule="nonzero"
-                          d="M4030.06 2540.77c-273.24,1096.01 -1383.32,1763.02 -2479.46,1489.71 -1095.68,-273.24 -1762.69,-1383.39 -1489.33,-2479.31 273.12,-1096.13 1383.2,-1763.19 2479,-1489.95 1096.06,273.24 1763.03,1383.51 1489.76,2479.57l0.02 -0.02z"
-                        />
-                        <path
-                          fill="white"
-                          fill-rule="nonzero"
-                          d="M2947.77 1754.38c40.72,-272.26 -166.56,-418.61 -450,-516.24l91.95 -368.8 -224.5 -55.94 -89.51 359.09c-59.02,-14.72 -119.63,-28.59 -179.87,-42.34l90.16 -361.46 -224.36 -55.94 -92 368.68c-48.84,-11.12 -96.81,-22.11 -143.35,-33.69l0.26 -1.16 -309.59 -77.31 -59.72 239.78c0,0 166.56,38.18 163.05,40.53 90.91,22.69 107.35,82.87 104.62,130.57l-104.74 420.15c6.26,1.59 14.38,3.89 23.34,7.49 -7.49,-1.86 -15.46,-3.89 -23.73,-5.87l-146.81 588.57c-11.11,27.62 -39.31,69.07 -102.87,53.33 2.25,3.26 -163.17,-40.72 -163.17,-40.72l-111.46 256.98 292.15 72.83c54.35,13.63 107.61,27.89 160.06,41.3l-92.9 373.03 224.24 55.94 92 -369.07c61.26,16.63 120.71,31.97 178.91,46.43l-91.69 367.33 224.51 55.94 92.89 -372.33c382.82,72.45 670.67,43.24 791.83,-303.02 97.63,-278.78 -4.86,-439.58 -206.26,-544.44 146.69,-33.83 257.18,-130.31 286.64,-329.61l-0.07 -0.05zm-512.93 719.26c-69.38,278.78 -538.76,128.08 -690.94,90.29l123.28 -494.2c152.17,37.99 640.17,113.17 567.67,403.91zm69.43 -723.3c-63.29,253.58 -453.96,124.75 -580.69,93.16l111.77 -448.21c126.73,31.59 534.85,90.55 468.94,355.05l-0.02 0z"
-                        />
-                      </g>
-                    </g>
-                  </svg>
-                  <span class="font-bold">100.00</span>
-                </div>
-              </button>
-            </li>
-            <li>
-              <button
-                type="button"
-                class="inline-flex w-full px-4 py-2 hover:bg-primary"
-              >
-                <div class="inline-flex items-center gap-3">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 2000 1995.84"
-                    width="15"
-                    height="12"
-                  >
-                    <path
-                      d="M114.87 999.53a895 895 0 0 0 15.08 163l-111.2 20.76a992.52 992.52 0 0 0 50.56 177.5l105.44-41a885.54 885.54 0 0 0 73.12 146.32l-96.08 59.71a1003.81 1003.81 0 0 0 111.38 147.06l83.52-76.28a894.45 894.45 0 0 0 121 110.25l-68.18 90.26a1000.24 1000.24 0 0 0 156.86 97.2l50.44-101.27a882.84 882.84 0 0 0 152.57 59L728.58 1961A996.2 996.2 0 0 0 910 1994.57l10.25-112.65c26.9 2.45 54.31 3.69 81.48 3.69 27.44 0 55.13-1.27 82.29-3.76l10.36 112.64a996.15 996.15 0 0 0 181.4-33.77l-30.95-108.83a882.9 882.9 0 0 0 152.48-59.16l50.53 101.22a1000.28 1000.28 0 0 0 156.75-97.32l-68.25-90.2a894.47 894.47 0 0 0 120.93-110.35l83.59 76.22a1003.8 1003.8 0 0 0 111.26-147.18l-96.12-59.63a885.67 885.67 0 0 0 73-146.43l105.48 40.87a992.52 992.52 0 0 0 50.4-177.55l-111-20.65a895.19 895.19 0 0 0 15.13-163v-1.61l112.93-.19a1005.34 1005.34 0 0 0-17.26-183.64l-111.23 20.85a882.43 882.43 0 0 0-45-157.25l105.4-41.07a996.37 996.37 0 0 0-82.63-165l-96 59.8a892.7 892.7 0 0 0-98.94-130.4l83.45-76.36a1005.81 1005.81 0 0 0-136.49-124.11l-68.1 90.32A889.26 889.26 0 0 0 1395.91 204l50.35-101.32A993.14 993.14 0 0 0 1274 36.26l-30.74 108.88a886 886 0 0 0-160.87-29.66l10.18-112.67q-44.87-4-90.83-4.08-47.32 0-93.54 4.33l10.46 112.64a885.87 885.87 0 0 0-160.79 30.1L726.83 37a993.17 993.17 0 0 0-172 66.93l50.61 101.17a889.42 889.42 0 0 0-138.94 86.42l-68.33-90.14A1005.84 1005.84 0 0 0 262 325.84L345.66 402a892.61 892.61 0 0 0-98.6 130.67l-96.18-59.54a996.22 996.22 0 0 0-82.22 165.24l105.52 40.78a882.37 882.37 0 0 0-44.52 157.37L18.43 816A1005.6 1005.6 0 0 0 1.74 998.73v.9zm988 700.52l-6-42.11a661.31 661.31 0 0 0 181.79-53.37l17.71 38.68a703.81 703.81 0 0 1-193.53 56.75zm607.38-701.37a709.44 709.44 0 0 1-28.5 199.62l-40.82-12a666.81 666.81 0 0 0 26.79-187.6v-1.1l42.54-.11v1.15zm-113-383.92A705.06 705.06 0 0 1 1681.39 798l-40.8 12a662.54 662.54 0 0 0-79.07-172.21zm-35.13 743.92l35.77 23a711.56 711.56 0 0 1-132.06 152.36l-27.83-32.1a669.05 669.05 0 0 0 124.12-143.26zm-266.88-1005a708.65 708.65 0 0 1 169.7 108.91l-27.83 32.18a666.13 666.13 0 0 0-159.52-102.37zM1188 824h99.11L1416 1014.1V824h101v344h-100.52L1288 978.94V1168h-100V824zm-186.26-533.75a717.11 717.11 0 0 1 99.89 7l-5.95 42.12a674.66 674.66 0 0 0-189.57.24l-6.05-42.11a717.09 717.09 0 0 1 101.68-7.25zM797 824h106v209.59c0 18.74 5.29 33.37 15.68 43.91s24.85 15.81 43.29 15.81c18.28 0 32.83-5.19 43.23-15.57s15.8-25.1 15.8-44.14V824h106v204.71a172.5 172.5 0 0 1-9.72 57.5 124.47 124.47 0 0 1-29.88 47.31q-20.27 20.26-42.6 28.46-30.94 11.47-74.32 11.48a468.15 468.15 0 0 1-54.74-3.51q-29.65-3.52-49.58-13.94t-36.45-29.63c-11-12.8-18.68-26-22.75-39.58-6.56-21.86-10-41.22-10-58.08V824zm110.25 834l-6 42.12a703.88 703.88 0 0 1-193.56-56.64l17.67-38.7A661.35 661.35 0 0 0 907.25 1658zM706.63 354.46l17.74 38.67a666.2 666.2 0 0 0-159.25 102.76l-27.91-32.11a708.71 708.71 0 0 1 169.42-109.32zM487 824h262v74H594v60h133v69H594v141H487V824zm79 678.3l-27.85 32.15a711.54 711.54 0 0 1-132.18-152.25l35.75-23.05A669 669 0 0 0 566 1502.3zm-160.68-886l35.79 23a662.45 662.45 0 0 0-78.63 172.41l-40.88-11.98a705 705 0 0 1 83.68-183.48zm-69.47 383a666.73 666.73 0 0 0 26.94 187.59l-40.81 12a709.26 709.26 0 0 1-28.67-199.55z"
-                      fill="#f1385b"
-                    />
-                  </svg>
-                  <span class="font-bold">5</span>
-                </div>
-              </button>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <nav
-        class="nav-right flex items-center space-x-12 mr-12 relative md:mr-3"
-      >
+
+      <nav class="nav-right flex items-center space-x-12 relative">
         <!--Nav Auth Buttons-->
-        <div class="nav-auth-btns">
+        <div class="nav-auth-btns p-3">
           <button
             type="button"
-            class="text-white uppercase nav-btn-login hover:text-white border border-white hover:bg-primary focus:outline-none font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
+            class="text-white uppercase nav-btn-login hover:text-white border border-white hover:bg-primary focus:outline-none font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2"
           >
             Login
           </button>
@@ -271,7 +82,388 @@
         </div>
       </nav>
     </header>
-    <main class="bg-primary main-home mx-auto my-auto w-[70vw] mt-16">
+    <main
+      class="bg-secondary main-home mx-auto my-auto w-[70vw] min-h-screen mt-16 relative"
+    >
+      <!-- drawer component  class="w-6 h-6 transition duration-75"-->
+      <div
+        class="nav-sidebar fixed top-24 left-0 z-40 w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full z-1 bg-primary border-r-white/10 border-r-[0.05px] text-white"
+        tabindex="-1"
+        aria-labelledby="drawer-navigation-label"
+      >
+        <div class="py-4 overflow-y-auto">
+          <ul class="sidebar-nav space-y-2 text-white text-base">
+            <li>
+              <a href="#" class="flex items-center p-2">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                  class="w-6 h-6 transition duration-75"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M218.8,103.7,138.8,31a16,16,0,0,0-21.6,0l-80,72.7A16,16,0,0,0,32,115.5v92.1a16.4,16.4,0,0,0,4,11A15.9,15.9,0,0,0,48,224H96a8,8,0,0,0,8-8V168a8,8,0,0,1,8-8h32a8,8,0,0,1,8,8v48a8,8,0,0,0,8,8h48a15.6,15.6,0,0,0,7.6-1.9A16.1,16.1,0,0,0,224,208V115.5A16,16,0,0,0,218.8,103.7Z"
+                  ></path>
+                </svg>
+                <span class="ml-3">Home</span>
+              </a>
+            </li>
+            <li>
+              <button
+                type="button"
+                class="sidebar-dropdown-btn flex items-center w-full p-2 text-base transition duration-75 rounded-lg group"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                  class="w-6 h-6 transition duration-75"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M202.2,200.8a103.8,103.8,0,0,0,0-145.6,2.3,2.3,0,0,0-.7-.7,2.3,2.3,0,0,0-.7-.7,103.8,103.8,0,0,0-145.6,0,2.3,2.3,0,0,0-.7.7,2.3,2.3,0,0,0-.7.7,103.8,103.8,0,0,0,0,145.6l.7.7a2.3,2.3,0,0,0,.7.7,103.8,103.8,0,0,0,145.6,0,2.3,2.3,0,0,0,.7-.7A2.3,2.3,0,0,0,202.2,200.8ZM40.4,136H64.5a63.6,63.6,0,0,0,13,31.2L60.4,184.3A87.5,87.5,0,0,1,40.4,136Zm20-64.3L77.5,88.8a63.6,63.6,0,0,0-13,31.2H40.4A87.5,87.5,0,0,1,60.4,71.7ZM215.6,120H191.5a63.6,63.6,0,0,0-13-31.2l17.1-17.1A87.5,87.5,0,0,1,215.6,120ZM167.2,77.5a63.6,63.6,0,0,0-31.2-13V40.4a87.5,87.5,0,0,1,48.3,20ZM120,64.5a63.6,63.6,0,0,0-31.2,13L71.7,60.4a87.5,87.5,0,0,1,48.3-20Zm-31.2,114a63.6,63.6,0,0,0,31.2,13v24.1a87.5,87.5,0,0,1-48.3-20Zm47.2,13a63.6,63.6,0,0,0,31.2-13l17.1,17.1a87.5,87.5,0,0,1-48.3,20Zm42.5-24.3a63.6,63.6,0,0,0,13-31.2h24.1a87.5,87.5,0,0,1-20,48.3Z"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 text-left whitespace-nowrap"
+                  >Casino</span
+                >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+              <ul class="hidden py-2 space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M192,32H64A32.1,32.1,0,0,0,32,64V192a32.1,32.1,0,0,0,32,32H192a32.1,32.1,0,0,0,32-32V64A32.1,32.1,0,0,0,192,32ZM92,184a12,12,0,1,1,12-12A12,12,0,0,1,92,184Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,92,140Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,92,96Zm72,88a12,12,0,1,1,12-12A12,12,0,0,1,164,184Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,164,140Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,164,96Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Dice</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M236,139.3,139.3,236a15.9,15.9,0,0,1-22.6,0L20,139.3a16.1,16.1,0,0,1,0-22.6L116.7,20a16.1,16.1,0,0,1,22.6,0L236,116.7A16.1,16.1,0,0,1,236,139.3Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Slots</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M232,148a52,52,0,0,1-80.5,43.5l10.7,34.1a7.8,7.8,0,0,1-1.2,7.1,7.9,7.9,0,0,1-6.4,3.3H101.4a7.9,7.9,0,0,1-6.4-3.3,7.8,7.8,0,0,1-1.2-7.1l10.7-34.1a51.7,51.7,0,0,1-30,8.5c-27.7-.8-50.4-24-50.5-51.8A52.1,52.1,0,0,1,76,96l4,.2a53.3,53.3,0,0,1-3.9-23.4,52,52,0,1,1,99.8,23.4A51.5,51.5,0,0,1,232,148Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Table</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <button
+                type="button"
+                class="sidebar-dropdown-btn flex items-center w-full p-2 text-base transition duration-75 rounded-lg group"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                  class="w-6 h-6 transition duration-75"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.9v.9a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8,20,20,0,1,0-20-20,8,8,0,0,1-16,0,36,36,0,1,1,44,35.1Z"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 text-left whitespace-nowrap"
+                  >Help</span
+                >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+              <ul id="dropdown-example" class="py-2 space-y-2 hidden">
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M216,48H40A16,16,0,0,0,24,64V222.8a15.7,15.7,0,0,0,9.3,14.5,16,16,0,0,0,17-2.2L82,208.4l134-.4a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Live Chat</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm-2,48a12,12,0,1,1-12,12A12,12,0,0,1,126,72Zm10,112h-8a8,8,0,0,1-8-8V128a8,8,0,0,1,0-16h8a8,8,0,0,1,8,8v48a8,8,0,0,1,0,16Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">FAQ</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM180,168H76a8,8,0,0,1,0-16H180a8,8,0,0,1,0,16Zm0-32H76a8,8,0,0,1,0-16H180a8,8,0,0,1,0,16Zm0-32H76a8,8,0,0,1,0-16H180a8,8,0,0,1,0,16Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base"
+                      >Provably Fair</span
+                    >
+                  </a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
+              <button
+                type="button"
+                class="sidebar-dropdown-btn flex items-center w-full p-2 text-base transition duration-75 rounded-lg group"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="192"
+                  height="192"
+                  fill="#ffffff"
+                  viewBox="0 0 256 256"
+                  class="w-6 h-6 transition duration-75"
+                >
+                  <rect width="256" height="256" fill="none"></rect>
+                  <path
+                    d="M160,112a24,24,0,1,1-24-24A24.1,24.1,0,0,1,160,112Zm64-72V216a16,16,0,0,1-16,16H64a16,16,0,0,1-16-16V196H32a8,8,0,0,1,0-16H48V156H32a8,8,0,0,1,0-16H48V116H32a8,8,0,0,1,0-16H48V76H32a8,8,0,0,1,0-16H48V40A16,16,0,0,1,64,24H208A16,16,0,0,1,224,40ZM190.4,163.2A67.8,67.8,0,0,0,163,141.5a40,40,0,1,0-54,0,67.8,67.8,0,0,0-27.4,21.7,8,8,0,0,0,1.6,11.2A7.7,7.7,0,0,0,88,176a8,8,0,0,0,6.4-3.2,52,52,0,0,1,83.2,0,8.1,8.1,0,0,0,11.2,1.6A8,8,0,0,0,190.4,163.2Z"
+                  ></path>
+                </svg>
+                <span class="flex-1 ml-3 text-left whitespace-nowrap"
+                  >Social Media</span
+                >
+                <svg
+                  class="w-6 h-6"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fill-rule="evenodd"
+                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                    clip-rule="evenodd"
+                  ></path>
+                </svg>
+              </button>
+              <ul id="dropdown-example" class="hidden py-2 space-y-2">
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M231.3,31.7A16.1,16.1,0,0,0,215,29L30.4,101.5a15.8,15.8,0,0,0-10.1,16.3,16,16,0,0,0,12.8,14.3L80,141.4V200a16,16,0,0,0,9.9,14.8A16.6,16.6,0,0,0,96,216a15.8,15.8,0,0,0,11.3-4.7l26-25.9L172.6,220a16,16,0,0,0,10.5,4,14.2,14.2,0,0,0,5-.8,15.9,15.9,0,0,0,10.7-11.6L236.4,47.4A16,16,0,0,0,231.3,31.7ZM183.2,208l-82.4-72.5L219.5,49.8Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Telegram</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M245.7,77.7l-30.2,30.1C209.5,177.7,150.5,232,80,232c-14.5,0-26.5-2.3-35.6-6.8-7.3-3.7-10.3-7.6-11.1-8.8a8,8,0,0,1,3.9-11.9c.2-.1,23.8-9.1,39.1-26.4a108.6,108.6,0,0,1-24.7-24.4c-13.7-18.6-28.2-50.9-19.5-99.1a8.1,8.1,0,0,1,5.5-6.2,8,8,0,0,1,8.1,1.9c.3.4,33.6,33.2,74.3,43.8V88a48.3,48.3,0,0,1,48.6-48,48.2,48.2,0,0,1,41,24H240a8,8,0,0,1,7.4,4.9A8.4,8.4,0,0,1,245.7,77.7Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Twitter</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M170.5,115.7A44,44,0,0,0,144,40.2V24a8,8,0,0,0-16,0V40H112V24a8,8,0,0,0-16,0V40H64a8,8,0,0,0,0,16h8V192H64a8,8,0,0,0,0,16H96v16a8,8,0,0,0,16,0V208h16v16a8,8,0,0,0,16,0V208h8a48,48,0,0,0,18.5-92.3ZM168,84a28.1,28.1,0,0,1-28,28H88V56h52A28.1,28.1,0,0,1,168,84ZM152,192H88V128h64a32,32,0,0,1,0,64Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base"
+                      >Bitcointalk</span
+                    >
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <circle cx="128" cy="128" r="32"></circle>
+                      <path
+                        d="M172,28H84A56,56,0,0,0,28,84v88a56,56,0,0,0,56,56h88a56,56,0,0,0,56-56V84A56,56,0,0,0,172,28ZM128,176a48,48,0,1,1,48-48A48,48,0,0,1,128,176Zm52-88a12,12,0,1,1,12-12A12,12,0,0,1,180,88Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Instagram</span>
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href="#"
+                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
+                  >
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="192"
+                      height="192"
+                      fill="#f5cb09"
+                      viewBox="0 0 256 256"
+                      class="w-6 h-6 transition duration-75"
+                    >
+                      <rect width="256" height="256" fill="none"></rect>
+                      <path
+                        d="M232,128a104.3,104.3,0,0,1-91.5,103.3,4.1,4.1,0,0,1-4.5-4V152h24a8,8,0,0,0,8-8.5,8.2,8.2,0,0,0-8.3-7.5H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,8-8.5,8.2,8.2,0,0,0-8.3-7.5H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0-8,8.5,8.2,8.2,0,0,0,8.3,7.5H120v75.3a4,4,0,0,1-4.4,4C62.8,224.9,22,179,24.1,124.1A104,104,0,0,1,232,128Z"
+                      ></path>
+                    </svg>
+                    <span class="ml-3 text-highlight text-base">Facebook</span>
+                  </a>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </div>
+      </div>
+
       <section class="section-welcome">
         <h1></h1>
         <p></p>
