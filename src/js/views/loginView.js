@@ -59,17 +59,17 @@ class LoginView {
   renderAuthButtons() {
     const html = `<div>
     <button
-      type="button"
-      class="text-white uppercase nav-btn-login hover:text-white border border-white hover:bg-primary focus:outline-none font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2 dark:border-gray-600 dark:text-gray-400 dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-gray-800"
-    >
-      Login
-    </button>
-    <button
-      type="button"
-      class="focus:outline-none text-white uppercase nav-btn-register bg-highlight hover:bg-yellow-500 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
-    >
-      Register
-    </button>
+    type="button"
+    class="text-white uppercase nav-btn-login border border-white hover:bg-secondary/60 focus:outline-none font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+  >
+    Login
+  </button>
+  <button
+    type="button"
+    class="nav-btn-register focus:outline-none text-white uppercase bg-highlight transition duration-75 hover:bg-highlight/80 font-bold rounded-lg px-5 py-2.5 text-sm mr-2 mb-2 dark:focus:ring-yellow-900"
+  >
+    Register
+  </button>
   </div>`;
     const rightNav = document.querySelector('.nav-right');
 

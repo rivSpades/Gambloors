@@ -32,7 +32,9 @@
     <title>Gambloors</title>
   </head>
 
-  <body class="bg-secondary z-10">
+  <body
+    class="bg-secondary z-10 overflow-y-scroll overflow-hidden scroll-smooth h-screen"
+  >
     <header
       class="w-screen h-24 z-20 bg-primary border-b-white/10 border-b-[0.05px] flex items-center justify-between sticky top-0"
     >
@@ -69,19 +71,20 @@
         <div class="nav-auth-btns p-3">
           <button
             type="button"
-            class="text-white uppercase nav-btn-login hover:text-white border border-white hover:bg-primary focus:outline-none font-medium rounded-lg text-lg px-5 py-2.5 text-center mr-2 mb-2"
+            class="text-white uppercase nav-btn-login border border-white hover:bg-secondary/60 focus:outline-none font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
           >
             Login
           </button>
           <button
             type="button"
-            class="nav-btn-register focus:outline-none text-white uppercase bg-highlight hover:bg-yellow-500 font-medium rounded-lg text-lg px-5 py-2.5 mr-2 mb-2 dark:focus:ring-yellow-900"
+            class="nav-btn-register focus:outline-none text-white uppercase bg-highlight transition duration-75 hover:bg-highlight/80 font-bold rounded-lg px-5 py-2.5 text-sm mr-2 mb-2 dark:focus:ring-yellow-900"
           >
             Register
           </button>
         </div>
       </nav>
     </header>
+
     <main
       class="bg-secondary main-home mx-auto my-auto w-[70vw] min-h-screen mt-16 relative"
     >
@@ -470,391 +473,145 @@
         <a href="#dice"></a>
       </section>
     </main>
-    <!--
-    <div
-      class="fixed top-0 overflow-hidden backdrop-blur-sm flex items-center justify-center z-[999] h-screen w-screen"
+
+    <!--Footer -->
+
+    <footer
+      class="w-full h-auto bg-primary border-t-white/10 border-t-[0.05px]"
     >
-      
-      <div
-        class="relative flex flex-col m-6 space-y-10 bg-white shadow-2xl rounded-2xl md:flex-row md:space-y-0 md:m-0"
-      >
-        <div class="p-6 md:p-20">
-          
-          <h2 class="font-mono mb-5 text-4xl font-bold">Log In</h2>
-          <p class="max-w-sm mb-12 font-sans font-light text-gray-600">
-            Log in to your account and start gambling!
-          </p>
-          <input
-            type="email"
-            class="w-full p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light"
-            placeholder="Enter your email address"
-          />
-          <input
-            type="password"
-            class="w-full p-6 border border-gray-300 rounded-md placeholder:font-sans placeholder:font-light"
-            placeholder="Enter your password"
-          />
-
-        
-          <div
-            class="flex flex-col items-center justify-between mt-6 space-y-6 md:flex-row md:space-y-0"
-          >
-            <div class="font-thin text-cyan-700">Forgot password</div>
-
-            <button
-              class="w-full md:w-auto flex justify-center items-center p-6 space-x-4 font-sans font-bold text-white rounded-md shadow-lg px-9 bg-cyan-700 shadow-cyan-100 hover:bg-opacity-90 shadow-sm hover:shadow-lg border transition hover:-translate-y-0.5 duration-150"
-            >
-              <span>Login</span>
-            </button>
-          </div>
-
-          
-          <div
-            class="group absolute -top-5 right-4 flex items-center justify-center w-10 h-10 bg-gray-200 rounded-full md:bg-white md:top-4 hover:cursor-pointer hover:-translate-y-0.5 transition duration-150"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="w-6 h-6 text-black group-hover:text-gray-600"
-              viewBox="0 0 24 24"
-              stroke-width="1.5"
-              stroke="currentColor"
-              fill="none"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-            >
-              <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-              <line x1="18" y1="6" x2="6" y2="18" />
-              <line x1="6" y1="6" x2="18" y2="18" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-    <!--<div class="body-container container">
-      <div class="sider hide-sidebar">
-        <nav class="side-nav">
-          <ul class="side-nav-list">
-            <li>
-              <a class="side-nav-link" href="#home">
+      <!--Footer container -->
+      <div class="footer-container mx-6 p-9 md:mx-auto h-full w-[70%]">
+        <div class="md:flex md:justify-between">
+          <!--Footer Left -->
+          <div class="footer-left-container flex flex-col gap-6 mb-16 md:mb-0">
+            <a href="#" class="flex items-center">
+              <span
+                class="font-semibold tracking-wide uppercase text-2xl text-white"
+                >Gambloors</span
+              >
+            </a>
+            <p class="text-base text-gray-500">
+              Copyright © 2023 Gambloors™ All Rights Reserved.
+            </p>
+            <div class="flex mt-4 space-x-6 justify-start">
+              <a href="#" class="text-gray-300 hover:text-highlight">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  class="w-6 h-6"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
-                  stroke-width="0.5"
-                  stroke="currentColor"
-                  class="side-nav-icon"
+                  aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M2.25 12l8.954-8.955c.44-.439 1.152-.439 1.591 0L21.75 12M4.5 9.75v10.125c0 .621.504 1.125 1.125 1.125H9.75v-4.875c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125V21h4.125c.621 0 1.125-.504 1.125-1.125V9.75M8.25 21h8.25"
+                    fill-rule="evenodd"
+                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+                    clip-rule="evenodd"
                   />
                 </svg>
-
-                <span class="side-nav-text-container">Home</span>
+                <span class="sr-only">Facebook page</span>
               </a>
-            </li>
-            <li>
-              <a class="side-nav-link" href="#games">
+              <a href="#" class="text-gray-300 hover:text-highlight">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  class="w-6 h-6"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
-                  stroke-width="0.5"
-                  stroke="currentColor"
-                  class="side-nav-icon"
+                  aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M14.25 6.087c0-.355.186-.676.401-.959.221-.29.349-.634.349-1.003 0-1.036-1.007-1.875-2.25-1.875s-2.25.84-2.25 1.875c0 .369.128.713.349 1.003.215.283.401.604.401.959v0a.64.64 0 01-.657.643 48.39 48.39 0 01-4.163-.3c.186 1.613.293 3.25.315 4.907a.656.656 0 01-.658.663v0c-.355 0-.676-.186-.959-.401a1.647 1.647 0 00-1.003-.349c-1.036 0-1.875 1.007-1.875 2.25s.84 2.25 1.875 2.25c.369 0 .713-.128 1.003-.349.283-.215.604-.401.959-.401v0c.31 0 .555.26.532.57a48.039 48.039 0 01-.642 5.056c1.518.19 3.058.309 4.616.354a.64.64 0 00.657-.643v0c0-.355-.186-.676-.401-.959a1.647 1.647 0 01-.349-1.003c0-1.035 1.008-1.875 2.25-1.875 1.243 0 2.25.84 2.25 1.875 0 .369-.128.713-.349 1.003-.215.283-.4.604-.4.959v0c0 .333.277.599.61.58a48.1 48.1 0 005.427-.63 48.05 48.05 0 00.582-4.717.532.532 0 00-.533-.57v0c-.355 0-.676.186-.959.401-.29.221-.634.349-1.003.349-1.035 0-1.875-1.007-1.875-2.25s.84-2.25 1.875-2.25c.37 0 .713.128 1.003.349.283.215.604.401.96.401v0a.656.656 0 00.658-.663 48.422 48.422 0 00-.37-5.36c-1.886.342-3.81.574-5.766.689a.578.578 0 01-.61-.58v0z"
+                    fill-rule="evenodd"
+                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+                    clip-rule="evenodd"
                   />
                 </svg>
-
-                <span class="side-nav-text-container">Games</span>
+                <span class="sr-only">Instagram page</span>
               </a>
-            </li>
-            <li>
-              <a class="side-nav-link" href="#">
+              <a href="#" class="text-gray-300 hover:text-highlight">
                 <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
+                  class="w-6 h-6"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
-                  stroke-width="0.5"
-                  stroke="currentColor"
-                  class="side-nav-icon"
+                  aria-hidden="true"
                 >
                   <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M9.53 16.122a3 3 0 00-5.78 1.128 2.25 2.25 0 01-2.4 2.245 4.5 4.5 0 008.4-2.245c0-.399-.078-.78-.22-1.128zm0 0a15.998 15.998 0 003.388-1.62m-5.043-.025a15.994 15.994 0 011.622-3.395m3.42 3.42a15.995 15.995 0 004.764-4.648l3.876-5.814a1.151 1.151 0 00-1.597-1.597L14.146 6.32a15.996 15.996 0 00-4.649 4.763m3.42 3.42a6.776 6.776 0 00-3.42-3.42"
+                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
                   />
                 </svg>
-
-                <span class="side-nav-text-container">Nfts Collection</span>
+                <span class="sr-only">Twitter page</span>
               </a>
-            </li>
-            <li>
-              <a class="side-nav-link" href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="0.5"
-                  stroke="currentColor"
-                  class="side-nav-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M15.362 5.214A8.252 8.252 0 0112 21 8.25 8.25 0 016.038 7.048 8.287 8.287 0 009 9.6a8.983 8.983 0 013.361-6.867 8.21 8.21 0 003 2.48z"
-                  />
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M12 18a3.75 3.75 0 00.495-7.467 5.99 5.99 0 00-1.925 3.546 5.974 5.974 0 01-2.133-1A3.75 3.75 0 0012 18z"
-                  />
-                </svg>
-
-                <span class="side-nav-text-container">Promotions</span>
-              </a>
-            </li>
-            <li>
-              <a class="side-nav-link" href="#">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke-width="0.5"
-                  stroke="currentColor"
-                  class="side-nav-icon"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    d="M8.625 12a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375M21 12c0 4.556-4.03 8.25-9 8.25a9.764 9.764 0 01-2.555-.337A5.972 5.972 0 015.41 20.97a5.969 5.969 0 01-.474-.065 4.48 4.48 0 00.978-2.025c.09-.457-.133-.901-.467-1.226C3.93 16.178 3 14.189 3 12c0-4.556 4.03-8.25 9-8.25s9 3.694 9 8.25z"
-                  />
-                </svg>
-
-                <span class="side-nav-text-container">Support</span>
-              </a>
-            </li>
-          </ul>
-        </nav>
-      </div>
-
-      <main class="slide-out container">
-        <div class="main-container main-home">
-          <section class="promotions centralize-content">
-            <div class="promotions--slider"></div>
-            <div class="promotion-slider--track">
-              <ul class="slide-tracker-list"></ul>
             </div>
-          </section>
-
-          <section class="lobby centralize-content"></section>
-        </div>
-
-        <footer class="footer-container slide-out--footer">
-          <div class="footer--grid-container">
-            <div class="social-col">
-              <ul class="social-links-list">
+          </div>
+          <!-- Footer Nav-->
+          <div
+            class="footer-nav-container grid md:grid-cols-3 gap-6 grid-cols-2"
+          >
+            <div>
+              <h2 class="mb-6 text-lg font-semibold text-gray-300 uppercase">
+                Casino
+              </h2>
+              <ul class="flex flex-col gap-3 text-lg text-gray-400">
                 <li>
-                  <a class="footer-link" href="#">
-                    <div class="footer-icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="#ffffff"
-                        viewBox="0 0 256 256"
-                      >
-                        <rect width="256" height="256" fill="none"></rect>
-                        <path
-                          d="M128,88c0-22,18.5-40.3,40.5-40a40,40,0,0,1,36.2,24H240l-32.3,32.3A127.9,127.9,0,0,1,80,224c-32,0-40-12-40-12s32-12,48-36c0,0-64-32-48-120,0,0,40,40,88,48Z"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></path>
-                      </svg>
-                    </div>
-                  </a>
+                  <a
+                    href="https://flowbite.com/"
+                    class="hover:text-highlight hover:underline"
+                    >Dice</a
+                  >
                 </li>
                 <li>
-                  <a class="footer-link" href="#">
-                    <div class="footer-icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="#ffffff"
-                        viewBox="0 0 256 256"
-                      >
-                        <rect width="256" height="256" fill="none"></rect>
-                        <circle
-                          cx="128"
-                          cy="128"
-                          r="96"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></circle>
-                        <path
-                          d="M168,88H152a23.9,23.9,0,0,0-24,24V224"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></path>
-                        <line
-                          x1="96"
-                          y1="144"
-                          x2="160"
-                          y2="144"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></line>
-                      </svg>
-                    </div>
-                  </a>
+                  <a
+                    href="https://tailwindcss.com/"
+                    class="hover:text-highlight hover:underline"
+                    >Slots</a
+                  >
                 </li>
-
                 <li>
-                  <a class="footer-link" href="#">
-                    <div class="footer-icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="#ffffff"
-                        viewBox="0 0 256 256"
-                      >
-                        <rect width="256" height="256" fill="none"></rect>
-                        <circle
-                          cx="128"
-                          cy="128"
-                          r="40"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></circle>
-                        <rect
-                          x="36"
-                          y="36"
-                          width="184"
-                          height="184"
-                          rx="48"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></rect>
-                        <circle cx="180" cy="76" r="10"></circle>
-                      </svg>
-                    </div>
-                  </a>
-                </li>
-
-                <li>
-                  <a class="footer-link" href="#">
-                    <div class="footer-icon">
-                      <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        fill="#ffffff"
-                        viewBox="0 0 256 256"
-                      >
-                        <rect width="256" height="256" fill="none"></rect>
-                        <path
-                          d="M88,134.9,177.9,214a8,8,0,0,0,13.1-4.2L228.6,45.6a8,8,0,0,0-10.7-9.2L33.3,108.9c-7.4,2.9-6.4,13.7,1.4,15.3Z"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></path>
-                        <line
-                          x1="88"
-                          y1="134.9"
-                          x2="224.1"
-                          y2="36.6"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></line>
-                        <path
-                          d="M132.9,174.4l-31.2,31.2A8,8,0,0,1,88,200V134.9"
-                          fill="none"
-                          stroke="#ffffff"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="12"
-                        ></path>
-                      </svg>
-                    </div>
-                  </a>
+                  <a
+                    href="https://tailwindcss.com/"
+                    class="hover:text-highlight hover:underline"
+                    >Table</a
+                  >
                 </li>
               </ul>
             </div>
-
-            <div class="products-col">
-              <p class="footer-heading">Products</p>
-              <nav class="footer-nav">
-                <ul class="footer-nav-list">
-                  <li><a class="footer-nav-link" href="#">Casino</a></li>
-                  <li><a class="footer-nav-link" href="#">Slots</a></li>
-                  <li><a class="footer-nav-link" href="#">NFTS</a></li>
-                </ul>
-              </nav>
+            <div>
+              <h2 class="mb-6 text-lg font-semibold text-gray-300 uppercase">
+                Support
+              </h2>
+              <ul class="flex flex-col gap-3 text-lg text-gray-400">
+                <li>
+                  <a
+                    href="https://github.com/themesberg/flowbite"
+                    class="hover:text-highlight hover:underline"
+                    >Live Chat</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/themesberg/flowbite"
+                    class="hover:text-highlight hover:underline"
+                    >FAQ</a
+                  >
+                </li>
+              </ul>
             </div>
-
-            <div class="community-col">
-              <p class="footer-heading">Community</p>
-              <nav class="footer-nav">
-                <ul class="footer-nav-list">
-                  <li>
-                    <a class="footer-nav-link" href="#">Refer a Friend</a>
-                  </li>
-                  <li><a class="footer-nav-link" href="#">Affiliates</a></li>
-                  <li><a class="footer-nav-link" href="#">Blog</a></li>
-                </ul>
-              </nav>
-            </div>
-
-            <div class="help-col">
-              <p class="footer-heading">Help</p>
-              <nav class="footer-nav">
-                <ul class="footer-nav-list">
-                  <li><a class="footer-nav-link" href="#">Helpcenter</a></li>
-                  <li><a class="footer-nav-link" href="#">Probably Fair</a></li>
-                  <li><a class="footer-nav-link" href="#">Support</a></li>
-                </ul>
-              </nav>
-            </div>
-
-            <div class="legal-col">
-              <p class="footer-heading">Legal</p>
-              <nav class="footer-nav">
-                <ul class="footer-nav-list">
-                  <li>
-                    <a class="footer-nav-link" href="#">Terms & Conditions</a>
-                  </li>
-                  <li>
-                    <a class="footer-nav-link" href="#">Privacy Policy</a>
-                  </li>
-                </ul>
-              </nav>
+            <div>
+              <h2 class="mb-6 text-lg font-semibold text-gray-300 uppercase">
+                About us
+              </h2>
+              <ul class="flex flex-col gap-3 text-lg text-gray-400">
+                <li>
+                  <a href="#" class="hover:text-highlight hover:underline"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a href="#" class="hover:text-highlight hover:underline"
+                    >Terms &amp; Conditions</a
+                  >
+                </li>
+              </ul>
             </div>
           </div>
-        </footer>
-      </main>
-    </div>-->
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

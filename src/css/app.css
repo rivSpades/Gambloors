@@ -15,3 +15,12 @@ html {
   scroll-behavior: smooth;
   height: 100%;
 }
+
+::-webkit-scrollbar {
+  width: 0.1rem;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
