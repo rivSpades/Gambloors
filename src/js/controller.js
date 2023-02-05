@@ -8,6 +8,7 @@ import registerView from './views/registerView.js';
 import signoutView from './views/signoutView.js';
 import userdetailsView from './views/userdetailsView.js';
 import walletView from './views/walletView.js';
+import herocardView from './views/herocardView.js';
 
 import * as config from './config.js';
 
@@ -27,6 +28,7 @@ export class controllerStart {
   startControllerLogin = new controllerLogin();
   startControllerRegister = new controllerRegister();
   startControllerSideBar = new controllerSideBar();
+  startControllerHeroCard = new controllerHeroCard();
 
   controlStart() {
     const url = window.location.hash.slice(1);
@@ -34,6 +36,7 @@ export class controllerStart {
     switch (url) {
       case 'home':
       case '':
+        this.startControllerHeroCard.init();
         //this.startControllerPromotionsSlider.init();
         //this.startControllerLobby.init();
         break;
@@ -214,6 +217,11 @@ export class controllerLogin {
 
       const startControllerSignout = new controllerSignout();
       startControllerSignout.init();
+
+      //const startControllerHeroCard = new controllerHeroCard();
+      //startControllerHeroCard.init();
+      const startControllerStart = new controllerStart();
+      startControllerStart.controlStart();
     } else loginView.validateLogin(userLogin.state.error);
   }
 
@@ -240,6 +248,11 @@ export class controllerSignout {
     userDetails = undefined;
     userLogin = undefined;
     userWallets = undefined;
+
+    //const startControllerHeroCard = new controllerHeroCard();
+    //startControllerHeroCard.init();
+    const startControllerStart = new controllerStart();
+    startControllerStart.controlStart();
   }
   init() {
     signoutView.addHandlerSignout(this.controlSignout.bind(this));
@@ -301,5 +314,11 @@ export class controllerRegister {
     registerView.addHandlerRenderRegister();
     registerView.addHandlerRenderRegisterClose();
     registerView.addHandlerInputFormRegister(this.controlRegister.bind(this));
+  }
+}
+
+export class controllerHeroCard {
+  init() {
+    herocardView.render(userLogin, userDetails);
   }
 }

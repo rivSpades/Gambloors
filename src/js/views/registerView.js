@@ -4,12 +4,15 @@ class RegisterView {
     this.render();
   }
   addHandlerRenderRegister() {
-    const registerBtn = document.querySelector('.nav-btn-register');
-    registerBtn.addEventListener(
+    //const registerBtn = document.querySelector('.nav-btn-register');
+    const body = document.querySelector('body');
+    body.addEventListener(
       'click',
-      function () {
-        const modalRegister = document.querySelector('.modal-register');
-        modalRegister.classList.remove('hidden');
+      function (e) {
+        if (e.target.classList.contains('nav-btn-register')) {
+          const modalRegister = document.querySelector('.modal-register');
+          modalRegister.classList.remove('hidden');
+        } else return;
       }.bind(this)
     );
   }
