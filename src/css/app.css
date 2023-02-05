@@ -10,7 +10,7 @@
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
-  /* font-size: 62.5%; /*78.5% */
+  /*font-size: 62.5%; /*78.5% */
   font-size: 78.3%;
   scroll-behavior: smooth;
   height: 100%;
@@ -24,3 +24,26 @@ html {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
+/*#main-herocard {
+  position: relative;
+}
+
+#main-herocard:after {
+  content: ' ';
+  display: block;
+  background-image: url('https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png') !important;
+  background-size: contain;
+  opacity: 0.2;
+  background-repeat: no-repeat;
+  background-position: 100% 0;
+
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+
+  width: 100%;
+}
+*/

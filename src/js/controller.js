@@ -11,10 +11,12 @@ import walletView from './views/walletView.js';
 import herocardView from './views/herocardView.js';
 
 import * as config from './config.js';
+import promocardsliderView from './views/promocardsliderView.js';
 
 const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
+const PromoCardSliderModel = new model.PromoCardSliderModel();
 let userLogin;
 let userDetails;
 let userWallets;
@@ -29,6 +31,7 @@ export class controllerStart {
   startControllerRegister = new controllerRegister();
   startControllerSideBar = new controllerSideBar();
   startControllerHeroCard = new controllerHeroCard();
+  startControllerPromoCardSlider = new controllerPromoCardSlider();
 
   controlStart() {
     const url = window.location.hash.slice(1);
@@ -37,6 +40,7 @@ export class controllerStart {
       case 'home':
       case '':
         this.startControllerHeroCard.init();
+        this.startControllerPromoCardSlider.init();
         //this.startControllerPromotionsSlider.init();
         //this.startControllerLobby.init();
         break;
@@ -320,5 +324,12 @@ export class controllerRegister {
 export class controllerHeroCard {
   init() {
     herocardView.render(userLogin, userDetails);
+  }
+}
+
+export class controllerPromoCardSlider {
+  init() {
+    promocardsliderView.render(PromoCardSliderModel.loadData());
+    PromoCardSliderModel.setSettings();
   }
 }

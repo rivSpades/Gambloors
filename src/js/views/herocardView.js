@@ -8,7 +8,7 @@ class HeroCardView {
 
     if (loginData && userDetails) {
       html = `<!--Hero Card-->
-        <section id="main-herocard" class=" bg-secondary">
+        <section id="main-herocard" class="mb-28 bg-secondary">
           <div
             class="grid max-w-screen px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
           >
@@ -28,13 +28,13 @@ class HeroCardView {
               
             </div>
             <div class="hidden md:mt-0 md:col-span-5 lg:flex md:justify-end h-80">
-              <img class="opacity-20" src="img/dice.png" alt="mockup" />
+              <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
             </div>
           </div>
         </section>`;
     } else {
       html = `<!--Hero Card-->
-       <section id="main-herocard" class=" bg-secondary">
+       <section id="main-herocard" class="mb-28 bg-secondary">
          <div
            class="grid max-w-screen px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
          >
@@ -71,7 +71,7 @@ class HeroCardView {
              </button>
            </div>
            <div class="hidden md:mt-0 md:col-span-5 lg:flex md:justify-end h-80">
-             <img class="opacity-20" src="img/dice.png" alt="mockup" />
+             <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
            </div>
          </div>
        </section>`;
