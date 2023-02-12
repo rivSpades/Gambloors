@@ -10,7 +10,7 @@
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
-  /*font-size: 62.5%; /*78.5% */
+  /* font-size: 62.5%; /*78.5% */
   font-size: 78.3%;
   scroll-behavior: smooth;
   height: 100%;
@@ -24,26 +24,30 @@ html {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
-
-/*#main-herocard {
-  position: relative;
+.dice-range {
+  -webkit-appearance: none; /*need to add this or the background don't change*/
+  background: linear-gradient(
+    to right,
+    rgba(155, 237, 154, 0.5) 0%,
+    rgba(155, 237, 154, 0.5) 50%,
+    rgba(255, 153, 153, 0.5) 50%,
+    rgba(255, 153, 153, 0.5) 100%
+  );
 }
 
-#main-herocard:after {
-  content: ' ';
-  display: block;
-  background-image: url('https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png') !important;
-  background-size: contain;
-  opacity: 0.2;
-  background-repeat: no-repeat;
-  background-position: 100% 0;
+.dice-range::-webkit-slider-thumb {
+  cursor: pointer;
+  appearance: none;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0%;
+  outline: 1px solid #909090;
 
-  top: 0;
-  left: 0;
-  bottom: 0;
-  right: 0;
-  position: absolute;
-
-  width: 100%;
+  background: #242423;
 }
-*/
+
+.dice-range:active::-webkit-slider-thumb {
+  outline: 3px solid #f5cb5c;
+}
+datalist option {
+}

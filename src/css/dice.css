@@ -128,7 +128,8 @@ Medium: 11px
   margin-top: 3rem;
   width: 100%;
   -webkit-appearance: none; /*need to add this or the background don't change*/
-  background: white;
+  //background: white;
+  background: linear-gradient(to right, green 0%, green 50%, red 50%, red 100%);
   outline: none;
   opacity: 0.7;
   -webkit-transition: 0.2s; /* 0.2 seconds transition on hover*/

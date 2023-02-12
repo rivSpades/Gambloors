@@ -9,12 +9,11 @@ class HeroCardView {
     if (loginData && userDetails) {
       html = `<!--Hero Card-->
         <section id="main-herocard" class="mb-28 bg-secondary">
-          <div
-            class="grid max-w-screen px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
-          >
-            <div
-              class="md:mr-auto place-self-center text-center md:text-left lg:col-span-7"
-            >
+        <div class="grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 md:grid-cols-2 "
+        >
+        <div
+        class="md:mr-auto place-self-center text-center md:text-left md:col-span-1"
+      >
               <h1
                 class="max-w-md md:max-w-lg mb-11 text-4xl font-extrabold text-white/70 tracking-tight leading-none md:text-5xl xl:text-6xl"
               >
@@ -27,7 +26,7 @@ class HeroCardView {
               </p>
               
             </div>
-            <div class="hidden md:mt-0 md:col-span-5 lg:flex md:justify-end h-80">
+            <div class="hidden md:mt-0 md:col-span-1 lg:flex md:justify-center h-80">
               <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
             </div>
           </div>
@@ -35,16 +34,16 @@ class HeroCardView {
     } else {
       html = `<!--Hero Card-->
        <section id="main-herocard" class="mb-28 bg-secondary">
-         <div
-           class="grid max-w-screen px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12"
+         <div class="grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2 "
          >
            <div
-             class="md:mr-auto place-self-center text-center md:text-left lg:col-span-7"
+             class="md:mr-auto place-self-center text-center md:text-left lg:col-span-1"
            >
+           
              <h1
-               class="max-w-md md:max-w-lg mb-4 text-4xl font-extrabold text-white/70 tracking-tight leading-none md:text-5xl xl:text-6xl"
+               class=" mb-4 text-4xl font-extrabold text-white/70 tracking-tight leading-none md:text-5xl xl:text-6xl"
              >
-               Gambloors made to Gamblers
+               Gamble your money with <span class="text-highlight">the world's #1</span> Casino.
              </h1>
              <p
                class="max-w-2xl mb-6 font-light text-white/50 lg:mb-8 md:text-lg lg:text-xl"
@@ -70,7 +69,7 @@ class HeroCardView {
                </svg>
              </button>
            </div>
-           <div class="hidden md:mt-0 md:col-span-5 lg:flex md:justify-end h-80">
+           <div class="hidden md:mt-0 md:col-span-1 lg:flex md:justify-center h-80">
              <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
            </div>
          </div>

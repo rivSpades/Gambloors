@@ -4,10 +4,10 @@ class PromoCardSliderView {
   #generateCards(data) {
     const promoCardsHtml = data.map((el) => {
       return ` <div
-        class="swiper-slide w-[28rem] min-h-[12rem] max-h-[12rem] bg-no-repeat bg-transparent border border-primary rounded-lg shadow"
+        class="swiper-slide md:w-[28rem] md:min-h-[12rem] md:max-h-[12rem] xxl:w-[37rem] xxl:min-h-[16rem] xxl:max-h-[16rem] bg-no-repeat bg-transparent border border-primary rounded-lg shadow"
         data-card="${el.id}" data-url="${el.imageUrl}">
       >
-        <div class="p-5 flex flex-col">
+        <div class=" p-5 flex flex-col xxl:gap-8 ">
           <h5 class="mb-2 max-h-[2rem] text-2xl font-semibold tracking-tight text-white">
             ${el.cardTitle}
           </h5>
@@ -17,7 +17,7 @@ class PromoCardSliderView {
           </p>
           <a
             href="#"
-            class="inline-flex items-center font-medium text-white/60 hover:text-highlight hover:underline"
+            class="inline-flex items-center  font-medium text-white/60 hover:text-highlight hover:underline"
           >
             Learn more
             <svg
@@ -58,7 +58,6 @@ class PromoCardSliderView {
     this.targetElement.insertAdjacentHTML('beforeend', html);
 
     data.forEach((el) => {
-      console.log(el);
       const targetCard = document.querySelector(
         `.swiper-slide[data-card="${el.id}"]`
       );

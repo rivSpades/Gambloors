@@ -1,6 +1,5 @@
 import * as model from './model.js';
-//import promotionsSliderView from './views/promotionsSliderView.js';
-//import lobbyView from './views/lobbyView.js';
+import clearView from './views/clearView.js';
 import sideBarView from './views/sideBarView.js';
 import diceView from './views/diceView.js';
 import loginView from './views/loginView.js';
@@ -35,16 +34,18 @@ export class controllerStart {
 
   controlStart() {
     const url = window.location.hash.slice(1);
+    clearView.clear();
 
     switch (url) {
       case 'home':
       case '':
+        clearView.addClasses('home');
         this.startControllerHeroCard.init();
         this.startControllerPromoCardSlider.init();
-        //this.startControllerPromotionsSlider.init();
-        //this.startControllerLobby.init();
+
         break;
       case 'dice':
+        clearView.addClasses('dice');
         this.startControllerDice.init();
         break;
     }
@@ -144,39 +145,14 @@ export class controllerSideBar {
 }
 
 export class controllerDice {
-  controlLoadDice() {
-    diceView.render();
+  controlInputRange() {
     this.updateDice();
-  }
-  controlInputSlider() {
-    this.updateDice();
-  }
-  async controlBtnRoll() {
-    const currentRoll = diceView.getCurrentRoll();
-
-    const rollValue = diceView.getRollValue();
-
-    const betSize = diceView.getBetSize();
-
-    diceModel.generateRandomNumber(1, 100, currentRoll, rollValue, betSize); //we need to pass the token here
-    /* const diceExample = new helper.request(
-      'https://httpbin.org/post',
-      diceModel.state.payload
-    );*/
-    const diceExample = '';
-
-    console.log(diceModel.state.payload);
-    await diceExample.post();
-    //console.log(diceExample.state.output);
-
-    diceView.updateRollResult(diceModel.state.numberGenerated);
   }
   controlInputBetSize() {
     this.updateDice();
   }
-
   updateDice() {
-    const currentRoll = diceView.getCurrentRoll();
+    const currentRoll = diceView.getRollType();
 
     const rollValue = diceView.getRollValue();
 
@@ -188,14 +164,40 @@ export class controllerDice {
     diceView.updatePayout(diceModel.state.payout);
     diceView.updateWincChance(diceModel.state.winChance);
   }
+  /*controlLoadDice() {
+    diceView.render();
+    this.updateDice();
+  }
+
+  
+  controlInputSlider() {
+    this.updateDice();
+  }
+  async controlBtnRoll() {
+    const currentRoll = diceView.getCurrentRoll();
+
+    const rollValue = diceView.getRollValue();
+
+    const betSize = diceView.getBetSize();
+
+    diceModel.generateRandomNumber(1, 100, currentRoll, rollValue, betSize); 
+    
+    const diceExample = '';
+
+    console.log(diceModel.state.payload);
+    await diceExample.post();
+    
+
+    diceView.updateRollResult(diceModel.state.numberGenerated);
+  }
+  
+
+ */
 
   init() {
-    diceView.addHandlerRender(this.controlLoadDice.bind(this));
-    diceView.addHandlerInputSlider(this.controlInputSlider.bind(this));
-
-    diceView.addHandlerChangeRoll();
-    diceView.addHandlerBtnRoll(this.controlBtnRoll.bind(this));
-    diceView.addHandlerInputBetSize(this.controlInputSlider.bind(this));
+    diceView.render();
+    diceView.addHandlerInputRange(this.controlInputRange.bind(this));
+    diceView.addHandlerInputBetSize(this.controlInputBetSize.bind(this));
   }
 }
 
