@@ -12,6 +12,6 @@
   }
 
   .dice-classes {
-    @apply bg-secondary  mx-auto md:my-auto md:w-[70vw]  min-h-screen mt-16 relative;
+    @apply bg-secondary  mx-auto md:my-auto md:w-[70vw]  min-h-screen md:mt-16 relative;
   }
 }

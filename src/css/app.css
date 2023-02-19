@@ -10,7 +10,7 @@
 
 html {
   /*10px/16px = 0.625 = 62.5%*/
-  /* font-size: 62.5%; /*78.5% */
+  /*font-size: 62.5%; /*78.5% */
   font-size: 78.3%;
   scroll-behavior: smooth;
   height: 100%;
@@ -49,5 +49,15 @@ html {
 .dice-range:active::-webkit-slider-thumb {
   outline: 3px solid #f5cb5c;
 }
-datalist option {
+
+.dice-roll-container {
+  transition: rotate 0.5s ease-in-out;
+}
+
+.dice-roll-container--rotate {
+  rotate: y 360deg;
+}
+
+.dice-range-bubble {
+  transition: margin 2s;
 }

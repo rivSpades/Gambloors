@@ -95,45 +95,37 @@ export class diceModel {
     edge: 2,
     payout: 0,
     numberGenerated: 0,
+
     diceData: {
       numberGenerated: '',
       betSize: '',
       currentRoll: '',
       rollValue: '',
     },
-    payload: {
-      method: 'POST',
-      headers: {
-        'content-type': 'application/json',
-
-        // 'Authorization': 'Bearer ' + token,
-      },
-      body: JSON.stringify({
-        data: '',
-      }),
-    },
   };
+  #data;
+  #url =
+    'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/game_trx_historic/trxhist/';
+
   constructor() {}
 
-  calcWinChance(currentRoll, rollValue) {
+  calcWinChance(rollType, rollValue) {
     this.state.winChance = (
-      (1 /
-        (100 / (currentRoll === 'Roll Under' ? rollValue : 100 - rollValue))) *
+      (1 / (100 / (rollType === 'Roll Under' ? rollValue : 100 - rollValue))) *
       100
     ).toFixed(0);
   }
 
-  calcPayout(currentRoll, rollValue, betSize, edge) {
+  calcPayout(rollType, rollValue, betSize, edge) {
     edge = this.state.edge;
 
     this.state.payout = (
       betSize *
-      ((100 - edge) /
-        (currentRoll === 'Roll Under' ? rollValue : 100 - rollValue))
+      ((100 - edge) / (rollType === 'Roll Under' ? rollValue : 100 - rollValue))
     ).toFixed(0);
   }
-  generateRandomNumber(min, max, currentRoll, rollValue, betSize) {
-    this.state.numberGenerated =
+  async sendBet(rollType, betSize, token) {
+    /*this.state.numberGenerated =
       Math.floor(Math.random() * (max - min) + 1) + min;
     this.state.diceData.currentRoll = currentRoll;
     this.state.diceData.rollValue = rollValue;
@@ -142,7 +134,28 @@ export class diceModel {
 
     this.state.payload.body = JSON.stringify({
       data: this.state.diceData,
-    });
+    });*/
+    if (!token || !rollType || !betSize) return;
+    this.#data = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${token}`,
+      },
+      body: {
+        'type_game': 'dice',
+        'user_winrate_choice': this.state.winChance,
+        'is_roll_over': rollType === 'Roll Under' ? false : true,
+        'date_game': new Date().toISOString(),
+        'bet_amount': betSize,
+        'coin_ticker': 'play',
+      },
+    };
+
+    const res = await helper.req(this.#url, this.#data);
+    this.state.numberGenerated = (res.response.rolled_dice * 1).toFixed(0);
+    this.state.isWinner = res.response.is_winner;
+    console.log(res);
   }
 }
 

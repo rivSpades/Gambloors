@@ -152,14 +152,14 @@ export class controllerDice {
     this.updateDice();
   }
   updateDice() {
-    const currentRoll = diceView.getRollType();
+    const rollType = diceView.getRollType();
 
     const rollValue = diceView.getRollValue();
 
     const betSize = diceView.getBetSize();
 
-    diceModel.calcPayout(currentRoll, rollValue, betSize);
-    diceModel.calcWinChance(currentRoll, rollValue);
+    diceModel.calcPayout(rollType, rollValue, betSize);
+    diceModel.calcWinChance(rollType, rollValue);
 
     diceView.updatePayout(diceModel.state.payout);
     diceView.updateWincChance(diceModel.state.winChance);
@@ -173,31 +173,30 @@ export class controllerDice {
   controlInputSlider() {
     this.updateDice();
   }
-  async controlBtnRoll() {
-    const currentRoll = diceView.getCurrentRoll();
 
-    const rollValue = diceView.getRollValue();
+  */
+  async controlBtnBet() {
+    if (!userLogin) return;
+    const rollType = diceView.getRollType();
 
     const betSize = diceView.getBetSize();
 
-    diceModel.generateRandomNumber(1, 100, currentRoll, rollValue, betSize); 
-    
-    const diceExample = '';
+    await diceModel.sendBet(rollType, betSize, userLogin.state.token);
 
-    console.log(diceModel.state.payload);
-    await diceExample.post();
-    
+    console.log(diceModel.state);
 
-    diceView.updateRollResult(diceModel.state.numberGenerated);
+    diceView.updateRollResult(
+      diceModel.state.numberGenerated,
+      diceModel.state.isWinner
+    );
   }
-  
-
- */
 
   init() {
     diceView.render();
     diceView.addHandlerInputRange(this.controlInputRange.bind(this));
     diceView.addHandlerInputBetSize(this.controlInputBetSize.bind(this));
+    diceView.addHandlerChangeRoll();
+    diceView.addHandlerBtnBet(this.controlBtnBet.bind(this));
   }
 }
 
