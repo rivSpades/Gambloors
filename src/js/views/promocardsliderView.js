@@ -1,13 +1,32 @@
 class PromoCardSliderView {
   targetElement = document.querySelector('main');
 
+  resize() {
+    function setCardDimensions() {
+      if (
+        window.innerHeight / window.innerWidth >= 1.76 &&
+        window.innerHeight > 1180
+      ) {
+        document.documentElement.style.setProperty(
+          '--promoHeight',
+          0.128 * window.innerHeight + 'px'
+        );
+        document.documentElement.style.setProperty(
+          '--promoWidth',
+          2.3 * (0.128 * window.innerHeight) + 'px'
+        );
+      }
+    }
+    setCardDimensions();
+    window.addEventListener('resize', setCardDimensions);
+  }
   #generateCards(data) {
     const promoCardsHtml = data.map((el) => {
       return ` <div
-        class="swiper-slide md:w-[28rem] md:min-h-[12rem] md:max-h-[12rem] xxl:w-[37rem] xxl:min-h-[16rem] xxl:max-h-[16rem] bg-no-repeat bg-transparent border border-primary rounded-lg shadow"
+        class="swiper-slide md:w-[var(--promoWidth)] md:min-h-[var(--promoHeight)] md:max-h-[var(--promoHeight)]  bg-no-repeat bg-transparent border border-primary rounded-lg shadow"
         data-card="${el.id}" data-url="${el.imageUrl}">
       >
-        <div class=" p-5 flex flex-col xxl:gap-8 ">
+        <div class=" p-5 flex flex-col ">
           <h5 class="mb-2 max-h-[2rem] text-2xl font-semibold tracking-tight text-white">
             ${el.cardTitle}
           </h5>
@@ -42,6 +61,7 @@ class PromoCardSliderView {
   }
 
   render(data) {
+    this.resize();
     const promoCard = document.getElementById('main-promocards');
     if (promoCard) promoCard.remove();
     const promoCards = this.#generateCards(data);

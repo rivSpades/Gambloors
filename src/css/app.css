@@ -1,3 +1,10 @@
+:root {
+  --margin: 0;
+  --fontSize: calc(((100vw * 0.783) / 19.2) * 16 / 100);
+  --promoHeight: 12rem;
+  --promoWidth: 28rem;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +18,7 @@
 html {
   /*10px/16px = 0.625 = 62.5%*/
   /*font-size: 62.5%; /*78.5% */
-  font-size: 78.3%;
+
   scroll-behavior: smooth;
   height: 100%;
 }

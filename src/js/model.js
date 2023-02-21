@@ -336,11 +336,25 @@ export class PromoCardSliderModel {
     const swiper = new Swiper('.swiper', {
       slidesPerView: 'auto',
       spaceBetween: 10,
-      direction: 'horizontal',
+      direction: getDirection(),
       navigation: {
         nextEl: '.swiper-button-next',
         prevEl: '.swiper-button-prev',
       },
+      on: {
+        resize: function () {
+          swiper.changeDirection(getDirection());
+        },
+      },
     });
+
+    function getDirection() {
+      if (
+        window.innerHeight / window.innerWidth >= 1.4 &&
+        window.innerHeight > 1000
+      )
+        return 'vertical';
+      return 'horizontal';
+    }
   }
 }

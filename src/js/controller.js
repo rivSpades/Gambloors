@@ -42,6 +42,7 @@ export class controllerStart {
         clearView.addClasses('home');
         this.startControllerHeroCard.init();
         this.startControllerPromoCardSlider.init();
+        clearView.centralizeContent('home');
 
         break;
       case 'dice':
