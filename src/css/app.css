@@ -1,8 +1,8 @@
 :root {
   --margin: 0;
   --fontSize: calc(((100vw * 0.783) / 19.2) * 16 / 100);
-  --promoHeight: 12rem;
-  --promoWidth: 28rem;
+  --promoHeight: 16rem;
+  --promoWidth: 16rem;
 }
 
 * {

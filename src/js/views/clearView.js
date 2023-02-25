@@ -4,9 +4,7 @@ class clearView {
     main.className = '';
     const section = document.querySelectorAll('main > section');
 
-    console.log(section);
     if (section) {
-      console.log(section);
       section.forEach((el) => {
         document.getElementById(el.id).remove();
       });
@@ -40,12 +38,10 @@ class clearView {
           const heroCardHeight =
             document.getElementById('main-herocard').offsetHeight;
           const promoCardHeight =
-            document.getElementById('main-promocards').offsetHeight;
+            document.getElementById('main-lastnews').offsetHeight;
           const margin =
             (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
           document.documentElement.style.setProperty('--margin', margin + 'px');
-          console.log(window.innerHeight);
-          console.log(main.offsetHeight);
         }
         setMargin(); //apply for the first time
         window.addEventListener('resize', setMargin); //apply on resize

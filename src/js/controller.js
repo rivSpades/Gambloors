@@ -8,14 +8,16 @@ import signoutView from './views/signoutView.js';
 import userdetailsView from './views/userdetailsView.js';
 import walletView from './views/walletView.js';
 import herocardView from './views/herocardView.js';
+import homeView from './views/homeView.js';
 
 import * as config from './config.js';
-import promocardsliderView from './views/promocardsliderView.js';
+import lastnewsView from './views/lastNewsView.js';
+import originalsView from './views/originalsView.js';
 
-const promotionsSliderModel = new model.promotionsSliderModel();
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
-const PromoCardSliderModel = new model.PromoCardSliderModel();
+const LastNewsModel = new model.LastNewsModel();
+const OriginalsModel = new model.OriginalsModel();
 let userLogin;
 let userDetails;
 let userWallets;
@@ -29,8 +31,7 @@ export class controllerStart {
   startControllerLogin = new controllerLogin();
   startControllerRegister = new controllerRegister();
   startControllerSideBar = new controllerSideBar();
-  startControllerHeroCard = new controllerHeroCard();
-  startControllerPromoCardSlider = new controllerPromoCardSlider();
+  startControllerHome = new controllerHome();
 
   controlStart() {
     const url = window.location.hash.slice(1);
@@ -40,8 +41,8 @@ export class controllerStart {
       case 'home':
       case '':
         clearView.addClasses('home');
-        this.startControllerHeroCard.init();
-        this.startControllerPromoCardSlider.init();
+        this.startControllerHome.init();
+
         clearView.centralizeContent('home');
 
         break;
@@ -329,9 +330,28 @@ export class controllerHeroCard {
   }
 }
 
-export class controllerPromoCardSlider {
+export class controllerLastNews {
   init() {
-    promocardsliderView.render(PromoCardSliderModel.loadData());
-    PromoCardSliderModel.setSettings();
+    lastnewsView.render(LastNewsModel.loadData());
+    LastNewsModel.setSettings();
+  }
+}
+
+export class controllerOriginals {
+  init() {
+    originalsView.render(OriginalsModel.loadData());
+    OriginalsModel.setSettings();
+  }
+}
+
+export class controllerHome {
+  init() {
+    const startControllerHeroCard = new controllerHeroCard();
+    const startControllerLastNews = new controllerLastNews();
+    const startControllerOriginals = new controllerOriginals();
+    homeView.render();
+    startControllerHeroCard.init();
+    startControllerLastNews.init();
+    startControllerOriginals.init();
   }
 }

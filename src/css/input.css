@@ -8,7 +8,7 @@
   }
 
   .home-classes {
-    @apply bg-secondary mx-auto  w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] tall:mb-[calc(4*var(--margin))];
+    @apply bg-secondary mx-auto w-[85vw] md:w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))];
   }
 
   .dice-classes {

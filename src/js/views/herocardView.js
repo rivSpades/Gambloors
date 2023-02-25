@@ -1,14 +1,12 @@
 class HeroCardView {
-  targetElement = document.querySelector('main');
-
   render(loginData, userDetails) {
     let html;
     const heroCard = document.getElementById('main-herocard');
     if (heroCard) heroCard.remove();
-
+    const targetElement = document.getElementById('home-lobby');
     if (loginData && userDetails) {
       html = `<!--Hero Card-->
-        <section id="main-herocard" class="mb-28 bg-secondary">
+        <div id="main-herocard" class="mb-28 bg-secondary">
         <div class="grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 md:grid-cols-2 "
         >
         <div
@@ -30,14 +28,14 @@ class HeroCardView {
               <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
             </div>
           </div>
-        </section>`;
+        </div>`;
     } else {
       html = `<!--Hero Card-->
-       <section id="main-herocard" class="mb-28 bg-secondary">
-         <div class="grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2 "
+       <div id="main-herocard" class="mb-28 bg-secondary">
+         <div class=" grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2 "
          >
            <div
-             class="md:mr-auto place-self-center text-center md:text-left lg:col-span-1"
+             class=" md:mr-auto place-self-center text-center md:text-left lg:col-span-1"
            >
            
              <h1
@@ -73,9 +71,10 @@ class HeroCardView {
              <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
            </div>
          </div>
-       </section>`;
+       </div>`;
     }
-    this.targetElement.insertAdjacentHTML('beforeend', html);
+
+    targetElement.insertAdjacentHTML('beforeend', html);
   }
 }
 

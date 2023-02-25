@@ -298,35 +298,33 @@ export class walletsModel {
   }
 }
 
-export class PromoCardSliderModel {
+export class LastNewsModel {
   loadData() {
     return [
       {
         id: '0',
         cardTitle: 'Bonus Rewards',
-        cardDescription: 'There is high reward for high risk on the frontier.',
+        cardDescription: 'High reward',
         imageUrl: 'welcome-bonus.ace05fb3.jpg',
       },
 
       {
         id: '1',
         cardTitle: 'The Quick Draw Club',
-        cardDescription:
-          'Membership in The Quick Draw Club entitles you to rewards',
+        cardDescription: 'Quick Draw Club',
         imageUrl: 'rakeback_autumn_promo.7e4252e3.jpg',
       },
 
       {
         id: '2',
         cardTitle: 'VIP Program Rakeback',
-        cardDescription:
-          'Rank up , earn rakeback and chest rewards with our vip program.',
+        cardDescription: 'Rank up',
         imageUrl: 'vip.6680a453.png',
       },
       {
         id: '3',
         cardTitle: 'New Members',
-        cardDescription: 'Special Bonus for new users',
+        cardDescription: 'Special Bonus',
         imageUrl: '63d23f9e38114.jpeg',
       },
     ];
@@ -336,25 +334,36 @@ export class PromoCardSliderModel {
     const swiper = new Swiper('.swiper', {
       slidesPerView: 'auto',
       spaceBetween: 10,
-      direction: getDirection(),
+      direction: 'horizontal',
       navigation: {
-        nextEl: '.swiper-button-next',
-        prevEl: '.swiper-button-prev',
-      },
-      on: {
-        resize: function () {
-          swiper.changeDirection(getDirection());
-        },
+        nextEl: `.swiper-nav-next[data-type="lastnews"]`,
+        prevEl: `.swiper-nav-prev[data-type="lastnews"]`,
       },
     });
+  }
+}
 
-    function getDirection() {
-      if (
-        window.innerHeight / window.innerWidth >= 1.4 &&
-        window.innerHeight > 1000
-      )
-        return 'vertical';
-      return 'horizontal';
-    }
+export class OriginalsModel {
+  loadData() {
+    return [
+      {
+        id: '0',
+        cardTitle: 'Dice',
+        cardDescription: 'Dice',
+        imageUrl: 'dice.png',
+      },
+    ];
+  }
+
+  setSettings() {
+    const swiper = new Swiper('.swiper', {
+      slidesPerView: 'auto',
+      spaceBetween: 10,
+      direction: 'horizontal',
+      navigation: {
+        nextEl: `.swiper-nav-next[data-type="originals"]`,
+        prevEl: `.swiper-nav-prev[data-type="originals"]`,
+      },
+    });
   }
 }
