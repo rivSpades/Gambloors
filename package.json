@@ -8,11 +8,13 @@
     "start": "parcel src/index.html",
     "build": "parcel build src/index.html --dist-dir ./dist",
     "buildtail": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css",
-    "watchtail": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css - watch"
+    "watchtail": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css - watch",
+    "lint":"eslint ."
   },
   "author": "Gambloors",
   "license": "ISC",
   "devDependencies": {
+    "eslint": "^8.34.0",
     "parcel": "^2.7.0",
     "tailwindcss": "^3.2.4"
   },

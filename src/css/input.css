@@ -14,4 +14,15 @@
   .dice-classes {
     @apply bg-secondary  mx-auto md:my-auto md:w-[70vw]  min-h-screen md:mt-16 relative;
   }
+
+  .dice-input-container {
+    @apply bg-primary border border-[#cdcdcd]/10   text-[#cdcdcd] text-lg font-semibold rounded-t-lg   p-2.5 mb-1 flex justify-between;
+  }
+  .dice-input {
+    @apply w-full bg-primary;
+  }
+
+  .dice-input-title {
+    @apply text-[#cdcdcd] text-lg font-medium lg:text-xl mb-4;
+  }
 }

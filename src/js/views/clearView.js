@@ -2,6 +2,7 @@ class clearView {
   clear() {
     const main = document.querySelector('main');
     main.className = '';
+
     const section = document.querySelectorAll('main > section');
 
     if (section) {
@@ -9,7 +10,10 @@ class clearView {
         document.getElementById(el.id).remove();
       });
     }
+
+    document.body.scrollTop = 0;
   }
+
   addClasses(target) {
     const main = document.querySelector('main');
 
@@ -31,18 +35,17 @@ class clearView {
   }
   centralizeContent(target) {
     const main = document.querySelector('main');
-
+    function setMargin() {
+      const heroCardHeight =
+        document.getElementById('main-herocard').offsetHeight;
+      const promoCardHeight =
+        document.getElementById('main-lastnews').offsetHeight;
+      const margin =
+        (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
+      document.documentElement.style.setProperty('--margin', margin + 'px');
+    }
     switch (target) {
       case 'home':
-        function setMargin() {
-          const heroCardHeight =
-            document.getElementById('main-herocard').offsetHeight;
-          const promoCardHeight =
-            document.getElementById('main-lastnews').offsetHeight;
-          const margin =
-            (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
-          document.documentElement.style.setProperty('--margin', margin + 'px');
-        }
         setMargin(); //apply for the first time
         window.addEventListener('resize', setMargin); //apply on resize
         //main.style.marginTop = margin / 2 + 'px';

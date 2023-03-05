@@ -7,7 +7,7 @@ class WalletView {
     const walletDropdown = document.getElementById('nav-wallet-dropdown');
     walletSelected.addEventListener(
       'click',
-      function (e) {
+      function () {
         //e.stopPropagation();
         walletDropdown.classList.toggle('hidden');
         body.classList.toggle('pointer-events-none');

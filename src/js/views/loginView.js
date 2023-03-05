@@ -7,13 +7,12 @@ class LoginView {
   addHandlerRenderLogin() {
     const loginBtn = document.querySelector('.nav-btn-login');
 
-    loginBtn.addEventListener(
-      'click',
-      function () {
-        const modalLogin = document.querySelector('.modal-login');
-        modalLogin.classList.remove('hidden');
-      }.bind(this)
-    );
+    loginBtn.addEventListener('click', this.openLoginModal.bind(this));
+  }
+
+  openLoginModal() {
+    const modalLogin = document.querySelector('.modal-login');
+    modalLogin.classList.remove('hidden');
   }
 
   addHandlerRenderLoginClose() {

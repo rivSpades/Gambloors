@@ -1,4 +1,4 @@
-import * as config from './config.js';
+//import * as config from './config.js';
 import * as helper from './helpers.js';
 
 class importModel {
@@ -94,7 +94,9 @@ export class diceModel {
     winChance: 0,
     edge: 2,
     payout: 0,
+    multiplier: 0,
     numberGenerated: 0,
+    rollValue: 50,
 
     diceData: {
       numberGenerated: '',
@@ -110,19 +112,39 @@ export class diceModel {
   constructor() {}
 
   calcWinChance(rollType, rollValue) {
-    this.state.winChance = (
+    this.state.winChance =
       (1 / (100 / (rollType === 'Roll Under' ? rollValue : 100 - rollValue))) *
-      100
-    ).toFixed(0);
+      100;
   }
 
-  calcPayout(rollType, rollValue, betSize, edge) {
-    edge = this.state.edge;
+  calcPayout(rollType, rollValue, betSize) {
+    const edge = this.state.edge;
 
     this.state.payout = (
       betSize *
       ((100 - edge) / (rollType === 'Roll Under' ? rollValue : 100 - rollValue))
-    ).toFixed(0);
+    ).toFixed(2);
+  }
+
+  calcMultiplier(rollType, rollValue) {
+    const edge = this.state.edge;
+
+    this.state.multiplier =
+      (100 - edge) / (rollType === 'Roll Under' ? rollValue : 100 - rollValue);
+  }
+
+  calcRollValue(rollType, multiplier, winChance) {
+    const edge = this.state.edge;
+    if (multiplier)
+      return (this.state.rollValue =
+        rollType === 'Roll Under'
+          ? (100 - edge) / multiplier
+          : -1 * ((100 - edge) / multiplier - 100));
+
+    if (winChance)
+      return (this.state.rollValue =
+        rollType === 'Roll Under' ? 1 * winChance : -1 * (1 * winChance - 100));
+    else return;
   }
   async sendBet(rollType, betSize, token) {
     /*this.state.numberGenerated =
@@ -144,7 +166,7 @@ export class diceModel {
       },
       body: {
         'type_game': 'dice',
-        'user_winrate_choice': this.state.winChance,
+        'user_winrate_choice': this.state.winChance.toFixed(2),
         'is_roll_over': rollType === 'Roll Under' ? false : true,
         'date_game': new Date().toISOString(),
         'bet_amount': betSize,
@@ -220,6 +242,7 @@ export class userDetailsModel {
     if (!this.#token) return;
 
     const res = await helper.req(this.#url, this.#data);
+
     this.state.userDetails.email = res.response.email;
     this.state.userDetails.name = res.response.name;
   }
@@ -331,13 +354,14 @@ export class LastNewsModel {
   }
 
   setSettings() {
+    /* eslint-disable */
     const swiper = new Swiper('.swiper', {
       slidesPerView: 'auto',
       spaceBetween: 10,
       direction: 'horizontal',
       navigation: {
-        nextEl: `.swiper-nav-next[data-type="lastnews"]`,
-        prevEl: `.swiper-nav-prev[data-type="lastnews"]`,
+        nextEl: `.lastnews-nav-next`,
+        prevEl: `.lastnews-nav-prev`,
       },
     });
   }
@@ -361,8 +385,8 @@ export class OriginalsModel {
       spaceBetween: 10,
       direction: 'horizontal',
       navigation: {
-        nextEl: `.swiper-nav-next[data-type="originals"]`,
-        prevEl: `.swiper-nav-prev[data-type="originals"]`,
+        nextEl: `.originals-nav-next`,
+        prevEl: `.originals-nav-prev`,
       },
     });
   }

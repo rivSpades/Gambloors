@@ -8,8 +8,8 @@ class OriginalsView {
       <div class="originals-img rounded-lg shadow   h-[8rem] mb-4"  data-card="${el.id}" data-url="${el.imageUrl}">
           
       </div>
-      <div class="max-h-[4rem]">
-      <h5 class="mb-2 max-h-[2rem] text-lg font-semibold tracking-tight text-white">
+      <div class="max-h-[4rem] text-center">
+      <h5 class="mb-2 h-full text-lg font-semibold tracking-tight text-white">
       ${el.cardTitle}
     </h5>
     
@@ -35,13 +35,13 @@ class OriginalsView {
 
      <div class="section-header-nav flex gap-4">
    
-<button type="button" data-type="originals" class="swiper-nav-prev  text-white bg-primary  font-medium rounded-lg text-sm p-4 text-center inline-flex items-center mr-2">
+<button type="button"  class="originals-nav-prev  text-white bg-primary  font-medium rounded-lg text-sm p-4 text-center inline-flex items-center mr-2">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 12h-15m0 0l6.75 6.75M4.5 12l6.75-6.75" />
 </svg>
 </button>
 
-<button type="button" data-type="originals" class="swiper-nav-next text-white bg-primary  font-medium rounded-lg text-sm p-4 text-center inline-flex items-center mr-2">
+<button type="button"  class="originals-nav-next text-white bg-primary  font-medium rounded-lg text-sm p-4 text-center inline-flex items-center mr-2">
 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor" class="w-6 h-6">
   <path stroke-linecap="round" stroke-linejoin="round" d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
 </svg>

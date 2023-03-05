@@ -30,7 +30,7 @@ export class controllerStart {
   startControllerDice = new controllerDice();
   startControllerLogin = new controllerLogin();
   startControllerRegister = new controllerRegister();
-  startControllerSideBar = new controllerSideBar();
+
   startControllerHome = new controllerHome();
 
   controlStart() {
@@ -153,18 +153,54 @@ export class controllerDice {
   controlInputBetSize() {
     this.updateDice();
   }
-  updateDice() {
+
+  controlInputMultiplier() {
+    this.updateDice('multiplier');
+  }
+
+  controlInputWinChance() {
+    this.updateDice('winchance');
+  }
+
+  updateDice(trigger) {
     const rollType = diceView.getRollType();
 
     const rollValue = diceView.getRollValue();
 
     const betSize = diceView.getBetSize();
+    const multiplier = diceView.getMultiplier();
 
-    diceModel.calcPayout(rollType, rollValue, betSize);
-    diceModel.calcWinChance(rollType, rollValue);
+    const winChance = diceView.getWinChance();
 
-    diceView.updatePayout(diceModel.state.payout);
-    diceView.updateWincChance(diceModel.state.winChance);
+    switch (trigger) {
+      case 'multiplier':
+        diceModel.calcRollValue(rollType, multiplier);
+        diceModel.calcPayout(rollType, diceModel.state.rollValue, betSize);
+        diceModel.calcWinChance(rollType, diceModel.state.rollValue);
+        diceView.updateRollValue(diceModel.state.rollValue.toFixed(2));
+        diceView.updateWincChance(diceModel.state.winChance.toFixed(2));
+        diceView.updatePayout(diceModel.state.payout);
+
+        break;
+      case 'winchance':
+        diceModel.calcRollValue(rollType, '', winChance);
+        diceModel.calcMultiplier(rollType, diceModel.state.rollValue);
+        diceModel.calcPayout(rollType, diceModel.state.rollValue, betSize);
+
+        diceView.updatePayout(diceModel.state.payout);
+        diceView.updateMultiplier(diceModel.state.multiplier.toFixed(4));
+        diceView.updateRollValue(diceModel.state.rollValue.toFixed(2));
+
+        break;
+      default:
+        diceModel.calcPayout(rollType, rollValue, betSize);
+        diceModel.calcMultiplier(rollType, rollValue);
+        diceModel.calcWinChance(rollType, rollValue);
+
+        diceView.updatePayout(diceModel.state.payout);
+        diceView.updateWincChance(diceModel.state.winChance.toFixed(2));
+        diceView.updateMultiplier(diceModel.state.multiplier.toFixed(4));
+    }
   }
   /*controlLoadDice() {
     diceView.render();
@@ -178,7 +214,7 @@ export class controllerDice {
 
   */
   async controlBtnBet() {
-    if (!userLogin) return;
+    if (!userLogin) return loginView.openLoginModal();
     const rollType = diceView.getRollType();
 
     const betSize = diceView.getBetSize();
@@ -197,6 +233,8 @@ export class controllerDice {
     diceView.render();
     diceView.addHandlerInputRange(this.controlInputRange.bind(this));
     diceView.addHandlerInputBetSize(this.controlInputBetSize.bind(this));
+    diceView.addHandlerInputMultiplier(this.controlInputMultiplier.bind(this));
+    diceView.addHandlerInputWinChance(this.controlInputWinChance.bind(this));
     diceView.addHandlerChangeRoll();
     diceView.addHandlerBtnBet(this.controlBtnBet.bind(this));
   }
