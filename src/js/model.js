@@ -374,19 +374,22 @@ export class OriginalsModel {
         id: '0',
         cardTitle: 'Casino 1',
         cardDescription: 'Casino 1',
-        imageUrl: 'casino-1.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/casino-1.png',
       },
       {
         id: '1',
         cardTitle: 'Casino 2',
         cardDescription: 'Casino 2',
-        imageUrl: 'casino-2.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/casino-2.png',
       },
       {
         id: '2',
         cardTitle: 'Casino 3',
         cardDescription: 'Casino 3',
-        imageUrl: 'casino-3.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/casino-3.png',
       },
     ];
   }
@@ -411,25 +414,29 @@ export class SlotsModel {
         id: '0',
         cardTitle: 'Slot 1',
         cardDescription: 'Slot 1',
-        imageUrl: 'slot-1.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/slot-1.png',
       },
       {
         id: '1',
         cardTitle: 'Slot 2',
         cardDescription: 'Slot 2',
-        imageUrl: 'slot-2.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/slot-2.png',
       },
       {
         id: '2',
         cardTitle: 'Slot 3',
         cardDescription: 'Slot 3',
-        imageUrl: 'slot-3.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/slot-3.png',
       },
       {
         id: '3',
         cardTitle: 'Slot 4',
         cardDescription: 'Slot 4',
-        imageUrl: 'slot-4.png',
+        imageUrl:
+          'https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/slot-4.png',
       },
     ];
   }

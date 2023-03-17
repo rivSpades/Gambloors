@@ -79,7 +79,7 @@ class HeroCardView {
 
     targetElement.insertAdjacentHTML('beforeend', html);
     const targetCard = document.getElementById('main-herocard');
-    targetCard.style.backgroundImage = ` url('img/banner-bg.png')`;
+    targetCard.style.backgroundImage = ` url('https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/banner-bg.png')`;
     targetCard.style.backgroundSize = `cover`;
   }
 }

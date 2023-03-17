@@ -9,7 +9,7 @@ export default class GamesView {
       
       <div class="swiper-img main-games-card"  data-card="${el.id}" data-url="${el.imageUrl}">
       <a class="main-games-card-a" href="#">
-      <img class="main-games-card-img" src="img/${el.imageUrl}" alt="casino-img">
+      <img class="main-games-card-img" src="${el.imageUrl}" alt="casino-img">
       <span class="main-games-card-text">${el.cardTitle}</span>
       </a>
       </div>
