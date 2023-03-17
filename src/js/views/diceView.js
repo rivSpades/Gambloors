@@ -3,9 +3,9 @@ class diceView {
 
   render() {
     const html = `<section id="game-dice" class="w-full  ">
-    <div class="dice-container lg:bg-primary/70 lg:border lg:border-secondary select-none  lg:p-12    grid  grid-cols-3 grid-rows-12 gap-x-0  gap-y-16 lg:gap-y-12 items-start text-white">
+    <div class="dice-container lg:bg-primary/70 lg:border lg:border-secondary select-none  lg:p-12    grid  grid-cols-3 grid-rows-12 gap-x-0  gap-y-14 lg:gap-y-12 items-start text-white">
    
-    <div class="px-12 col-start-2 col-end-3 self-start justify-self-center ">
+    <div class="px-12 col-start-2 col-end-3 self-start justify-self-center hidden">
     <div class="  dice-input-container  ">
     <svg class="w-8  h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M216,72H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24.1,24.1,0,0,0,32,64V192a24.1,24.1,0,0,0,24,24H216a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72Zm-36,84a12,12,0,1,1,12-12A12,12,0,0,1,180,156Z"></path></svg>
     <input type="text"   value="100.00" autocomplete="off" disabled    class="dice-wallet dice-input j w-fit text-center    ">
@@ -21,12 +21,17 @@ class diceView {
                     </svg>
     </div>
     </div>
-
-    <div class="px-12 lg:px-56 col-start-1 col-end-4 self-start relative ">
-  
-    <div class="dice-range-bubble  invisible w-8 h-8 flex  justify-center   ">
+    <div class="px-12 lg:px-56  col-start-1  col-end-4 self-start  ">
+    <div class="dice-history flex justify-center text-xl text-center">
+    <div class="invisible">12.00</div>
+    </div>
+    </div>
+    <div class="px-12 lg:px-56 col-start-1 col-end-4 self-start  ">
+  <div class="border-[1.5rem] border-transparent relative">
+    <div class="dice-range-bubble  invisible w-8 h-8 flex p-6 -left-6  justify-center absolute top-16   ">
       <p class="dice-range-bubble-value -rotate-45 self-center ">15</p>
     
+    </div>
     </div>
       <datalist id="dice-range-list" class="list-range-numbers flex justify-between ml-[2rem] mb-4 mt-6 ">
         <option value="0" label="0" class="font-semibold text-3xl text-[#cdcdcd]"></option>
@@ -38,11 +43,28 @@ class diceView {
 
      
       
-      <input  class="dice-range w-full outline-1 rounded-2xl border-[1.5rem]   border-primary lg:border-secondary" type="range" min="1.00" max="98.00" value="50.00" step="1.00" list="dice-range-list">
+      <input  class="dice-range w-full outline-1 rounded-2xl border-[1.5rem]   border-primary lg:border-secondary" type="range" min="1.00" max="98.00" value="50.00" step="0.01" list="dice-range-list">
       
     </div>
   
-    <div class="col-start-2 col-end-3 self-center">
+    <div class="px-12 lg:px-56 col-start-1 col-end-4  flex justify-center self-center gap-4 md:gap-16">
+    <div class="dice-multiplier-container">
+    <p class="dice-input-title">Multiplier</p>
+    <div class=" dice-input-container ">
+      <input type="text"  value="1.9600"  autocomplete="off"   class="dice-multiplier dice-input">
+      <svg class="w-8 h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M139.3,128l66.4-66.3a8.1,8.1,0,0,0-11.4-11.4L128,116.7,61.7,50.3A8.1,8.1,0,0,0,50.3,61.7L116.7,128,50.3,194.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L128,139.3l66.3,66.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4Z"></path></svg>
+      </div>
+      <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
+      <li class="w-full">
+          <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >-1</a>
+      </li>
+      
+      <li class="w-full">
+        <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >+1</a>
+      </li>
+  </ul>
+    </div>
+    <div>
           <p class="dice-roll-title dice-input-title">Roll Under</p>
           <div class=" dice-input-container dice-roll-container md:bg-[#363636]/30 cursor-pointer">
           <input type="text"   value="50.00" autocomplete="off" disabled id="rangeValueContainer"   class="dice-roll-value dice-input md:bg-transparent   cursor-pointer ">
@@ -86,6 +108,23 @@ class diceView {
           ></path>
         </svg>
           </div>
+          </div>
+          <div class="dice-winchance-container">
+          <p class="dice-input-title">Win Chance</p>
+          <div class=" dice-input-container ">
+            <input type="text"  value="50.00"  autocomplete="off"   class="dice-winchance dice-input">
+            <svg class="w-8 h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M205.7,61.7l-144,144a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4l144-144a8.1,8.1,0,0,1,11.4,11.4ZM50.5,101.5a36.2,36.2,0,0,1,0-51,36.2,36.2,0,0,1,51,0,36.1,36.1,0,0,1-51,51ZM56,76a19.7,19.7,0,0,0,5.9,14.1,19.9,19.9,0,0,0,28.2,0,19.8,19.8,0,0,0,0-28.2h0a19.8,19.8,0,0,0-28.2,0A19.7,19.7,0,0,0,56,76ZM216,180a36,36,0,1,1-61.5-25.5,36.2,36.2,0,0,1,51,0A35.9,35.9,0,0,1,216,180Zm-16,0a19.7,19.7,0,0,0-5.9-14.1,19.8,19.8,0,0,0-28.2,0A19.9,19.9,0,1,0,200,180Z"></path></svg>
+            </div>
+            <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
+            <li class="w-full">
+                <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >-5</a>
+            </li>
+            
+            <li class="w-full">
+              <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >+5</a>
+            </li>
+        </ul>
+          </div>
         </div>
 
 
@@ -118,44 +157,7 @@ class diceView {
           </ul>
           </div>
 
-          <div class="dice-multiplier-container">
-          <p class="dice-input-title">Multiplier</p>
-          <div class=" dice-input-container ">
-            <input type="text"  value="1.9600"  autocomplete="off"   class="dice-multiplier dice-input">
-            <svg class="w-8 h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M139.3,128l66.4-66.3a8.1,8.1,0,0,0-11.4-11.4L128,116.7,61.7,50.3A8.1,8.1,0,0,0,50.3,61.7L116.7,128,50.3,194.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L128,139.3l66.3,66.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4Z"></path></svg>
-            </div>
-            <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
-            <li class="w-full">
-                <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >-1</a>
-            </li>
-            
-            <li class="w-full">
-              <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >+1</a>
-            </li>
-        </ul>
-          </div>
-
-          <div class="dice-winchance-container">
-          <p class="dice-input-title">Win Chance</p>
-          <div class=" dice-input-container ">
-            <input type="text"  value="50.00"  autocomplete="off"   class="dice-winchance dice-input">
-            <svg class="w-8 h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M205.7,61.7l-144,144a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4l144-144a8.1,8.1,0,0,1,11.4,11.4ZM50.5,101.5a36.2,36.2,0,0,1,0-51,36.2,36.2,0,0,1,51,0,36.1,36.1,0,0,1-51,51ZM56,76a19.7,19.7,0,0,0,5.9,14.1,19.9,19.9,0,0,0,28.2,0,19.8,19.8,0,0,0,0-28.2h0a19.8,19.8,0,0,0-28.2,0A19.7,19.7,0,0,0,56,76ZM216,180a36,36,0,1,1-61.5-25.5,36.2,36.2,0,0,1,51,0A35.9,35.9,0,0,1,216,180Zm-16,0a19.7,19.7,0,0,0-5.9-14.1,19.8,19.8,0,0,0-28.2,0A19.9,19.9,0,1,0,200,180Z"></path></svg>
-            </div>
-            <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
-            <li class="w-full">
-                <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >-5</a>
-            </li>
-            
-            <li class="w-full">
-              <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >+5</a>
-            </li>
-        </ul>
-          </div>
-
-
-          </div>
-
-          <div class="col-start-2 col-end-3  ">
+          <div>
           <p class="dice-input-title">Payout on Win</p>
           <div class=" dice-input-container ">
           <input type="text"   value="0" autocomplete="off" disabled   class="dice-payout dice-input">
@@ -170,6 +172,15 @@ class diceView {
           />
         </svg>
           </div>
+          </div>
+
+          
+
+
+          </div>
+
+          <div class="col-start-2 col-end-3  ">
+          
         </div>
 
           <div class="px-12 col-start-1 col-end-4 self-end lg:col-start-2 lg:col-end-3">
@@ -249,8 +260,14 @@ class diceView {
     document.querySelector('.dice-winchance').value = value;
   }
   updateRollValue(value) {
-    document.getElementById('rangeValueContainer').value =
-      Number(value).toFixed(2);
+    document.getElementById('rangeValueContainer').value = value;
+    document.querySelector('.dice-range').step = 0.01;
+
+    document.querySelector('.dice-range').value = value;
+
+    document.querySelector('.dice-range').step = 1.0;
+
+    this.changeRangeBackground();
   }
   getRollType() {
     return document.querySelector('.dice-roll-title').textContent;
@@ -278,9 +295,10 @@ class diceView {
       function () {
         rollChangeContainer.classList.toggle('dice-roll-container--rotate');
         const currentRoll = document.querySelector('.dice-roll-title');
-        const currentValueSlider = document.querySelector('.dice-range').value;
-        const slider = document.querySelector('.dice-range');
-        const diceRoll = document.querySelector('.dice-roll-value');
+        const currentValueSlider =
+          document.querySelector('.dice-roll-value').value;
+        //const slider = document.querySelector('.dice-range');
+        //const diceRoll = document.querySelector('.dice-roll-value');
         const rangeBubble = document.querySelector('.dice-range-bubble');
 
         setTimeout(
@@ -289,8 +307,9 @@ class diceView {
               ? (currentRoll.textContent = 'Roll Over')
               : (currentRoll.textContent = 'Roll Under');
 
-            slider.value = 50 + (50 - currentValueSlider);
-            diceRoll.value = Number(slider.value).toFixed(2);
+            const calcRollNumber = 50 + (50 - currentValueSlider);
+
+            this.updateRollValue(calcRollNumber);
             this.changeRangeBackground();
           }.bind(this),
           300
@@ -317,37 +336,45 @@ class diceView {
   }
 
   updateRollResult(numberGenerated, isWinner) {
-    console.log(numberGenerated);
-
     const rangeBubble = document.querySelector('.dice-range-bubble');
 
     const sliderBubbleValueContainer = document.querySelector(
       '.dice-range-bubble-value'
     );
     //rangeBubble.style.display = 'flex';
-    rangeBubble.style.transform = `rotate(45deg) translateX(-${numberGenerated}%)`;
+    rangeBubble.style.transform = `rotate(45deg)`;
     rangeBubble.style.marginLeft = `${numberGenerated}%`;
-    console.log(isWinner);
+
     isWinner
-      ? (rangeBubble.style.backgroundColor = 'rgba(155, 237, 154, 0.5)')
-      : (rangeBubble.style.backgroundColor = 'rgba(255, 153, 153, 0.5)');
+      ? (rangeBubble.style.backgroundColor = 'rgba(155, 237, 154, 0.8)')
+      : (rangeBubble.style.backgroundColor = 'rgba(255, 153, 153, 0.8)');
 
     rangeBubble.classList.remove('invisible');
 
     sliderBubbleValueContainer.textContent = numberGenerated;
+    this.updateBetHistory(numberGenerated, isWinner);
 
-    /*getComputedStyle(sliderBubble).left === '0px'
-      ? setTimeout(function () {
-          sliderBubble.style.left = numberGenerated + '%';
-        }, 100)
-      : (sliderBubble.style.left = numberGenerated + '%');
+    //const thumbPosition = (numberGenerated - rangeInput.min) / (rangeInput.max - rangeInput.min);
+    //const thumbPositionPercentage = thumbPosition * 100;
+    //const translateX = thumbPositionPercentage - (thumbWidth / trackWidth) * 50;
+    //rangeBubble.style.transform = `rotate(45deg) translateX(-${translateX}%)`;
+    //rangeBubble.style.marginLeft = `${thumbPositionPercentage}%`;
+  }
 
-    sliderBubbleValueContainer.textContent = numberGenerated;
-    (numberGenerated < rollValue && rollType === 'Roll Under') ||
-    (numberGenerated > rollValue && rollType === 'Roll Over')
-      ? (sliderBubble.style.backgroundColor = 'green')
-      : (sliderBubble.style.backgroundColor = 'red');
-      */
+  updateBetHistory(number, isWinner) {
+    const history = document.querySelector('.dice-history');
+    const color = isWinner ? 'bg-diceGreen' : 'bg-diceRed';
+    const html = `<div class="${color} text-secondary text-center  font-medium mr-2 px-2.5 py-0.5 min-w-[4rem] opacity-100   rounded-full">${number}</div>`;
+    history.insertAdjacentHTML('afterbegin', html);
+
+    if (history.children.length === 7) {
+      history.removeChild(history.children[history.children.length - 1]);
+
+      history.children[history.children.length - 1].style.opacity = '0.2';
+      history.children[history.children.length - 2].style.opacity = '0.6';
+      history.children[history.children.length - 3].style.opacity = '0.7';
+      history.children[history.children.length - 4].style.opacity = '0.8';
+    }
   }
 }
 export default new diceView();

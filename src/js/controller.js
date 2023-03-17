@@ -13,11 +13,13 @@ import homeView from './views/homeView.js';
 import * as config from './config.js';
 import lastnewsView from './views/lastNewsView.js';
 import originalsView from './views/originalsView.js';
+import slotsView from './views/slotsView.js';
 
 const lobbyModel = new model.lobbyModel();
 const diceModel = new model.diceModel();
 const LastNewsModel = new model.LastNewsModel();
 const OriginalsModel = new model.OriginalsModel();
+const SlotsModel = new model.SlotsModel();
 let userLogin;
 let userDetails;
 let userWallets;
@@ -382,14 +384,23 @@ export class controllerOriginals {
   }
 }
 
+export class controllerSlots {
+  init() {
+    slotsView.render(SlotsModel.loadData());
+    SlotsModel.setSettings();
+  }
+}
+
 export class controllerHome {
   init() {
     const startControllerHeroCard = new controllerHeroCard();
-    const startControllerLastNews = new controllerLastNews();
+    //const startControllerLastNews = new controllerLastNews();
     const startControllerOriginals = new controllerOriginals();
+    const startControllerSlots = new controllerSlots();
     homeView.render();
     startControllerHeroCard.init();
-    startControllerLastNews.init();
+    //startControllerLastNews.init();
     startControllerOriginals.init();
+    startControllerSlots.init();
   }
 }

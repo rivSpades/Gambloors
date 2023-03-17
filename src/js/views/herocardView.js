@@ -6,75 +6,81 @@ class HeroCardView {
     const targetElement = document.getElementById('home-lobby');
     if (loginData && userDetails) {
       html = `<!--Hero Card-->
-        <div id="main-herocard" class="mb-28 bg-secondary">
-        <div class="grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 md:grid-cols-2 "
+      <div id="main-herocard" class="main-herocard">
+        <div class="main-herocard-grid "
         >
-        <div
-        class="md:mr-auto place-self-center text-center md:text-left md:col-span-1"
-      >
-              <h1
-                class="max-w-md md:max-w-lg mb-11 text-4xl font-extrabold text-white/70 tracking-tight leading-none md:text-5xl xl:text-6xl"
-              >
-                Welcome back ${userDetails.state.userDetails.name}!
-              </h1>
-              <p
-                class="max-w-2xl mb-6 font-light text-white/50 lg:mb-8 md:text-lg lg:text-xl"
-              >
-                We have new fresh promotions!
-              </p>
-              
+       
+          <div
+            class="main-herocard-left-top"
+          >
+          <div>
+            <h1
+              class="main-herocard-left-top-text"
+            >
+              Welcome back
+            </h1>
+            <h1
+            class=" main-herocard-left-top-text"
+          >
+            <span class="text-highlight">${userDetails.state.userDetails.name}!</span> 
+          </h1>
             </div>
-            <div class="hidden md:mt-0 md:col-span-1 lg:flex md:justify-center h-80">
-              <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
+           <div class="main-herocard-left-bottom">
+           
             </div>
           </div>
-        </div>`;
+          <div class="main-herocard-right">
+            <img class="main-herocard-right-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="create account" />
+          </div>
+        </div>
+      </div>`;
     } else {
       html = `<!--Hero Card-->
-       <div id="main-herocard" class="mb-28 bg-secondary">
-         <div class=" grid max-w-screen px-4 py-8  lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-2 "
+       <div id="main-herocard" class="main-herocard">
+         <div class="main-herocard-grid "
          >
+        
            <div
-             class=" md:mr-auto place-self-center text-center md:text-left lg:col-span-1"
+             class="main-herocard-left-top"
            >
-           
+           <div>
              <h1
-               class=" mb-4 text-4xl font-extrabold text-white/70 tracking-tight leading-none md:text-5xl xl:text-6xl"
+               class="main-herocard-left-top-text"
              >
-               Gamble your money with <span class="text-highlight">the world's #1</span> Casino.
+               Gamble your money with 
              </h1>
-             <p
-               class="max-w-2xl mb-6 font-light text-white/50 lg:mb-8 md:text-lg lg:text-xl"
+             <h1
+             class=" main-herocard-left-top-text"
+           >
+             <span class="text-highlight">the world's #1</span> Casino.
+           </h1>
+             </div>
+            <div class="main-herocard-left-bottom">
+            <p
+               class="main-herocard-left-bottom-text"
              >
                Join us and start gambling
              </p>
              <button
                type="button"
-               class="nav-btn-register inline-flex items-center text-white bg-highlight transition duration-75 hover:bg-highlight/80 font-medium rounded-lg px-5 py-3 text-base text-center mr-2 mb-2"
+               class="nav-btn-register main-herocard-left-bottom-btn"
              >
                Create Account
-               <svg
-                 class="w-5 h-5 ml-2 -mr-1 inline-block"
-                 fill="currentColor"
-                 viewBox="0 0 20 20"
-                 xmlns="http://www.w3.org/2000/svg"
-               >
-                 <path
-                   fill-rule="evenodd"
-                   d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"
-                   clip-rule="evenodd"
-                 ></path>
-               </svg>
+              
              </button>
+             </div>
            </div>
-           <div class="hidden md:mt-0 md:col-span-1 lg:flex md:justify-center h-80">
-             <img class="opacity-20" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="mockup" />
+           <div class="main-herocard-right">
+             <img class="main-herocard-right-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="create account" />
            </div>
          </div>
        </div>`;
     }
 
     targetElement.insertAdjacentHTML('beforeend', html);
+    const targetCard = document.getElementById('main-herocard');
+    targetCard.style.backgroundImage = ` url('img/banner-bg.png')`;
+    targetCard.style.backgroundSize = `cover`;
   }
 }
 

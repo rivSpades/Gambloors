@@ -3,7 +3,6 @@
   lang="en"
   class="overflow-hidden text-[78.6%] xxl:text-[calc(var(--fontSize))]"
 >
-  <!-- specify the page language in html tag -->
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,7 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Barlow:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
     <link
@@ -21,9 +20,6 @@
       href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"
     />
 
-    <!--<link href="./css/main.css" rel="stylesheet" />
-    <link href="./css/home.css" rel="stylesheet" />
-    <link href="./css/dice.css" rel="stylesheet" />-->
     <link href="./css/app.css" rel="stylesheet" />
     <link href="./css/output.css" rel="stylesheet" />
 
@@ -35,27 +31,26 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.com/libraries/axios"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-    <!-- smooth scrolling fix for safari -->
 
     <title>Gambloors</title>
   </head>
 
   <body
-    class="bg-secondary z-10 overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none"
+    class="bg-secondary pb-6 z-10 overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none"
   >
+    <!--TOP NAV -->
     <header
-      class="w-screen h-24 z-20 bg-primary border-b-white/10 border-b-[0.05px] flex items-center justify-between sticky top-0"
+      class="w-screen h-24 z-[999] bg-primary border-b-accent border-b-[0.05px] flex items-center justify-between sticky top-0"
     >
-      <!--NAV Left-->
+      <!--TOP NAV Left-->
 
       <div class="nav-left self-center">
         <button
           type="button"
-          class="sidebar-btn p-2 ml-3 text-2xl text-white rounded-lg hover:bg-secondary focus:outline-none"
+          class="sidebar-btn p-2 ml-3 text-2xl text-primaryWhite rounded-lg hover:bg-secondary focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
-          <span class="sr-only">Open main menu</span>
           <svg
             class="w-6 h-6"
             aria-hidden="true"
@@ -72,20 +67,20 @@
         </button>
       </div>
 
-      <!--NAV Right-->
+      <!--TOP NAV Right-->
 
       <nav class="nav-right flex items-center space-x-12 relative">
-        <!--Nav Auth Buttons-->
+        <!--TOP NAV Right Buttons-->
         <div class="nav-auth-btns p-3">
           <button
             type="button"
-            class="text-white uppercase nav-btn-login border border-white hover:bg-secondary/60 focus:outline-none font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
+            class="nav-btn-login top-nav-right-btn border text-primaryWhite border-primaryWhite hover:bg-accent hover:text-white"
           >
             Login
           </button>
           <button
             type="button"
-            class="nav-btn-register focus:outline-none text-white uppercase bg-highlight transition duration-75 hover:bg-highlight/80 font-bold rounded-lg px-5 py-2.5 text-sm mr-2 mb-2 dark:focus:ring-yellow-900"
+            class="nav-btn-register top-nav-right-btn text-highlightWhite bg-highlight hover:bg-highlightAccent hover:text-white"
           >
             Register
           </button>
@@ -93,146 +88,122 @@
       </nav>
     </header>
 
-    <main
-      class="bg-secondary main-home mx-auto my-auto w-[70vw] min-h-screen mt-16 relative"
-    >
-      <!-- drawer component  class="w-6 h-6 transition duration-75"-->
+    <!--MAIN-->
+
+    <main class="main-home">
+      <!--SIDEBAR-->
       <div
-        class="nav-sidebar fixed top-24 left-0 z-40 w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full z-1 bg-primary border-r-white/10 border-r-[0.05px] text-white"
+        class="nav-sidebar fixed top-24 left-0 z-[999] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary border-r-accent border-r-[0.05px]"
         tabindex="-1"
         aria-labelledby="drawer-navigation-label"
       >
+        <!--SIDEBAR MENU-->
         <div class="py-4 overflow-y-auto">
-          <ul class="sidebar-nav space-y-2 text-white text-base">
+          <ul class="sidebar-nav space-y-2 flex flex-col gap-6">
             <li>
-              <a href="#" class="flex items-center p-2">
+              <a href="#" class="sidebar-a">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="192"
                   height="192"
-                  fill="#ffffff"
+                  fill="#bdbdbd"
                   viewBox="0 0 256 256"
-                  class="w-6 h-6 transition duration-75"
+                  class="sidebar-svg"
                 >
                   <rect width="256" height="256" fill="none"></rect>
                   <path
                     d="M218.8,103.7,138.8,31a16,16,0,0,0-21.6,0l-80,72.7A16,16,0,0,0,32,115.5v92.1a16.4,16.4,0,0,0,4,11A15.9,15.9,0,0,0,48,224H96a8,8,0,0,0,8-8V168a8,8,0,0,1,8-8h32a8,8,0,0,1,8,8v48a8,8,0,0,0,8,8h48a15.6,15.6,0,0,0,7.6-1.9A16.1,16.1,0,0,0,224,208V115.5A16,16,0,0,0,218.8,103.7Z"
                   ></path>
                 </svg>
-                <span class="ml-3">Home</span>
+                <span class="sidebar-text">Home</span>
               </a>
             </li>
             <li>
-              <button
-                type="button"
-                class="sidebar-dropdown-btn flex items-center w-full p-2 text-base transition duration-75 rounded-lg group"
-              >
+              <button type="button" class="sidebar-dropdown-btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="192"
                   height="192"
-                  fill="#ffffff"
+                  fill="#bdbdbd"
                   viewBox="0 0 256 256"
-                  class="w-6 h-6 transition duration-75"
+                  class="sidebar-svg"
                 >
                   <rect width="256" height="256" fill="none"></rect>
                   <path
                     d="M202.2,200.8a103.8,103.8,0,0,0,0-145.6,2.3,2.3,0,0,0-.7-.7,2.3,2.3,0,0,0-.7-.7,103.8,103.8,0,0,0-145.6,0,2.3,2.3,0,0,0-.7.7,2.3,2.3,0,0,0-.7.7,103.8,103.8,0,0,0,0,145.6l.7.7a2.3,2.3,0,0,0,.7.7,103.8,103.8,0,0,0,145.6,0,2.3,2.3,0,0,0,.7-.7A2.3,2.3,0,0,0,202.2,200.8ZM40.4,136H64.5a63.6,63.6,0,0,0,13,31.2L60.4,184.3A87.5,87.5,0,0,1,40.4,136Zm20-64.3L77.5,88.8a63.6,63.6,0,0,0-13,31.2H40.4A87.5,87.5,0,0,1,60.4,71.7ZM215.6,120H191.5a63.6,63.6,0,0,0-13-31.2l17.1-17.1A87.5,87.5,0,0,1,215.6,120ZM167.2,77.5a63.6,63.6,0,0,0-31.2-13V40.4a87.5,87.5,0,0,1,48.3,20ZM120,64.5a63.6,63.6,0,0,0-31.2,13L71.7,60.4a87.5,87.5,0,0,1,48.3-20Zm-31.2,114a63.6,63.6,0,0,0,31.2,13v24.1a87.5,87.5,0,0,1-48.3-20Zm47.2,13a63.6,63.6,0,0,0,31.2-13l17.1,17.1a87.5,87.5,0,0,1-48.3,20Zm42.5-24.3a63.6,63.6,0,0,0,13-31.2h24.1a87.5,87.5,0,0,1-20,48.3Z"
                   ></path>
                 </svg>
-                <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                  >Casino</span
-                >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <span class="sidebar-text">Casino</span>
               </button>
-              <ul class="hidden py-2 space-y-2">
+              <ul class="sidebar-dropdown-ul">
                 <li>
-                  <a
-                    href="#dice"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#dice" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M192,32H64A32.1,32.1,0,0,0,32,64V192a32.1,32.1,0,0,0,32,32H192a32.1,32.1,0,0,0,32-32V64A32.1,32.1,0,0,0,192,32ZM92,184a12,12,0,1,1,12-12A12,12,0,0,1,92,184Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,92,140Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,92,96Zm72,88a12,12,0,1,1,12-12A12,12,0,0,1,164,184Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,164,140Zm0-44a12,12,0,1,1,12-12A12,12,0,0,1,164,96Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Dice</span>
+                    <span class="sidebar-text sidebar-text-dropdown">Dice</span>
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M236,139.3,139.3,236a15.9,15.9,0,0,1-22.6,0L20,139.3a16.1,16.1,0,0,1,0-22.6L116.7,20a16.1,16.1,0,0,1,22.6,0L236,116.7A16.1,16.1,0,0,1,236,139.3Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Slots</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Slots</span
+                    >
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M232,148a52,52,0,0,1-80.5,43.5l10.7,34.1a7.8,7.8,0,0,1-1.2,7.1,7.9,7.9,0,0,1-6.4,3.3H101.4a7.9,7.9,0,0,1-6.4-3.3,7.8,7.8,0,0,1-1.2-7.1l10.7-34.1a51.7,51.7,0,0,1-30,8.5c-27.7-.8-50.4-24-50.5-51.8A52.1,52.1,0,0,1,76,96l4,.2a53.3,53.3,0,0,1-3.9-23.4,52,52,0,1,1,99.8,23.4A51.5,51.5,0,0,1,232,148Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Table</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Table</span
+                    >
                   </a>
                 </li>
               </ul>
             </li>
 
             <li>
-              <button
-                type="button"
-                class="sidebar-dropdown-btn flex items-center w-full p-2 text-base transition duration-75 rounded-lg group"
-              >
+              <button type="button" class="sidebar-dropdown-btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="192"
                   height="192"
-                  fill="#ffffff"
+                  fill="#bdbdbd"
                   viewBox="0 0 256 256"
                   class="w-6 h-6 transition duration-75"
                 >
@@ -241,84 +212,63 @@
                     d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm0,168a12,12,0,1,1,12-12A12,12,0,0,1,128,192Zm8-48.9v.9a8,8,0,0,1-16,0v-8a8,8,0,0,1,8-8,20,20,0,1,0-20-20,8,8,0,0,1-16,0,36,36,0,1,1,44,35.1Z"
                   ></path>
                 </svg>
-                <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                  >Help</span
-                >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <span class="sidebar-text">Help</span>
               </button>
-              <ul id="dropdown-example" class="py-2 space-y-2 hidden">
+              <ul id="dropdown-example" class="sidebar-dropdown-ul">
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M216,48H40A16,16,0,0,0,24,64V222.8a15.7,15.7,0,0,0,9.3,14.5,16,16,0,0,0,17-2.2L82,208.4l134-.4a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Live Chat</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Live Chat</span
+                    >
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M128,24A104,104,0,1,0,232,128,104.2,104.2,0,0,0,128,24Zm-2,48a12,12,0,1,1-12,12A12,12,0,0,1,126,72Zm10,112h-8a8,8,0,0,1-8-8V128a8,8,0,0,1,0-16h8a8,8,0,0,1,8,8v48a8,8,0,0,1,0,16Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">FAQ</span>
+                    <span class="sidebar-text sidebar-text-dropdown">FAQ</span>
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40ZM180,168H76a8,8,0,0,1,0-16H180a8,8,0,0,1,0,16Zm0-32H76a8,8,0,0,1,0-16H180a8,8,0,0,1,0,16Zm0-32H76a8,8,0,0,1,0-16H180a8,8,0,0,1,0,16Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base"
+                    <span class="sidebar-text sidebar-text-dropdown"
                       >Provably Fair</span
                     >
                   </a>
@@ -327,117 +277,92 @@
             </li>
 
             <li>
-              <button
-                type="button"
-                class="sidebar-dropdown-btn flex items-center w-full p-2 text-base transition duration-75 rounded-lg group"
-              >
+              <button type="button" class="sidebar-dropdown-btn">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="192"
                   height="192"
-                  fill="#ffffff"
+                  fill="#bdbdbd"
                   viewBox="0 0 256 256"
-                  class="w-6 h-6 transition duration-75"
+                  class="sidebar-svg"
                 >
                   <rect width="256" height="256" fill="none"></rect>
                   <path
                     d="M160,112a24,24,0,1,1-24-24A24.1,24.1,0,0,1,160,112Zm64-72V216a16,16,0,0,1-16,16H64a16,16,0,0,1-16-16V196H32a8,8,0,0,1,0-16H48V156H32a8,8,0,0,1,0-16H48V116H32a8,8,0,0,1,0-16H48V76H32a8,8,0,0,1,0-16H48V40A16,16,0,0,1,64,24H208A16,16,0,0,1,224,40ZM190.4,163.2A67.8,67.8,0,0,0,163,141.5a40,40,0,1,0-54,0,67.8,67.8,0,0,0-27.4,21.7,8,8,0,0,0,1.6,11.2A7.7,7.7,0,0,0,88,176a8,8,0,0,0,6.4-3.2,52,52,0,0,1,83.2,0,8.1,8.1,0,0,0,11.2,1.6A8,8,0,0,0,190.4,163.2Z"
                   ></path>
                 </svg>
-                <span class="flex-1 ml-3 text-left whitespace-nowrap"
-                  >Social Media</span
-                >
-                <svg
-                  class="w-6 h-6"
-                  fill="currentColor"
-                  viewBox="0 0 20 20"
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                    clip-rule="evenodd"
-                  ></path>
-                </svg>
+                <span class="sidebar-text">Social Media</span>
               </button>
-              <ul id="dropdown-example" class="hidden py-2 space-y-2">
+              <ul id="dropdown-example" class="sidebar-dropdown-ul">
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M231.3,31.7A16.1,16.1,0,0,0,215,29L30.4,101.5a15.8,15.8,0,0,0-10.1,16.3,16,16,0,0,0,12.8,14.3L80,141.4V200a16,16,0,0,0,9.9,14.8A16.6,16.6,0,0,0,96,216a15.8,15.8,0,0,0,11.3-4.7l26-25.9L172.6,220a16,16,0,0,0,10.5,4,14.2,14.2,0,0,0,5-.8,15.9,15.9,0,0,0,10.7-11.6L236.4,47.4A16,16,0,0,0,231.3,31.7ZM183.2,208l-82.4-72.5L219.5,49.8Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Telegram</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Telegram</span
+                    >
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M245.7,77.7l-30.2,30.1C209.5,177.7,150.5,232,80,232c-14.5,0-26.5-2.3-35.6-6.8-7.3-3.7-10.3-7.6-11.1-8.8a8,8,0,0,1,3.9-11.9c.2-.1,23.8-9.1,39.1-26.4a108.6,108.6,0,0,1-24.7-24.4c-13.7-18.6-28.2-50.9-19.5-99.1a8.1,8.1,0,0,1,5.5-6.2,8,8,0,0,1,8.1,1.9c.3.4,33.6,33.2,74.3,43.8V88a48.3,48.3,0,0,1,48.6-48,48.2,48.2,0,0,1,41,24H240a8,8,0,0,1,7.4,4.9A8.4,8.4,0,0,1,245.7,77.7Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Twitter</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Twitter</span
+                    >
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M170.5,115.7A44,44,0,0,0,144,40.2V24a8,8,0,0,0-16,0V40H112V24a8,8,0,0,0-16,0V40H64a8,8,0,0,0,0,16h8V192H64a8,8,0,0,0,0,16H96v16a8,8,0,0,0,16,0V208h16v16a8,8,0,0,0,16,0V208h8a48,48,0,0,0,18.5-92.3ZM168,84a28.1,28.1,0,0,1-28,28H88V56h52A28.1,28.1,0,0,1,168,84ZM152,192H88V128h64a32,32,0,0,1,0,64Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base"
+                    <span class="sidebar-text sidebar-text-dropdown"
                       >Bitcointalk</span
                     >
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <circle cx="128" cy="128" r="32"></circle>
@@ -445,28 +370,29 @@
                         d="M172,28H84A56,56,0,0,0,28,84v88a56,56,0,0,0,56,56h88a56,56,0,0,0,56-56V84A56,56,0,0,0,172,28ZM128,176a48,48,0,1,1,48-48A48,48,0,0,1,128,176Zm52-88a12,12,0,1,1,12-12A12,12,0,0,1,180,88Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Instagram</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Instagram</span
+                    >
                   </a>
                 </li>
                 <li>
-                  <a
-                    href="#"
-                    class="flex items-center w-full p-2 text-base font-normal text-gray-900 transition duration-75 rounded-lg pl-11 group hover:bg-gray-100 dark:text-white dark:hover:bg-gray-700"
-                  >
+                  <a href="#" class="sidebar-a sidebar-a-dropdown">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
                       fill="#f5cb09"
                       viewBox="0 0 256 256"
-                      class="w-6 h-6 transition duration-75"
+                      class="sidebar-svg"
                     >
                       <rect width="256" height="256" fill="none"></rect>
                       <path
                         d="M232,128a104.3,104.3,0,0,1-91.5,103.3,4.1,4.1,0,0,1-4.5-4V152h24a8,8,0,0,0,8-8.5,8.2,8.2,0,0,0-8.3-7.5H136V112a16,16,0,0,1,16-16h16a8,8,0,0,0,8-8.5,8.2,8.2,0,0,0-8.3-7.5H152a32,32,0,0,0-32,32v24H96a8,8,0,0,0-8,8.5,8.2,8.2,0,0,0,8.3,7.5H120v75.3a4,4,0,0,1-4.4,4C62.8,224.9,22,179,24.1,124.1A104,104,0,0,1,232,128Z"
                       ></path>
                     </svg>
-                    <span class="ml-3 text-highlight text-base">Facebook</span>
+                    <span class="sidebar-text sidebar-text-dropdown"
+                      >Facebook</span
+                    >
                   </a>
                 </li>
               </ul>
@@ -478,25 +404,24 @@
 
     <!--Footer -->
 
-    <footer class="w-full bg-primary border-t-white/10 border-t-[0.05px]">
+    <footer class="mx-auto w-full md:w-[70vw] bg-primary rounded-lg">
       <!--Footer container -->
-      <div class="footer-container p-9 mx-auto w-[100%] md:w-[70%]">
+      <div class="footer-container p-20 w-full md:w-[70%]">
         <div class="md:flex md:justify-between">
           <!--Footer Left -->
           <div class="footer-left-container flex flex-col gap-6 mb-16 md:mb-0">
             <a href="#" class="flex items-center">
-              <span
-                class="font-semibold tracking-wide uppercase text-2xl text-white"
+              <span class="footer-text-title tracking-wide text-2xl"
                 >Gambloors</span
               >
             </a>
-            <p class="text-base text-white/50">
+            <p class="text-base text-primaryWhite">
               Copyright © 2023 Gambloors™ All Rights Reserved.
             </p>
             <div class="flex mt-4 space-x-6 justify-start">
-              <a href="#" class="text-gray-300 hover:text-highlight">
+              <a href="#" class="footer-a">
                 <svg
-                  class="w-6 h-6"
+                  class="footer-svg"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -509,9 +434,9 @@
                 </svg>
                 <span class="sr-only">Facebook page</span>
               </a>
-              <a href="#" class="text-gray-300 hover:text-highlight">
+              <a href="#" class="footer-a">
                 <svg
-                  class="w-6 h-6"
+                  class="footer-svg"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -524,9 +449,9 @@
                 </svg>
                 <span class="sr-only">Instagram page</span>
               </a>
-              <a href="#" class="text-gray-300 hover:text-highlight">
+              <a href="#" class="footer-a">
                 <svg
-                  class="w-6 h-6"
+                  class="footer-svg"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
@@ -539,73 +464,53 @@
               </a>
             </div>
           </div>
-          <!-- Footer Nav-->
+          <!-- Footer Right-->
           <div
             class="footer-nav-container grid md:grid-cols-3 md:gap-6 gap-8 grid-cols-2"
           >
             <div>
-              <h2 class="mb-6 text-lg font-semibold text-white/80 uppercase">
-                Casino
-              </h2>
-              <ul class="flex flex-col gap-3 text-lg text-white/60">
+              <h2 class="footer-text-title footer-text-title-right">Casino</h2>
+              <ul class="footer-right-ul">
                 <li>
-                  <a
-                    href="https://flowbite.com/"
-                    class="hover:text-highlight hover:underline"
-                    >Dice</a
-                  >
+                  <a href="https://flowbite.com/" class="footer-a">Dice</a>
                 </li>
                 <li>
-                  <a
-                    href="https://tailwindcss.com/"
-                    class="hover:text-highlight hover:underline"
-                    >Slots</a
-                  >
+                  <a href="https://tailwindcss.com/" class="footer-a">Slots</a>
                 </li>
                 <li>
-                  <a
-                    href="https://tailwindcss.com/"
-                    class="hover:text-highlight hover:underline"
-                    >Table</a
-                  >
+                  <a href="https://tailwindcss.com/" class="footer-a">Table</a>
                 </li>
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-lg font-semibold text-white/80 uppercase">
-                Support
-              </h2>
-              <ul class="flex flex-col gap-3 text-lg text-white/60">
+              <h2 class="footer-text-title footer-text-title-right">Support</h2>
+              <ul class="footer-right-ul">
                 <li>
                   <a
                     href="https://github.com/themesberg/flowbite"
-                    class="hover:text-highlight hover:underline"
+                    class="footer-a"
                     >Live Chat</a
                   >
                 </li>
                 <li>
                   <a
                     href="https://github.com/themesberg/flowbite"
-                    class="hover:text-highlight hover:underline"
+                    class="footer-a"
                     >FAQ</a
                   >
                 </li>
               </ul>
             </div>
             <div>
-              <h2 class="mb-6 text-lg font-semibold text-white/80 uppercase">
+              <h2 class="footer-text-title footer-text-title-right">
                 About us
               </h2>
-              <ul class="flex flex-col gap-3 text-lg text-white/60">
+              <ul class="footer-right-ul">
                 <li>
-                  <a href="#" class="hover:text-highlight hover:underline"
-                    >Privacy Policy</a
-                  >
+                  <a href="#" class="footer-a">Privacy Policy</a>
                 </li>
                 <li>
-                  <a href="#" class="hover:text-highlight hover:underline"
-                    >Terms &amp; Conditions</a
-                  >
+                  <a href="#" class="footer-a">Terms &amp; Conditions</a>
                 </li>
               </ul>
             </div>

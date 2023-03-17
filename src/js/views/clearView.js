@@ -38,8 +38,9 @@ class clearView {
     function setMargin() {
       const heroCardHeight =
         document.getElementById('main-herocard').offsetHeight;
-      const promoCardHeight =
-        document.getElementById('main-lastnews').offsetHeight;
+      // const promoCardHeight =
+      // document.getElementById('main-lastnews').offsetHeight;
+      const promoCardHeight = 0;
       const margin =
         (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
       document.documentElement.style.setProperty('--margin', margin + 'px');

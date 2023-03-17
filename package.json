@@ -9,7 +9,7 @@
     "build": "parcel build src/index.html --dist-dir ./dist",
     "buildtail": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css",
     "watchtail": "npx tailwindcss -i ./src/css/input.css -o ./src/css/output.css - watch",
-    "lint":"eslint ."
+    "lint": "eslint ."
   },
   "author": "Gambloors",
   "license": "ISC",

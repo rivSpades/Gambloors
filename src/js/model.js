@@ -167,7 +167,7 @@ export class diceModel {
       body: {
         'type_game': 'dice',
         'user_winrate_choice': this.state.winChance.toFixed(2),
-        'is_roll_over': rollType === 'Roll Under' ? false : true,
+        'is_roll_under': rollType === 'Roll Under' ? true : false,
         'date_game': new Date().toISOString(),
         'bet_amount': betSize,
         'coin_ticker': 'play',
@@ -175,7 +175,7 @@ export class diceModel {
     };
 
     const res = await helper.req(this.#url, this.#data);
-    this.state.numberGenerated = (res.response.rolled_dice * 1).toFixed(0);
+    this.state.numberGenerated = res.response.rolled_dice * 1;
     this.state.isWinner = res.response.is_winner;
     console.log(res);
   }
@@ -372,21 +372,76 @@ export class OriginalsModel {
     return [
       {
         id: '0',
-        cardTitle: 'Dice',
-        cardDescription: 'Dice',
-        imageUrl: 'dice.png',
+        cardTitle: 'Casino 1',
+        cardDescription: 'Casino 1',
+        imageUrl: 'casino-1.png',
+      },
+      {
+        id: '1',
+        cardTitle: 'Casino 2',
+        cardDescription: 'Casino 2',
+        imageUrl: 'casino-2.png',
+      },
+      {
+        id: '2',
+        cardTitle: 'Casino 3',
+        cardDescription: 'Casino 3',
+        imageUrl: 'casino-3.png',
       },
     ];
   }
 
   setSettings() {
-    const swiper = new Swiper('.swiper', {
+    const swiper = new Swiper('.swiper-originals', {
       slidesPerView: 'auto',
       spaceBetween: 10,
       direction: 'horizontal',
       navigation: {
         nextEl: `.originals-nav-next`,
         prevEl: `.originals-nav-prev`,
+      },
+    });
+  }
+}
+
+export class SlotsModel {
+  loadData() {
+    return [
+      {
+        id: '0',
+        cardTitle: 'Slot 1',
+        cardDescription: 'Slot 1',
+        imageUrl: 'slot-1.png',
+      },
+      {
+        id: '1',
+        cardTitle: 'Slot 2',
+        cardDescription: 'Slot 2',
+        imageUrl: 'slot-2.png',
+      },
+      {
+        id: '2',
+        cardTitle: 'Slot 3',
+        cardDescription: 'Slot 3',
+        imageUrl: 'slot-3.png',
+      },
+      {
+        id: '3',
+        cardTitle: 'Slot 4',
+        cardDescription: 'Slot 4',
+        imageUrl: 'slot-4.png',
+      },
+    ];
+  }
+
+  setSettings() {
+    const swiper = new Swiper('.swiper-slots', {
+      slidesPerView: 'auto',
+      spaceBetween: 10,
+      direction: 'horizontal',
+      navigation: {
+        nextEl: `.slots-nav-next`,
+        prevEl: `.slots-nav-prev`,
       },
     });
   }

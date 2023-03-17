@@ -3,16 +3,121 @@
 @tailwind utilities;
 
 @layer components {
+  .top-nav-right-btn {
+    @apply uppercase focus:outline-none px-5 py-2.5 text-sm text-center mr-2 mb-2 font-bold rounded-lg transition duration-75;
+  }
   .nav-card-details {
     @apply z-50 bg-primary  text-lg font-bold shadow-sm shadow-black/30 w-40;
   }
 
+  .sidebar-a {
+    @apply flex items-center p-2 w-full transition duration-75 rounded-lg  hover:bg-accent;
+  }
+
+  .sidebar-a-dropdown {
+    @apply pl-11;
+  }
+
+  .sidebar-svg {
+    @apply w-6 h-6 transition duration-75;
+  }
+
+  .sidebar-text {
+    @apply ml-3  text-primaryWhite text-base font-semibold leading-5 flex-1 text-left whitespace-nowrap;
+  }
+
+  .sidebar-text-dropdown {
+    @apply text-highlight;
+  }
+
+  .sidebar-dropdown-ul {
+    @apply py-2 space-y-2;
+  }
+
+  .sidebar-dropdown-btn {
+    @apply flex items-center w-full p-2 transition duration-75 rounded-lg;
+  }
+
   .home-classes {
-    @apply bg-secondary mx-auto w-[85vw] md:w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))];
+    @apply bg-secondary mx-auto w-[95vw] md:w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))];
+  }
+
+  .main-herocard {
+    @apply mb-28  bg-secondary rounded-lg;
+  }
+
+  .main-herocard-left-top {
+    @apply text-left flex flex-col justify-center gap-8 lg:gap-32;
+  }
+
+  .main-herocard-left-bottom {
+    @apply flex flex-col;
+  }
+
+  .main-herocard-left-bottom-text {
+    @apply align-bottom mb-6 font-bold text-xl text-primaryWhite leading-10 lg:mb-8;
+  }
+
+  .main-herocard-left-top-text {
+    @apply mb-4 text-3xl font-bold text-primaryWhite  leading-10 md:text-4xl xl:text-5xl;
+  }
+  .main-herocard-left-bottom-btn {
+    @apply self-start w-fit inline-flex items-center text-highlightWhite bg-highlight hover:bg-highlightAccent hover:text-white transition duration-75  font-bold rounded-lg px-5 py-2.5 text-base text-center mr-2 mb-2;
+  }
+
+  .main-herocard-right {
+    @apply hidden md:mt-0 md:col-span-1 lg:flex md:justify-end md:items-center;
+  }
+
+  .main-herocard-right-img {
+    @apply opacity-20 h-1/2;
+  }
+
+  .main-herocard-grid {
+    @apply grid h-96  lg:h-[45rem] px-8 md:px-32 py-8  lg:gap-8 xl:gap-0  lg:grid-cols-2;
+  }
+
+  .main-games-container-header {
+    @apply mb-10 flex items-center justify-between;
+  }
+
+  .main-games-container-header-title {
+    @apply leading-10 text-primaryWhite capitalize text-2xl md:text-3xl  font-bold;
+  }
+
+  .main-games-container-header-nav {
+    @apply flex gap-4;
+  }
+
+  .main-games-container-header-nav-btn {
+    @apply text-primaryWhite hover:bg-accent cursor-pointer bg-primary  font-medium rounded-lg text-sm p-2 md:p-4 text-center inline-flex items-center mr-2;
+  }
+  .main-games-container-header-nav-btn-svg {
+    @apply w-4 h-4 md:w-5 md:h-5;
+  }
+
+  .main-games-cards-container {
+    @apply w-64 md:w-80 bg-primary rounded-lg hover:bg-accent hover:-translate-y-2 transition-transform duration-150;
+  }
+
+  .main-games-card {
+    @apply rounded-lg  overflow-hidden;
+  }
+
+  .main-games-card-a {
+    @apply flex flex-col items-center;
+  }
+
+  .main-games-card-img {
+    @apply w-full h-full rounded-lg;
+  }
+
+  .main-games-card-text {
+    @apply p-4  text-primaryWhite font-semibold text-lg md:text-xl;
   }
 
   .dice-classes {
-    @apply bg-secondary  mx-auto md:my-auto md:w-[70vw]  min-h-screen md:mt-16 relative;
+    @apply bg-secondary  mx-auto md:my-auto md:w-[70vw]  min-h-screen  md:mt-16 relative;
   }
 
   .dice-input-container {
@@ -24,5 +129,23 @@
 
   .dice-input-title {
     @apply text-[#cdcdcd] text-lg font-medium lg:text-xl mb-4;
+  }
+
+  .footer-svg {
+    @apply w-6 h-6;
+  }
+
+  .footer-a {
+    @apply text-primaryWhite font-medium hover:text-highlight hover:underline;
+  }
+
+  .footer-right-ul {
+    @apply flex flex-col gap-3;
+  }
+  .footer-text-title {
+    @apply font-semibold uppercase text-primaryWhite;
+  }
+  .footer-text-title-right {
+    @apply mb-6 text-lg;
   }
 }
