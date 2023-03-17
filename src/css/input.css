@@ -38,8 +38,20 @@
     @apply flex items-center w-full p-2 transition duration-75 rounded-lg;
   }
 
+  .bottomnav-btn {
+    @apply inline-flex flex-col items-center justify-center px-5 hover:bg-accent;
+  }
+
+  .bottomnav-svg {
+    @apply w-6 h-6 mb-1 text-primaryWhite group-hover:text-white;
+  }
+
+  .bottomnav-btn-text {
+    @apply text-sm text-primaryWhite group-hover:text-white;
+  }
+
   .home-classes {
-    @apply bg-secondary mx-auto w-[95vw] md:w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))];
+    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))];
   }
 
   .main-herocard {
@@ -90,10 +102,10 @@
   }
 
   .main-games-container-header-nav-btn {
-    @apply text-primaryWhite hover:bg-accent cursor-pointer bg-primary  font-medium rounded-lg text-sm p-2 md:p-4 text-center inline-flex items-center mr-2;
+    @apply text-primaryWhite hover:bg-accent cursor-pointer bg-primary  font-medium rounded-lg text-sm p-3 text-center inline-flex items-center mr-2;
   }
   .main-games-container-header-nav-btn-svg {
-    @apply w-4 h-4 md:w-5 md:h-5;
+    @apply w-5 h-5;
   }
 
   .main-games-cards-container {

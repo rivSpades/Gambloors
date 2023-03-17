@@ -170,7 +170,7 @@ export class diceModel {
         'is_roll_under': rollType === 'Roll Under' ? true : false,
         'date_game': new Date().toISOString(),
         'bet_amount': betSize,
-        'coin_ticker': 'play',
+        'coin_ticker': 'PLAY',
       },
     };
 
@@ -445,6 +445,7 @@ export class SlotsModel {
     const swiper = new Swiper('.swiper-slots', {
       slidesPerView: 'auto',
       spaceBetween: 10,
+
       direction: 'horizontal',
       navigation: {
         nextEl: `.slots-nav-next`,

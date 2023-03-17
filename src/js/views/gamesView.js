@@ -5,9 +5,9 @@ export default class GamesView {
     const cardsHtml = data.map((el) => {
       return ` 
       
-      <div class="swiper-slide main-games-cards-container">
+      <div class="swiper-slide main-games-cards-container ">
       
-      <div class="swiper-img main-games-card"  data-card="${el.id}" data-url="${el.imageUrl}">
+      <div class="swiper-img main-games-card "  data-card="${el.id}" data-url="${el.imageUrl}">
       <a class="main-games-card-a" href="#">
       <img class="main-games-card-img" src="${el.imageUrl}" alt="casino-img">
       <span class="main-games-card-text">${el.cardTitle}</span>
@@ -28,7 +28,7 @@ export default class GamesView {
     if (card) card.remove();
     const gameCards = this.#generateCards(data);
     const html = `
-     <div id="main-${this.sectionName}" class="swiper-${this.sectionName} mx-0">
+     <div id="main-${this.sectionName}" class="swiper-${this.sectionName} mx-0 overflow-hidden">
      <div class="main-games-container-header">
      <h1 class="main-games-container-header-title">${this.sectionName}</h1>
 
@@ -48,7 +48,7 @@ export default class GamesView {
 </button>
      </div>
      </div>
-    <div class="swiper-wrapper cursor-pointer">
+    <div class="swiper-wrapper cursor-pointer ">
       ${gameCards}
       
       

@@ -36,7 +36,7 @@
   </head>
 
   <body
-    class="bg-secondary pb-6 z-10 overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none"
+    class="bg-secondary z-10 overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none"
   >
     <!--TOP NAV -->
     <header
@@ -47,7 +47,7 @@
       <div class="nav-left self-center">
         <button
           type="button"
-          class="sidebar-btn p-2 ml-3 text-2xl text-primaryWhite rounded-lg hover:bg-secondary focus:outline-none"
+          class="hidden xl:block sidebar-btn p-2 ml-3 text-2xl text-primaryWhite rounded-lg hover:bg-secondary focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -93,7 +93,7 @@
     <main class="main-home">
       <!--SIDEBAR-->
       <div
-        class="nav-sidebar fixed top-24 left-0 z-[999] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary border-r-accent border-r-[0.05px]"
+        class="nav-sidebar hidden xl:block xl:fixed top-24 left-0 z-[999] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary border-r-accent border-r-[0.05px]"
         tabindex="-1"
         aria-labelledby="drawer-navigation-label"
       >
@@ -231,7 +231,7 @@
                       ></path>
                     </svg>
                     <span class="sidebar-text sidebar-text-dropdown"
-                      >Live Chat</span
+                      >Chat</span
                     >
                   </a>
                 </li>
@@ -400,16 +400,103 @@
           </ul>
         </div>
       </div>
+      <!--BOTTOM NAV-->
+      <div
+        class="fixed xl:hidden bottom-0 left-0 z-[999] w-full h-16 bg-primary border-t border-accent"
+      >
+        <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
+          <button type="button" class="bottomnav-btn group">
+            <svg
+              class="bottomnav-svg"
+              aria-hidden="true"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z"
+                clip-rule="evenodd"
+              ></path>
+            </svg>
+            <span class="bottomnav-btn-text">Menu</span>
+          </button>
+          <button type="button" class="bottomnav-btn group">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            aria-hidden="true"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+            class="bottomnav-svg"
+          >
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M202.2,200.8a103.8,103.8,0,0,0,0-145.6,2.3,2.3,0,0,0-.7-.7,2.3,2.3,0,0,0-.7-.7,103.8,103.8,0,0,0-145.6,0,2.3,2.3,0,0,0-.7.7,2.3,2.3,0,0,0-.7.7,103.8,103.8,0,0,0,0,145.6l.7.7a2.3,2.3,0,0,0,.7.7,103.8,103.8,0,0,0,145.6,0,2.3,2.3,0,0,0,.7-.7A2.3,2.3,0,0,0,202.2,200.8ZM40.4,136H64.5a63.6,63.6,0,0,0,13,31.2L60.4,184.3A87.5,87.5,0,0,1,40.4,136Zm20-64.3L77.5,88.8a63.6,63.6,0,0,0-13,31.2H40.4A87.5,87.5,0,0,1,60.4,71.7ZM215.6,120H191.5a63.6,63.6,0,0,0-13-31.2l17.1-17.1A87.5,87.5,0,0,1,215.6,120ZM167.2,77.5a63.6,63.6,0,0,0-31.2-13V40.4a87.5,87.5,0,0,1,48.3,20ZM120,64.5a63.6,63.6,0,0,0-31.2,13L71.7,60.4a87.5,87.5,0,0,1,48.3-20Zm-31.2,114a63.6,63.6,0,0,0,31.2,13v24.1a87.5,87.5,0,0,1-48.3-20Zm47.2,13a63.6,63.6,0,0,0,31.2-13l17.1,17.1a87.5,87.5,0,0,1-48.3,20Zm42.5-24.3a63.6,63.6,0,0,0,13-31.2h24.1a87.5,87.5,0,0,1-20,48.3Z"
+            ></path>
+          </svg>
+              <path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"></path>
+              <path
+                clip-rule="evenodd"
+                fill-rule="evenodd"
+                d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
+              ></path>
+            </svg>
+            <span class="bottomnav-btn-text">Casino</span>
+          </button>
+          <button type="button" class="bottomnav-btn group">
+            <svg
+              class="bottomnav-svg"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+              aria-hidden="true"
+            >
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              ></path>
+            </svg>
+            <span class="bottomnav-btn-text">Home</span>
+          </button>
+          <button type="button" class="bottomnav-btn group">
+            <svg 
+            xmlns="http://www.w3.org/2000/svg" 
+            
+            class="bottomnav-svg"
+              fill="currentColor"
+            viewBox="0 0 256 256">
+            <path d="M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM56,146.87C36.41,141.4,24,132.39,24,124V109.93c8.16,5.78,19.09,10.44,32,13.57Zm80-23.37c12.91-3.13,23.84-7.79,32-13.57V124c0,8.39-12.41,17.4-32,22.87Zm-16,71.37C100.41,189.4,88,180.39,88,172v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41Zm0-44.62A163,163,0,0,1,96,152a163,163,0,0,1-24-1.75V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54Zm64,48a165.45,165.45,0,0,1-48,0V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54ZM232,172c0,8.39-12.41,17.4-32,22.87V171.5c12.91-3.13,23.84-7.79,32-13.57Z"></path>
+          </svg>
+            <span class="bottomnav-btn-text">Bets</span>
+          </button>
+          <button type="button" class="bottomnav-btn group">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="bottomnav-svg"
+            fill="currentColor"
+            viewBox="0 0 256 256"
+            class="sidebar-svg"
+          >
+            <rect width="256" height="256" fill="none"></rect>
+            <path
+              d="M216,48H40A16,16,0,0,0,24,64V222.8a15.7,15.7,0,0,0,9.3,14.5,16,16,0,0,0,17-2.2L82,208.4l134-.4a16,16,0,0,0,16-16V64A16,16,0,0,0,216,48Z"
+            ></path>
+          </svg>
+            <span class="bottomnav-btn-text">Chat</span>
+          </button>
+        </div>
+      </div>
     </main>
 
     <!--Footer -->
 
-    <footer class="mx-auto w-full md:w-[70vw] bg-primary rounded-lg">
+    <footer
+      class="mx-auto w-full px-6 pt-6 pb-32 md:px-16 md:pt-16 bg-primary rounded-lg"
+    >
       <!--Footer container -->
-      <div class="footer-container p-20 w-full md:w-[70%]">
+      <div class="footer-container xl:mx-auto xl:w-[70%]">
         <div class="md:flex md:justify-between">
           <!--Footer Left -->
-          <div class="footer-left-container flex flex-col gap-6 mb-16 md:mb-0">
+          <div class="footer-left-container flex flex-col gap-6 mb-16 lg:mb-0">
             <a href="#" class="flex items-center">
               <span class="footer-text-title tracking-wide text-2xl"
                 >Gambloors</span
@@ -418,7 +505,7 @@
             <p class="text-base text-primaryWhite">
               Copyright © 2023 Gambloors™ All Rights Reserved.
             </p>
-            <div class="flex mt-4 space-x-6 justify-start">
+            <div class="flex mt-4 space-x-6">
               <a href="#" class="footer-a">
                 <svg
                   class="footer-svg"
