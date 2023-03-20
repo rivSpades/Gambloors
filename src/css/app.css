@@ -32,6 +32,7 @@ html {
 ::-webkit-scrollbar-track {
   background: transparent;
 }
+
 .dice-range {
   -webkit-appearance: none; /*need to add this or the background don't change*/
   background: linear-gradient(

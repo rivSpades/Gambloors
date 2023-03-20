@@ -1,6 +1,7 @@
 import * as model from './model.js';
 import clearView from './views/clearView.js';
 import sideBarView from './views/sideBarView.js';
+import topNavView from './views/topNavView.js';
 import diceView from './views/diceView.js';
 import loginView from './views/loginView.js';
 import registerView from './views/registerView.js';
@@ -10,7 +11,6 @@ import walletView from './views/walletView.js';
 import herocardView from './views/herocardView.js';
 import homeView from './views/homeView.js';
 
-import * as config from './config.js';
 import lastnewsView from './views/lastNewsView.js';
 import originalsView from './views/originalsView.js';
 import slotsView from './views/slotsView.js';
@@ -27,6 +27,7 @@ let userWallets;
 export class controllerStart {
   constructor() {}
   startControllerSideBar = new controllerSideBar();
+  startControllerTopNav = new controllerTopNav();
   startControllerPromotionsSlider = new controllerPromotionsSlider();
   startControllerLobby = new controllerLobby();
   startControllerDice = new controllerDice();
@@ -58,6 +59,7 @@ export class controllerStart {
   async init() {
     this.controlStart();
     this.startControllerSideBar.init();
+    this.startControllerTopNav.init();
     this.startControllerLogin.init();
     this.startControllerRegister.init();
 
@@ -145,6 +147,12 @@ export class controllerLobby {
 export class controllerSideBar {
   init() {
     sideBarView.addHandlerRender();
+  }
+}
+
+export class controllerTopNav {
+  init() {
+    topNavView.addHandlerRender();
   }
 }
 

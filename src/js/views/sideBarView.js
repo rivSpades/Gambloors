@@ -1,10 +1,9 @@
 class sideBarView {
   addHandlerRender() {
     const sidebarrBtn = document.querySelector('.sidebar-btn');
-
+    const main = document.querySelector('main');
+    const sideNav = document.querySelector('.nav-sidebar');
     sidebarrBtn.addEventListener('click', function () {
-      const sideNav = document.querySelector('.nav-sidebar');
-
       sideNav.classList.toggle('-translate-x-full');
     });
     const sidebarNav = document.querySelector('.sidebar-nav');
@@ -18,6 +17,12 @@ class sideBarView {
 
         e.target.parentElement.nextElementSibling.classList.toggle('hidden');
       }
+    });
+
+    main.addEventListener('click', function (e) {
+      if (sideNav.classList.contains('-translate-x-full')) return;
+      if (e.target === sideNav) return;
+      else sideNav.classList.toggle('-translate-x-full');
     });
   }
 }

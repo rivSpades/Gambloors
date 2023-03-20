@@ -36,18 +36,18 @@
   </head>
 
   <body
-    class="bg-secondary z-10 overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none"
+    class="bg-secondary  overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none  "
   >
     <!--TOP NAV -->
     <header
-      class="w-screen h-24 z-[999] bg-primary border-b-accent border-b-[0.05px] flex items-center justify-between sticky top-0"
+      class="w-screen h-24 z-[998] bg-transparent  flex items-center justify-between absolute top-0 transition-colors  duration-300"
     >
       <!--TOP NAV Left-->
 
-      <div class="nav-left self-center">
+      <div class="nav-left self-center z-[999]">
         <button
           type="button"
-          class="hidden xl:block sidebar-btn p-2 ml-3 text-2xl text-primaryWhite rounded-lg hover:bg-secondary focus:outline-none"
+          class="hidden xl:block sidebar-btn p-2 ml-3  text-2xl text-primaryWhite rounded-lg hover:bg-secondary focus:outline-none"
           aria-controls="navbar-default"
           aria-expanded="false"
         >
@@ -88,17 +88,14 @@
       </nav>
     </header>
 
-    <!--MAIN-->
-
-    <main class="main-home">
-      <!--SIDEBAR-->
-      <div
-        class="nav-sidebar hidden xl:block xl:fixed top-24 left-0 z-[999] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary border-r-accent border-r-[0.05px]"
+  <!--SIDEBAR-->
+    <div
+        class="nav-sidebar hidden xl:block xl:fixed top-0 left-0 z-[998] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary  border-r-accent  border-r-[0.05px] "
         tabindex="-1"
         aria-labelledby="drawer-navigation-label"
       >
         <!--SIDEBAR MENU-->
-        <div class="py-4 overflow-y-auto">
+        <div class="py-24 overflow-y-auto">
           <ul class="sidebar-nav space-y-2 flex flex-col gap-6">
             <li>
               <a href="#" class="sidebar-a">
@@ -400,6 +397,12 @@
           </ul>
         </div>
       </div>
+
+    <!--MAIN-->
+
+    <main class="main-home">
+    
+      
       <!--BOTTOM NAV-->
       <div
         class="fixed xl:hidden bottom-0 left-0 z-[999] w-full h-16 bg-primary border-t border-accent"

@@ -70,17 +70,23 @@ class HeroCardView {
              </button>
              </div>
            </div>
+           <!--
            <div class="main-herocard-right">
              <img class="main-herocard-right-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice.png" alt="create account" />
-           </div>
+           </div>-->
          </div>
        </div>`;
     }
 
     targetElement.insertAdjacentHTML('beforeend', html);
     const targetCard = document.getElementById('main-herocard');
-    targetCard.style.backgroundImage = ` url('https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/banner-bg.png')`;
+    targetCard.style.backgroundImage = `linear-gradient(to top, rgba(32, 32, 32, 0), rgba(32, 32, 32, 0)), 
+    linear-gradient(to right, rgba(32, 32, 32, 0.8), rgba(32, 32, 32, 0), rgba(32, 32, 32, 0.8)),
+    linear-gradient(to bottom, rgba(32, 32, 32, 0.8), rgba(32, 32, 32, 0), rgba(32, 32, 32, 1)),
+    linear-gradient(to left, rgba(32, 32, 32, 0), rgba(32, 32, 32, 0), rgba(32, 32, 32, 0)),  url('./img/banner-bg-4.png')`;
     targetCard.style.backgroundSize = `cover`;
+    targetCard.style.border = '1px solid #202020';
+    targetCard.style.boxShadow = 'inset 0 0 10px 10px rgba(32, 32, 32, 0.8)';
   }
 }
 

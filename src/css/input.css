@@ -51,15 +51,15 @@
   }
 
   .home-classes {
-    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[70vw] min-h-screen relative mt-[calc(var(--margin)/3)] mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))];
+    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[70vw] min-h-screen  relative mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))] col-start-2 col-end-3 row-start-2 row-end-3;
   }
 
   .main-herocard {
-    @apply mb-28  bg-secondary rounded-lg;
+    @apply mb-28  bg-secondary rounded-lg h-[50vh] lg:h-full;
   }
 
   .main-herocard-left-top {
-    @apply text-left flex flex-col justify-center gap-8 lg:gap-32;
+    @apply text-left flex flex-col justify-center  gap-24 lg:gap-32;
   }
 
   .main-herocard-left-bottom {
@@ -86,7 +86,7 @@
   }
 
   .main-herocard-grid {
-    @apply grid h-96  lg:h-[45rem] px-8 md:px-32 py-8  lg:gap-8 xl:gap-0  lg:grid-cols-2;
+    @apply grid h-full  lg:h-[45rem] px-8 md:px-32 py-8  lg:gap-8 xl:gap-0  lg:grid-cols-2;
   }
 
   .main-games-container-header {
@@ -117,7 +117,7 @@
   }
 
   .main-games-card-a {
-    @apply flex flex-col items-center;
+    @apply flex flex-col items-center relative;
   }
 
   .main-games-card-img {
@@ -125,7 +125,7 @@
   }
 
   .main-games-card-text {
-    @apply p-4  text-primaryWhite font-semibold text-lg md:text-xl;
+    @apply p-2  text-primaryWhite font-semibold text-lg md:text-xl absolute bottom-0 bg-primary/90 w-full h-fit text-center;
   }
 
   .dice-classes {

@@ -35,6 +35,7 @@ class clearView {
   }
   centralizeContent(target) {
     const main = document.querySelector('main');
+
     function setMargin() {
       const heroCardHeight =
         document.getElementById('main-herocard').offsetHeight;
@@ -44,6 +45,17 @@ class clearView {
       const margin =
         (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
       document.documentElement.style.setProperty('--margin', margin + 'px');
+      /*function handleMediaQuery(event) {
+        const sideNav = document.querySelector('.nav-sidebar');
+        console.log(event);
+        if (event.matches && !sideNav.classList.contains('-translate-x-full')) {
+          main.style.transform = `translateX(${sideNav.offsetWidth}px)`;
+          console.log('entra aqui');
+        }
+      }
+      const xlScreens = window.matchMedia('(min-width: 1281px)');
+      handleMediaQuery(xlScreens);
+      xlScreens.addEventListener('change', handleMediaQuery);*/
     }
     switch (target) {
       case 'home':
