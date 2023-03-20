@@ -51,7 +51,7 @@
   }
 
   .home-classes {
-    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[70vw] min-h-screen  relative mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))] col-start-2 col-end-3 row-start-2 row-end-3;
+    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[var(--mainWidth)] min-h-screen  relative mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))] col-start-2 col-end-3 row-start-2 row-end-3 transition-transform duration-300;
   }
 
   .main-herocard {

@@ -3,6 +3,9 @@
   --fontSize: calc(((100vw * 0.783) / 19.2) * 16 / 100);
   --promoHeight: 16rem;
   --promoWidth: 16rem;
+  --topnavWidth: 100%;
+  --mainWidth: 70vw;
+  --footerWidth: 100%;
 }
 
 * {
