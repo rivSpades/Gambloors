@@ -107,7 +107,7 @@ export class diceModel {
   };
   #data;
   #url =
-    'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/game_trx_historic/trxhist/single_bet/';
+    'https://still-frog-f6ef.riverspades336061.workers.dev/api/game_trx_historic/trxhist/single_bet/';
 
   constructor() {}
 
@@ -190,7 +190,8 @@ export class loginModel {
     token: '',
     error: '',
   };
-  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/user/token/';
+  #url =
+    'https://still-frog-f6ef.riverspades336061.workers.dev/api/user/token/';
   #data;
   constructor(email, password) {
     this.email = email;
@@ -222,7 +223,7 @@ export class loginModel {
 }
 
 export class userDetailsModel {
-  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/user/me/';
+  #url = 'https://still-frog-f6ef.riverspades336061.workers.dev/api/user/me/';
   #data;
   #token;
   constructor(token) {
@@ -262,7 +263,8 @@ export class registerModel {
     },
   };
 
-  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/user/create/';
+  #url =
+    'https://still-frog-f6ef.riverspades336061.workers.dev/api/user/create/';
   #data;
   constructor(name, email, password) {
     this.name = name;
@@ -301,7 +303,7 @@ export class walletsModel {
   };
 
   #url =
-    'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/profile_user/profile/';
+    'https://still-frog-f6ef.riverspades336061.workers.dev/api/profile_user/profile/';
   #data;
   #token;
   constructor(token) {
@@ -468,7 +470,8 @@ export class ProvablyFairModel {
       hashedServerSeed: '',
     },
   };
-  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/seeds/seed/';
+  #url =
+    'https://still-frog-f6ef.riverspades336061.workers.dev/api/seeds/seed/';
   #data;
   #token;
   constructor(token) {
@@ -513,7 +516,7 @@ export class ProvablyFairModel {
   }
   async changeServerSeed() {
     const url =
-      'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/seeds/seed/change_server_seed/';
+      'https://still-frog-f6ef.riverspades336061.workers.dev/api/seeds/seed/change_server_seed/';
     const data = {
       method: 'PUT',
       headers: {
@@ -537,7 +540,7 @@ export class diceLiveStatsModel {
     lastBetID: '',
   };
   #url =
-    'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/game_trx_historic/trxhist/';
+    'https://still-frog-f6ef.riverspades336061.workers.dev/api/game_trx_historic/trxhist/';
   #data;
   #token;
   constructor(token) {
