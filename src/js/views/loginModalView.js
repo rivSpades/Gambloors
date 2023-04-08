@@ -1,4 +1,4 @@
-class LoginView {
+class LoginModalView {
   targetElement = document.querySelector('body');
 
   addHandlerRender() {
@@ -53,27 +53,6 @@ class LoginView {
       modalLoginError.classList.remove('hidden');
       document.querySelector('.login-error-msg').textContent = state;
     }
-  }
-
-  renderAuthButtons() {
-    const html = `<div>
-    <button
-    type="button"
-    class="text-white uppercase nav-btn-login border border-white hover:bg-secondary/60 focus:outline-none font-bold rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
-  >
-    Login
-  </button>
-  <button
-    type="button"
-    class="nav-btn-register focus:outline-none text-white uppercase bg-highlight transition duration-75 hover:bg-highlight/80 font-bold rounded-lg px-5 py-2.5 text-sm mr-2 mb-2 dark:focus:ring-yellow-900"
-  >
-    Register
-  </button>
-  </div>`;
-    const rightNav = document.querySelector('.nav-right');
-
-    rightNav.innerHTML = '';
-    rightNav.insertAdjacentHTML('beforeend', html);
   }
 
   render() {
@@ -165,4 +144,4 @@ class LoginView {
   }
 }
 
-export default new LoginView();
+export default new LoginModalView();

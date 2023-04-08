@@ -20,9 +20,6 @@
 }
 
 html {
-  /*10px/16px = 0.625 = 62.5%*/
-  /*font-size: 62.5%; /*78.5% */
-
   scroll-behavior: smooth;
   height: 100%;
 }
@@ -47,17 +44,29 @@ html {
   );
 }
 
+.dice-range-verify {
+  -webkit-appearance: none; /*need to add this or the background don't change*/
+  background: linear-gradient(
+    to right,
+    rgba(155, 237, 154, 0.5) 0%,
+    rgba(155, 237, 154, 0.5) 100%
+  );
+}
+
+.dice-range-verify::-webkit-slider-thumb,
 .dice-range::-webkit-slider-thumb {
   cursor: pointer;
+  display: none;
   appearance: none;
-  width: 2.5rem;
-  height: 2.5rem;
+  width: 1.8rem;
+  height: 1.8rem;
   border-radius: 0%;
   outline: 1px solid #909090;
 
   background: #242423;
 }
 
+.dice-range-verify:active::-webkit-slider-thumb,
 .dice-range:active::-webkit-slider-thumb {
   outline: 3px solid #f5cb5c;
 }

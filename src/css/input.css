@@ -2,9 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  input[type='number']::-webkit-inner-spin-button,
+  input[type='number']::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
 @layer components {
-  .top-nav-right-btn {
-    @apply uppercase focus:outline-none px-5 py-2.5 text-sm text-center mr-2 mb-2 font-bold rounded-lg transition duration-75;
+  .top-nav-right-btn,
+  .nav-register-btn {
+    @apply px-5 py-2.5;
+  }
+  .btn {
+    @apply transition duration-75 font-bold text-center rounded-lg uppercase outline-none focus:outline-none;
+  }
+  .btn-highlight {
+    @apply btn text-highlightWhite  bg-highlight hover:bg-highlightAccent hover:text-white;
   }
   .nav-card-details {
     @apply z-50 bg-primary  text-lg font-bold shadow-sm shadow-black/30 w-40;
@@ -51,7 +66,7 @@
   }
 
   .home-classes {
-    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[var(--mainWidth)] min-h-screen  relative mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))] col-start-2 col-end-3 row-start-2 row-end-3 transition-transform duration-300;
+    @apply bg-secondary mx-auto w-full p-6 xl:p-0 xl:w-[var(--mainWidth)] min-h-screen  relative mb-[calc(var(--margin))] tall:mb-[calc(4*var(--margin))] col-start-2 col-end-3 row-start-2 row-end-3 transition-transform duration-500;
   }
 
   .main-herocard {
@@ -129,20 +144,48 @@
   }
 
   .dice-classes {
-    @apply bg-secondary  mx-auto md:my-auto md:w-[70vw]  min-h-screen  md:mt-16 relative;
+    @apply bg-secondary  mx-auto md:my-auto md:w-[70vw] mt-28  min-h-screen  md:mt-16 relative;
   }
-
+  .dice-grid-item {
+    @apply px-6 col-start-1 col-end-4 self-start justify-self-center flex gap-6 w-full;
+  }
   .dice-input-container {
-    @apply bg-primary border border-[#cdcdcd]/10   text-[#cdcdcd] text-lg font-semibold rounded-t-lg   p-2.5 mb-1 flex justify-between;
+    @apply bg-primary border border-accent   text-primaryWhite text-lg font-medium rounded-lg    px-5 py-3   flex justify-between sm:w-64   uppercase;
   }
   .dice-input {
-    @apply w-full bg-primary;
+    @apply bg-primary w-full;
   }
 
   .dice-input-title {
     @apply text-[#cdcdcd] text-lg font-medium lg:text-xl mb-4;
   }
 
+  .dice-manual-auto-a {
+    @apply inline-block px-4 py-3 rounded-lg text-lg font-semibold uppercase text-center  text-primaryWhite  bg-secondary;
+  }
+
+  .dice-manual-auto-a-active {
+    @apply bg-primaryWhite text-secondary;
+  }
+  .dice-control-btn {
+    @apply flex-grow py-2 px-5 text-base  font-semibold text-secondary  bg-primaryWhite rounded-lg cursor-pointer;
+  }
+
+  .dice-control-winchance-btn {
+    @apply btn-highlight p-4 text-center inline-flex items-center;
+  }
+
+  .dice-control-btn-active {
+    @apply bg-highlight text-highlightWhite;
+  }
+
+  .modal-header-btn {
+    @apply flex-grow px-4 py-2 text-sm font-medium text-secondary bg-white border hover:bg-accent/5 hover:text-highlight cursor-pointer;
+  }
+
+  .modal-header-btn-selected {
+    @apply bg-accent/5 text-highlight hover:bg-none;
+  }
   .footer-svg {
     @apply w-6 h-6;
   }

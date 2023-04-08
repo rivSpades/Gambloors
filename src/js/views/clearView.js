@@ -33,34 +33,21 @@ class clearView {
         break;
     }
   }
-  centralizeContent(target) {
+  setMargin() {
     const main = document.querySelector('main');
-
-    function setMargin() {
-      const heroCardHeight =
-        document.getElementById('main-herocard').offsetHeight;
-      // const promoCardHeight =
-      // document.getElementById('main-lastnews').offsetHeight;
-      const promoCardHeight = 0;
-      const margin =
-        (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
-      document.documentElement.style.setProperty('--margin', margin + 'px');
-      /*function handleMediaQuery(event) {
-        const sideNav = document.querySelector('.nav-sidebar');
-        console.log(event);
-        if (event.matches && !sideNav.classList.contains('-translate-x-full')) {
-          main.style.transform = `translateX(${sideNav.offsetWidth}px)`;
-          console.log('entra aqui');
-        }
-      }
-      const xlScreens = window.matchMedia('(min-width: 1281px)');
-      handleMediaQuery(xlScreens);
-      xlScreens.addEventListener('change', handleMediaQuery);*/
-    }
+    const heroCardHeight =
+      document.getElementById('main-herocard').offsetHeight;
+    // const promoCardHeight =
+    // document.getElementById('main-lastnews').offsetHeight;
+    const promoCardHeight = 0;
+    const margin = (main.offsetHeight - (heroCardHeight + promoCardHeight)) / 2;
+    document.documentElement.style.setProperty('--margin', margin + 'px');
+  }
+  centralizeContent(target) {
     switch (target) {
       case 'home':
-        setMargin(); //apply for the first time
-        window.addEventListener('resize', setMargin); //apply on resize
+        this.setMargin(); //apply for the first time
+        window.addEventListener('resize', this.setMargin); //apply on resize
         //main.style.marginTop = margin / 2 + 'px';
 
         /* function handleMediaQuery(event) {

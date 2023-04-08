@@ -202,7 +202,6 @@ a:link {
 /**************************/
 
 .main-nav-list {
-  list-style: none;
   display: flex;
   align-items: center;
   gap: 4.8rem;

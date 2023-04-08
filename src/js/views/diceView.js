@@ -1,194 +1,269 @@
 class diceView {
   targetElement = document.querySelector('main');
 
-  render() {
+  render(data) {
+    const depositBtn = `<!--Deposit Button-->
+    <button type="button" class="nav-register-btn dice-deposit-btn btn-highlight flex-grow sm:grow-0 ">
+    Deposit</button>
+    `;
+    const playforrealBtn = `<!--Play For Real Button-->
+    <button type="button"  class="nav-register-btn dice-playforreal-btn btn-highlight flex-grow sm:grow-0 ">
+    Play for real</button>
+    `;
+
+    const walletDetails = data
+      ? Object.values(data)
+          .map(
+            (balance, i) =>
+              `<li  class="dice-wallet-value-container flex  justify-between group hover:bg-accent  rounded-lg p-4">
+              <div class="dice-input dice-wallet-value group-hover:bg-accent  ">${balance}</div>
+              <span class="font-semibold w-1/4 ">${
+                Object.keys(data)[i]
+              }</span></li>`
+          )
+          .join('')
+      : '';
+
+    const selectWallet = data
+      ? Object.values(data)
+          .map(
+            (balance, i) =>
+              `<div class="dice-input dice-wallet-value ">${balance}</div>
+      
+          <div class="flex gap-2">
+          <span class="font-semibold">${Object.keys(data)[i]}</span>
+          <svg class="dice-wallet-svg-close w-4 ml-1 h-auto" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M15 1L8 8L1 1" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <svg class="dice-wallet-svg-open hidden w-4 ml-1 h-auto" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M1 8L8 1L15 8" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+      </div>`
+          )
+          .reduce((prevBalance, currentBalance) =>
+            currentBalance > prevBalance ? currentBalance : prevBalance
+          )
+      : `<div class="dice-input dice-wallet-value ">100.000000</div>
+      
+      <div class="flex gap-2">
+      <span class="font-semibold">fun</span>
+      <svg class="w-4 ml-1 h-auto" viewBox="0 0 16 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15 1L8 8L1 1" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
+  </div>`;
+
+    const walletContainer = `<!--Wallet Container-->
+    <div class="dice-wallet-container relative">
+
+
+    <div class="dice-input-container  w-64 cursor-pointer flex-grow sm:grow-0  ">
+
+    ${selectWallet}
+
+  </div>
+
+
+     <!--Wallet Dropdown-->
+     <ul class="dice-wallet-dropdown hidden dice-input-container  absolute w-64  cursor-pointer flex-grow sm:grow-0 flex-col ">
+    ${walletDetails}
+    </ul>
+     
+  </div> <!--/Wallet Container-->
+  `;
+
+    const settings = `
+  <!--Settings-->
+  <div class="dice-settings-container text-primaryWhite flex gap-6 items-center">
+  <svg xmlns="http://www.w3.org/2000/svg" class="dice-pvfair-btn w-6 h-6 cursor-pointer" fill="currentColor" viewBox="0 0 256 256"><path d="M160,16A80.07,80.07,0,0,0,83.91,120.78L26.34,178.34A8,8,0,0,0,24,184v40a8,8,0,0,0,8,8H72a8,8,0,0,0,8-8V208H96a8,8,0,0,0,8-8V184h16a8,8,0,0,0,5.66-2.34l9.56-9.57A80,80,0,1,0,160,16Zm20,76a16,16,0,1,1,16-16A16,16,0,0,1,180,92Z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" class="dice-livestats-btn w-6 h-6 cursor-pointer" fill="currentColor" viewBox="0 0 256 256"><path d="M240,56v64a8,8,0,0,1-13.66,5.66L200,99.31l-58.34,58.35a8,8,0,0,1-11.32,0L96,123.31,29.66,189.66a8,8,0,0,1-11.32-11.32l72-72a8,8,0,0,1,11.32,0L136,140.69,188.69,88,162.34,61.66A8,8,0,0,1,168,48h64A8,8,0,0,1,240,56Z"></path></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 cursor-pointer" fill="currentColor" viewBox="0 0 256 256"><path d="M216,130.16q.06-2.16,0-4.32l14.92-18.64a8,8,0,0,0,1.48-7.06,107.6,107.6,0,0,0-10.88-26.25,8,8,0,0,0-6-3.93l-23.72-2.64q-1.48-1.56-3-3L186,40.54a8,8,0,0,0-3.94-6,107.29,107.29,0,0,0-26.25-10.86,8,8,0,0,0-7.06,1.48L130.16,40Q128,40,125.84,40L107.2,25.11a8,8,0,0,0-7.06-1.48A107.6,107.6,0,0,0,73.89,34.51a8,8,0,0,0-3.93,6L67.32,64.27q-1.56,1.49-3,3L40.54,70a8,8,0,0,0-6,3.94,107.71,107.71,0,0,0-10.87,26.25,8,8,0,0,0,1.49,7.06L40,125.84Q40,128,40,130.16L25.11,148.8a8,8,0,0,0-1.48,7.06,107.6,107.6,0,0,0,10.88,26.25,8,8,0,0,0,6,3.93l23.72,2.64q1.49,1.56,3,3L70,215.46a8,8,0,0,0,3.94,6,107.71,107.71,0,0,0,26.25,10.87,8,8,0,0,0,7.06-1.49L125.84,216q2.16.06,4.32,0l18.64,14.92a8,8,0,0,0,7.06,1.48,107.21,107.21,0,0,0,26.25-10.88,8,8,0,0,0,3.93-6l2.64-23.72q1.56-1.48,3-3L215.46,186a8,8,0,0,0,6-3.94,107.71,107.71,0,0,0,10.87-26.25,8,8,0,0,0-1.49-7.06ZM128,168a40,40,0,1,1,40-40A40,40,0,0,1,128,168Z"></path></svg>
+  </div>
+  `;
+
     const html = `<section id="game-dice" class="w-full  ">
-    <div class="dice-container lg:bg-primary/70 lg:border lg:border-secondary select-none  lg:p-12    grid  grid-cols-3 grid-rows-12 gap-x-0  gap-y-14 lg:gap-y-12 items-start text-white">
-   
-    <div class="px-12 col-start-2 col-end-3 self-start justify-self-center hidden">
-    <div class="  dice-input-container  ">
-    <svg class="w-8  h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M216,72H56a8,8,0,0,1,0-16H192a8,8,0,0,0,0-16H56A24.1,24.1,0,0,0,32,64V192a24.1,24.1,0,0,0,24,24H216a16,16,0,0,0,16-16V88A16,16,0,0,0,216,72Zm-36,84a12,12,0,1,1,12-12A12,12,0,0,1,180,156Z"></path></svg>
-    <input type="text"   value="100.00" autocomplete="off" disabled    class="dice-wallet dice-input j w-fit text-center    ">
-    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 2000 1995.84"
-                      class="w-8 h-auto"
-                    >
-                      <path
-                        d="M114.87 999.53a895 895 0 0 0 15.08 163l-111.2 20.76a992.52 992.52 0 0 0 50.56 177.5l105.44-41a885.54 885.54 0 0 0 73.12 146.32l-96.08 59.71a1003.81 1003.81 0 0 0 111.38 147.06l83.52-76.28a894.45 894.45 0 0 0 121 110.25l-68.18 90.26a1000.24 1000.24 0 0 0 156.86 97.2l50.44-101.27a882.84 882.84 0 0 0 152.57 59L728.58 1961A996.2 996.2 0 0 0 910 1994.57l10.25-112.65c26.9 2.45 54.31 3.69 81.48 3.69 27.44 0 55.13-1.27 82.29-3.76l10.36 112.64a996.15 996.15 0 0 0 181.4-33.77l-30.95-108.83a882.9 882.9 0 0 0 152.48-59.16l50.53 101.22a1000.28 1000.28 0 0 0 156.75-97.32l-68.25-90.2a894.47 894.47 0 0 0 120.93-110.35l83.59 76.22a1003.8 1003.8 0 0 0 111.26-147.18l-96.12-59.63a885.67 885.67 0 0 0 73-146.43l105.48 40.87a992.52 992.52 0 0 0 50.4-177.55l-111-20.65a895.19 895.19 0 0 0 15.13-163v-1.61l112.93-.19a1005.34 1005.34 0 0 0-17.26-183.64l-111.23 20.85a882.43 882.43 0 0 0-45-157.25l105.4-41.07a996.37 996.37 0 0 0-82.63-165l-96 59.8a892.7 892.7 0 0 0-98.94-130.4l83.45-76.36a1005.81 1005.81 0 0 0-136.49-124.11l-68.1 90.32A889.26 889.26 0 0 0 1395.91 204l50.35-101.32A993.14 993.14 0 0 0 1274 36.26l-30.74 108.88a886 886 0 0 0-160.87-29.66l10.18-112.67q-44.87-4-90.83-4.08-47.32 0-93.54 4.33l10.46 112.64a885.87 885.87 0 0 0-160.79 30.1L726.83 37a993.17 993.17 0 0 0-172 66.93l50.61 101.17a889.42 889.42 0 0 0-138.94 86.42l-68.33-90.14A1005.84 1005.84 0 0 0 262 325.84L345.66 402a892.61 892.61 0 0 0-98.6 130.67l-96.18-59.54a996.22 996.22 0 0 0-82.22 165.24l105.52 40.78a882.37 882.37 0 0 0-44.52 157.37L18.43 816A1005.6 1005.6 0 0 0 1.74 998.73v.9zm988 700.52l-6-42.11a661.31 661.31 0 0 0 181.79-53.37l17.71 38.68a703.81 703.81 0 0 1-193.53 56.75zm607.38-701.37a709.44 709.44 0 0 1-28.5 199.62l-40.82-12a666.81 666.81 0 0 0 26.79-187.6v-1.1l42.54-.11v1.15zm-113-383.92A705.06 705.06 0 0 1 1681.39 798l-40.8 12a662.54 662.54 0 0 0-79.07-172.21zm-35.13 743.92l35.77 23a711.56 711.56 0 0 1-132.06 152.36l-27.83-32.1a669.05 669.05 0 0 0 124.12-143.26zm-266.88-1005a708.65 708.65 0 0 1 169.7 108.91l-27.83 32.18a666.13 666.13 0 0 0-159.52-102.37zM1188 824h99.11L1416 1014.1V824h101v344h-100.52L1288 978.94V1168h-100V824zm-186.26-533.75a717.11 717.11 0 0 1 99.89 7l-5.95 42.12a674.66 674.66 0 0 0-189.57.24l-6.05-42.11a717.09 717.09 0 0 1 101.68-7.25zM797 824h106v209.59c0 18.74 5.29 33.37 15.68 43.91s24.85 15.81 43.29 15.81c18.28 0 32.83-5.19 43.23-15.57s15.8-25.1 15.8-44.14V824h106v204.71a172.5 172.5 0 0 1-9.72 57.5 124.47 124.47 0 0 1-29.88 47.31q-20.27 20.26-42.6 28.46-30.94 11.47-74.32 11.48a468.15 468.15 0 0 1-54.74-3.51q-29.65-3.52-49.58-13.94t-36.45-29.63c-11-12.8-18.68-26-22.75-39.58-6.56-21.86-10-41.22-10-58.08V824zm110.25 834l-6 42.12a703.88 703.88 0 0 1-193.56-56.64l17.67-38.7A661.35 661.35 0 0 0 907.25 1658zM706.63 354.46l17.74 38.67a666.2 666.2 0 0 0-159.25 102.76l-27.91-32.11a708.71 708.71 0 0 1 169.42-109.32zM487 824h262v74H594v60h133v69H594v141H487V824zm79 678.3l-27.85 32.15a711.54 711.54 0 0 1-132.18-152.25l35.75-23.05A669 669 0 0 0 566 1502.3zm-160.68-886l35.79 23a662.45 662.45 0 0 0-78.63 172.41l-40.88-11.98a705 705 0 0 1 83.68-183.48zm-69.47 383a666.73 666.73 0 0 0 26.94 187.59l-40.81 12a709.26 709.26 0 0 1-28.67-199.55z"
-                        fill="#f1385b"
-                      />
-                    </svg>
+    <div class="dice-container lg:bg-primary lg:border lg:border-accent select-none  lg:p-12    grid  grid-cols-3 grid-rows-12 gap-x-0  gap-y-8 lg:gap-y-12 items-start text-primaryWhite ">
+
+    <!--Row 1-->
+    
+    
+    <div class="dice-grid-item justify-self-start  ">
+
+    
+    
+
+  ${walletContainer}
+
+   ${data ? depositBtn : playforrealBtn}
+
     </div>
-    </div>
-    <div class="px-12 lg:px-56  col-start-1  col-end-4 self-start  ">
+
+    
+    
+    <!--Row 2-->
+    
+    <div class="dice-grid-item bg-primary py-6  justify-between ">
+
+    <!--Manual/Auto-->
+
+    <ul class="flex flex-wrap   w-fit rounded-lg p-1 bg-secondary">
+    <li class="mr-2">
+        <a href="#" class="dice-manual-auto-a dice-manual-auto-a-active">manual</a>
+    </li>
+    <li class="mr-2">
+        <a href="#"  class="dice-manual-auto-a">auto</a>
+    </li>
+    
+</ul>
+
+
+${data ? settings : ''}
+
+</div>
+
+
+<!--Row 3-->
+<div class="dice-grid-item lg:px-56 justify-center">
+
+<!--Dice History-->
     <div class="dice-history flex justify-center text-xl text-center">
     <div class="invisible">12.00</div>
     </div>
     </div>
-    <div class="px-12 lg:px-56 col-start-1 col-end-4 self-start  ">
-  <div class="border-[1.5rem] border-transparent relative">
-    <div class="dice-range-bubble  invisible w-8 h-8 flex p-6 -left-6  justify-center absolute top-16   ">
+
+    <!--Row 4-->
+    <div class="px-6 lg:px-56 col-start-1 col-end-4 self-start  ">
+
+    <!--Bubble container-->
+  <div class="border-[1.5rem] border-transparent relative font-medium text-xl">
+    <div class="dice-range-bubble  invisible w-8 h-8 flex p-6 -left-6  justify-center absolute -top-8   ">
       <p class="dice-range-bubble-value -rotate-45 self-center ">15</p>
     
     </div>
     </div>
-      <datalist id="dice-range-list" class="list-range-numbers flex justify-between ml-[2rem] mb-4 mt-6 ">
-        <option value="0" label="0" class="font-semibold text-3xl text-[#cdcdcd]"></option>
-        <option value="25" label="25" class="font-semibold text-3xl text-[#cdcdcd]" ></option>
-        <option value="50" label="50" class="font-semibold text-3xl text-[#cdcdcd]"></option>
-        <option value="75" label="75" class="font-semibold text-3xl text-[#cdcdcd]"></option>
-        <option value="100" label="100" class="font-semibold text-3xl text-[#cdcdcd]"></option>
-      </datalist>
+      
 
      
-      
-      <input  class="dice-range w-full outline-1 rounded-2xl border-[1.5rem]   border-primary lg:border-secondary" type="range" min="1.00" max="98.00" value="50.00" step="0.01" list="dice-range-list">
-      
+    <!--Input Range -->
+      <input id="rangeValueContainer"  class="dice-range w-full  rounded-lg" type="range" min="1.00" max="98.00" value="50.00" step="0.01" list="dice-range-list">
+      <datalist id="dice-range-list" class="text-2xl rounded-sm text-primaryWhite list-range-numbers flex  text-center w-full  justify-between item-center    ">
+        <option value="0" label="0" class="font-medium"></option>
+        <option value="25" label="25" class="font-medium " ></option>
+        <option value="50" label="50" class="font-medium "></option>
+        <option value="75" label="75" class="font-medium "></option>
+        <option value="100" label="100" class="font-medium "></option>
+      </datalist>
     </div>
-  
-    <div class="px-12 lg:px-56 col-start-1 col-end-4  flex justify-center self-center gap-4 md:gap-16">
-    <div class="dice-multiplier-container">
+
+    <!--Row 5-->
+    <div class="dice-grid-item  lg:w-1/2 justify-center  "  >
+    
+
+    <div class="dice-betamount-container flex-grow   ">
+      <p class="dice-input-title">Bet Amount</p>
+      <div class=" dice-input-container w-full  ">
+            <input type="number"  value="10"  autocomplete="off"   class="dice-betAmount dice-input ">
+            <span class="font-semibold">fun</span>
+</div>
+           
+   </div>       
+
+          <div class="dice-payout-container flex-grow  ">
+          <p class="dice-input-title ">Payout on Win</p>
+          <div class=" dice-input-container w-full ">
+          <input type="number"   value="0" autocomplete="off" disabled   class="dice-payout dice-input ">
+          <span class="font-semibold">fun</span>
+          </div>
+          </div>
+          </div>
+
+          <!--Row 6-->
+          <div class="dice-grid-item  lg:w-1/2">
+
+          <!--Control Betsize Buttons-->
+
+          <button type="button" class="dice-control-btn dice-minbet-btn">Min</button>
+          <button type="button" class="dice-control-btn dice-halfbet-btn">/2</button>
+          <button type="button" class="dice-control-btn dice-doublebet-btn">x2</button>
+          </div>
+
+  <!--Row 7-->
+    <div class=" dice-grid-item  justify-center lg:gap-24 ">
+
+    <div class="dice-multiplier-container   ">
     <p class="dice-input-title">Multiplier</p>
-    <div class=" dice-input-container ">
-      <input type="text"  value="1.9600"  autocomplete="off"   class="dice-multiplier dice-input">
-      <svg class="w-8 h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M139.3,128l66.4-66.3a8.1,8.1,0,0,0-11.4-11.4L128,116.7,61.7,50.3A8.1,8.1,0,0,0,50.3,61.7L116.7,128,50.3,194.3a8.1,8.1,0,0,0,0,11.4,8.2,8.2,0,0,0,11.4,0L128,139.3l66.3,66.4a8.2,8.2,0,0,0,11.4,0,8.1,8.1,0,0,0,0-11.4Z"></path></svg>
+    <div class=" dice-input-container sm:w-52">
+      <input type="number"  value="1.9600"  autocomplete="off"   class="dice-multiplier dice-input h-16  ">
+      <span class="font-semibold self-center">x</span>
       </div>
-      <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
-      <li class="w-full">
-          <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >-1</a>
-      </li>
       
-      <li class="w-full">
-        <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >+1</a>
-      </li>
-  </ul>
     </div>
-    <div>
-          <p class="dice-roll-title dice-input-title">Roll Under</p>
-          <div class=" dice-input-container dice-roll-container md:bg-[#363636]/30 cursor-pointer">
-          <input type="text"   value="50.00" autocomplete="off" disabled id="rangeValueContainer"   class="dice-roll-value dice-input md:bg-transparent   cursor-pointer ">
-          <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 256 256"
-          class="w-8 h-auto"
-        >
-          <rect width="256" height="256" fill="none"></rect>
-          <polyline
-            points="79.8 99.7 31.8 99.7 31.8 51.7"
-            fill="none"
-            stroke="#cdcdcd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="12"
-          ></polyline>
-          <path
-            d="M190.2,65.8a87.9,87.9,0,0,0-124.4,0l-34,33.9"
-            fill="none"
-            stroke="#cdcdcd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="12"
-          ></path>
-          <polyline
-            points="176.2 156.3 224.2 156.3 224.2 204.3"
-            fill="none"
-            stroke="#cdcdcd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="12"
-          ></polyline>
-          <path
-            d="M65.8,190.2a87.9,87.9,0,0,0,124.4,0l34-33.9"
-            fill="none"
-            stroke="#cdcdcd"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="12"
-          ></path>
-        </svg>
+
+    <!--Roll Buttons Container-->
+
+    <div class="dice-roll-container  flex-grow lg:flex-grow-0  ">
+    <p class="dice-input-title text-center ">Roll</p>
+          <div class="  cursor-pointer">
+          
+          <div class="flex flex-col  gap-4 dice-rolltype-container   " >
+          
+          
+          <button type="button" class="dice-rolltype-over w-36 dice-control-btn mx-auto ">Over 50.00</button>
+          <button type="button" class="dice-rolltype-under w-36 dice-control-btn dice-control-btn-active mx-auto ">Under 50.00</button>
+          </div>
+          
           </div>
           </div>
-          <div class="dice-winchance-container">
+          <div class="dice-winchance-container  ">
           <p class="dice-input-title">Win Chance</p>
-          <div class=" dice-input-container ">
-            <input type="text"  value="50.00"  autocomplete="off"   class="dice-winchance dice-input">
-            <svg class="w-8 h-auto" xmlns="http://www.w3.org/2000/svg" width="192" height="192" fill="#cdcdcd" viewBox="0 0 256 256"><rect width="256" height="256" fill="none"></rect><path d="M205.7,61.7l-144,144a8.2,8.2,0,0,1-11.4,0,8.1,8.1,0,0,1,0-11.4l144-144a8.1,8.1,0,0,1,11.4,11.4ZM50.5,101.5a36.2,36.2,0,0,1,0-51,36.2,36.2,0,0,1,51,0,36.1,36.1,0,0,1-51,51ZM56,76a19.7,19.7,0,0,0,5.9,14.1,19.9,19.9,0,0,0,28.2,0,19.8,19.8,0,0,0,0-28.2h0a19.8,19.8,0,0,0-28.2,0A19.7,19.7,0,0,0,56,76ZM216,180a36,36,0,1,1-61.5-25.5,36.2,36.2,0,0,1,51,0A35.9,35.9,0,0,1,216,180Zm-16,0a19.7,19.7,0,0,0-5.9-14.1,19.8,19.8,0,0,0-28.2,0A19.9,19.9,0,1,0,200,180Z"></path></svg>
+          <div class=" dice-input-container sm:w-52 ">
+            <input type="number"  value="50.00"  autocomplete="off"   class="dice-winchance dice-input    h-16 ">
+          <span class="font-semibold self-center">%</span>
             </div>
-            <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
-            <li class="w-full">
-                <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >-5</a>
-            </li>
             
-            <li class="w-full">
-              <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >+5</a>
-            </li>
-        </ul>
           </div>
         </div>
 
 
-    <div class="px-12 col-start-1 col-end-4  lg:col-start-1 lg:col-end-4 flex justify-center self-center gap-4 md:gap-16">
-    <div class="dice-betamount-container">
-      <p class="dice-input-title">Bet Amount</p>
-      <div class=" dice-input-container ">
-            <input type="text"  value="0"  autocomplete="off"   class="dice-betAmount dice-input">
-            <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      viewBox="0 0 2000 1995.84"
-                      class="w-8 h-auto"
-                    >
-                      <path
-                        d="M114.87 999.53a895 895 0 0 0 15.08 163l-111.2 20.76a992.52 992.52 0 0 0 50.56 177.5l105.44-41a885.54 885.54 0 0 0 73.12 146.32l-96.08 59.71a1003.81 1003.81 0 0 0 111.38 147.06l83.52-76.28a894.45 894.45 0 0 0 121 110.25l-68.18 90.26a1000.24 1000.24 0 0 0 156.86 97.2l50.44-101.27a882.84 882.84 0 0 0 152.57 59L728.58 1961A996.2 996.2 0 0 0 910 1994.57l10.25-112.65c26.9 2.45 54.31 3.69 81.48 3.69 27.44 0 55.13-1.27 82.29-3.76l10.36 112.64a996.15 996.15 0 0 0 181.4-33.77l-30.95-108.83a882.9 882.9 0 0 0 152.48-59.16l50.53 101.22a1000.28 1000.28 0 0 0 156.75-97.32l-68.25-90.2a894.47 894.47 0 0 0 120.93-110.35l83.59 76.22a1003.8 1003.8 0 0 0 111.26-147.18l-96.12-59.63a885.67 885.67 0 0 0 73-146.43l105.48 40.87a992.52 992.52 0 0 0 50.4-177.55l-111-20.65a895.19 895.19 0 0 0 15.13-163v-1.61l112.93-.19a1005.34 1005.34 0 0 0-17.26-183.64l-111.23 20.85a882.43 882.43 0 0 0-45-157.25l105.4-41.07a996.37 996.37 0 0 0-82.63-165l-96 59.8a892.7 892.7 0 0 0-98.94-130.4l83.45-76.36a1005.81 1005.81 0 0 0-136.49-124.11l-68.1 90.32A889.26 889.26 0 0 0 1395.91 204l50.35-101.32A993.14 993.14 0 0 0 1274 36.26l-30.74 108.88a886 886 0 0 0-160.87-29.66l10.18-112.67q-44.87-4-90.83-4.08-47.32 0-93.54 4.33l10.46 112.64a885.87 885.87 0 0 0-160.79 30.1L726.83 37a993.17 993.17 0 0 0-172 66.93l50.61 101.17a889.42 889.42 0 0 0-138.94 86.42l-68.33-90.14A1005.84 1005.84 0 0 0 262 325.84L345.66 402a892.61 892.61 0 0 0-98.6 130.67l-96.18-59.54a996.22 996.22 0 0 0-82.22 165.24l105.52 40.78a882.37 882.37 0 0 0-44.52 157.37L18.43 816A1005.6 1005.6 0 0 0 1.74 998.73v.9zm988 700.52l-6-42.11a661.31 661.31 0 0 0 181.79-53.37l17.71 38.68a703.81 703.81 0 0 1-193.53 56.75zm607.38-701.37a709.44 709.44 0 0 1-28.5 199.62l-40.82-12a666.81 666.81 0 0 0 26.79-187.6v-1.1l42.54-.11v1.15zm-113-383.92A705.06 705.06 0 0 1 1681.39 798l-40.8 12a662.54 662.54 0 0 0-79.07-172.21zm-35.13 743.92l35.77 23a711.56 711.56 0 0 1-132.06 152.36l-27.83-32.1a669.05 669.05 0 0 0 124.12-143.26zm-266.88-1005a708.65 708.65 0 0 1 169.7 108.91l-27.83 32.18a666.13 666.13 0 0 0-159.52-102.37zM1188 824h99.11L1416 1014.1V824h101v344h-100.52L1288 978.94V1168h-100V824zm-186.26-533.75a717.11 717.11 0 0 1 99.89 7l-5.95 42.12a674.66 674.66 0 0 0-189.57.24l-6.05-42.11a717.09 717.09 0 0 1 101.68-7.25zM797 824h106v209.59c0 18.74 5.29 33.37 15.68 43.91s24.85 15.81 43.29 15.81c18.28 0 32.83-5.19 43.23-15.57s15.8-25.1 15.8-44.14V824h106v204.71a172.5 172.5 0 0 1-9.72 57.5 124.47 124.47 0 0 1-29.88 47.31q-20.27 20.26-42.6 28.46-30.94 11.47-74.32 11.48a468.15 468.15 0 0 1-54.74-3.51q-29.65-3.52-49.58-13.94t-36.45-29.63c-11-12.8-18.68-26-22.75-39.58-6.56-21.86-10-41.22-10-58.08V824zm110.25 834l-6 42.12a703.88 703.88 0 0 1-193.56-56.64l17.67-38.7A661.35 661.35 0 0 0 907.25 1658zM706.63 354.46l17.74 38.67a666.2 666.2 0 0 0-159.25 102.76l-27.91-32.11a708.71 708.71 0 0 1 169.42-109.32zM487 824h262v74H594v60h133v69H594v141H487V824zm79 678.3l-27.85 32.15a711.54 711.54 0 0 1-132.18-152.25l35.75-23.05A669 669 0 0 0 566 1502.3zm-160.68-886l35.79 23a662.45 662.45 0 0 0-78.63 172.41l-40.88-11.98a705 705 0 0 1 83.68-183.48zm-69.47 383a666.73 666.73 0 0 0 26.94 187.59l-40.81 12a709.26 709.26 0 0 1-28.67-199.55z"
-                        fill="#f1385b"
-                      />
-                    </svg>
-</div>
-            <ul class="text-sm font-medium text-center  divide-x divide-white/10  shadow flex" >
-              <li class="w-full">
-                  <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  rounded-bl-lg " >1/2</a>
-              </li>
-              <li class="w-full">
-                <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >x2</a>
-              </li>
-              <li class="w-full">
-                <a href="#" class="inline-block w-full p-2 text-[#cdcdcd] bg-secondary lg:bg-primary/70  hover:bg-primary lg:hover:bg-[#363636]/30  border border-primary rounded-bl-lg " >max</a>
-              </li>
-          </ul>
-          </div>
-
-          <div>
-          <p class="dice-input-title">Payout on Win</p>
-          <div class=" dice-input-container ">
-          <input type="text"   value="0" autocomplete="off" disabled   class="dice-payout dice-input">
-          <svg
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 2000 1995.84"
-          class="w-8 h-auto"
-        >
-          <path
-            d="M114.87 999.53a895 895 0 0 0 15.08 163l-111.2 20.76a992.52 992.52 0 0 0 50.56 177.5l105.44-41a885.54 885.54 0 0 0 73.12 146.32l-96.08 59.71a1003.81 1003.81 0 0 0 111.38 147.06l83.52-76.28a894.45 894.45 0 0 0 121 110.25l-68.18 90.26a1000.24 1000.24 0 0 0 156.86 97.2l50.44-101.27a882.84 882.84 0 0 0 152.57 59L728.58 1961A996.2 996.2 0 0 0 910 1994.57l10.25-112.65c26.9 2.45 54.31 3.69 81.48 3.69 27.44 0 55.13-1.27 82.29-3.76l10.36 112.64a996.15 996.15 0 0 0 181.4-33.77l-30.95-108.83a882.9 882.9 0 0 0 152.48-59.16l50.53 101.22a1000.28 1000.28 0 0 0 156.75-97.32l-68.25-90.2a894.47 894.47 0 0 0 120.93-110.35l83.59 76.22a1003.8 1003.8 0 0 0 111.26-147.18l-96.12-59.63a885.67 885.67 0 0 0 73-146.43l105.48 40.87a992.52 992.52 0 0 0 50.4-177.55l-111-20.65a895.19 895.19 0 0 0 15.13-163v-1.61l112.93-.19a1005.34 1005.34 0 0 0-17.26-183.64l-111.23 20.85a882.43 882.43 0 0 0-45-157.25l105.4-41.07a996.37 996.37 0 0 0-82.63-165l-96 59.8a892.7 892.7 0 0 0-98.94-130.4l83.45-76.36a1005.81 1005.81 0 0 0-136.49-124.11l-68.1 90.32A889.26 889.26 0 0 0 1395.91 204l50.35-101.32A993.14 993.14 0 0 0 1274 36.26l-30.74 108.88a886 886 0 0 0-160.87-29.66l10.18-112.67q-44.87-4-90.83-4.08-47.32 0-93.54 4.33l10.46 112.64a885.87 885.87 0 0 0-160.79 30.1L726.83 37a993.17 993.17 0 0 0-172 66.93l50.61 101.17a889.42 889.42 0 0 0-138.94 86.42l-68.33-90.14A1005.84 1005.84 0 0 0 262 325.84L345.66 402a892.61 892.61 0 0 0-98.6 130.67l-96.18-59.54a996.22 996.22 0 0 0-82.22 165.24l105.52 40.78a882.37 882.37 0 0 0-44.52 157.37L18.43 816A1005.6 1005.6 0 0 0 1.74 998.73v.9zm988 700.52l-6-42.11a661.31 661.31 0 0 0 181.79-53.37l17.71 38.68a703.81 703.81 0 0 1-193.53 56.75zm607.38-701.37a709.44 709.44 0 0 1-28.5 199.62l-40.82-12a666.81 666.81 0 0 0 26.79-187.6v-1.1l42.54-.11v1.15zm-113-383.92A705.06 705.06 0 0 1 1681.39 798l-40.8 12a662.54 662.54 0 0 0-79.07-172.21zm-35.13 743.92l35.77 23a711.56 711.56 0 0 1-132.06 152.36l-27.83-32.1a669.05 669.05 0 0 0 124.12-143.26zm-266.88-1005a708.65 708.65 0 0 1 169.7 108.91l-27.83 32.18a666.13 666.13 0 0 0-159.52-102.37zM1188 824h99.11L1416 1014.1V824h101v344h-100.52L1288 978.94V1168h-100V824zm-186.26-533.75a717.11 717.11 0 0 1 99.89 7l-5.95 42.12a674.66 674.66 0 0 0-189.57.24l-6.05-42.11a717.09 717.09 0 0 1 101.68-7.25zM797 824h106v209.59c0 18.74 5.29 33.37 15.68 43.91s24.85 15.81 43.29 15.81c18.28 0 32.83-5.19 43.23-15.57s15.8-25.1 15.8-44.14V824h106v204.71a172.5 172.5 0 0 1-9.72 57.5 124.47 124.47 0 0 1-29.88 47.31q-20.27 20.26-42.6 28.46-30.94 11.47-74.32 11.48a468.15 468.15 0 0 1-54.74-3.51q-29.65-3.52-49.58-13.94t-36.45-29.63c-11-12.8-18.68-26-22.75-39.58-6.56-21.86-10-41.22-10-58.08V824zm110.25 834l-6 42.12a703.88 703.88 0 0 1-193.56-56.64l17.67-38.7A661.35 661.35 0 0 0 907.25 1658zM706.63 354.46l17.74 38.67a666.2 666.2 0 0 0-159.25 102.76l-27.91-32.11a708.71 708.71 0 0 1 169.42-109.32zM487 824h262v74H594v60h133v69H594v141H487V824zm79 678.3l-27.85 32.15a711.54 711.54 0 0 1-132.18-152.25l35.75-23.05A669 669 0 0 0 566 1502.3zm-160.68-886l35.79 23a662.45 662.45 0 0 0-78.63 172.41l-40.88-11.98a705 705 0 0 1 83.68-183.48zm-69.47 383a666.73 666.73 0 0 0 26.94 187.59l-40.81 12a709.26 709.26 0 0 1-28.67-199.55z"
-            fill="#f1385b"
-          />
-        </svg>
-          </div>
-          </div>
-
-          
-
-
-          </div>
+        <!--Row 8-->
 
           <div class="col-start-2 col-end-3  ">
           
         </div>
 
-          <div class="px-12 col-start-1 col-end-4 self-end lg:col-start-2 lg:col-end-3">
-            <button type="button" class=" dice-bet-btn w-full   text-primary bg-[#9bed9a]/80 hover:bg-[#9bed9a]  font-semibold rounded-lg text-lg p-2.5 mr-2 mb-2">BET</button>
+
+  <!--Row 9-->
+          <div class="dice-grid-item   2xl:col-start-2 2xl:col-end-3  sm:w-2/3 2xl:w-full ">
+          <button type="button" class="dice-control-winchance-btn dice-control-winchance-decrease-btn">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"  fill="currentColor" viewBox="0 0 256 256"><path d="M168,48V208a8,8,0,0,1-13.66,5.66l-80-80a8,8,0,0,1,0-11.32l80-80A8,8,0,0,1,168,48Z"></path></svg>
+        </button>
+          <!--Roll Dice Button-->
+
+            <button type="button" class=" w-full dice-bet-btn   nav-register-btn btn-highlight   ">roll dice</button>
+            <button type="button" class="dice-control-winchance-btn dice-control-winchance-increase-btn">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6"  fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80A8,8,0,0,1,88,208V48a8,8,0,0,1,13.66-5.66l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
+            <span class="sr-only">Icon description</span>
+          </button>
           </div>
+
 
   </section>`;
     this.targetElement.insertAdjacentHTML('beforeend', html);
+  }
+
+  addHandlerCheckPvFair(handler) {
+    const dicePvBtn = document.querySelector('.dice-pvfair-btn');
+
+    dicePvBtn.addEventListener('click', function () {
+      handler();
+    });
+  }
+
+  addHandlerLiveStats(handler) {
+    const liveStatsBtn = document.querySelector('.dice-livestats-btn');
+    liveStatsBtn.addEventListener('click', function () {
+      handler();
+    });
   }
 
   addHandlerInputRange(handler) {
@@ -205,9 +280,10 @@ class diceView {
   }
 
   changeRangeBackground() {
-    const diceRange = document.querySelector('.dice-range');
-    const currentRoll = document.querySelector('.dice-roll-title');
-    currentRoll.textContent === 'Roll Under'
+    const diceRange = document.getElementById('rangeValueContainer');
+    const currentRoll = this.getRollType();
+
+    currentRoll === 'Roll Under'
       ? (diceRange.style.background = `linear-gradient(
         to right,
         rgba(155, 237, 154, 0.5) 0%,
@@ -227,7 +303,7 @@ class diceView {
     const betSize = document.querySelector('.dice-betAmount');
 
     betSize.addEventListener('input', function (e) {
-      if (isNaN(e.data))
+      if (isNaN(e.target.value))
         return (e.target.value = e.target.value.replace(e.data, ''));
 
       handler();
@@ -250,31 +326,93 @@ class diceView {
     });
   }
 
+  addHandlerWalletContainer() {
+    const walletContainer = document.querySelector('.dice-wallet-container');
+    const walletDropdown = document.querySelector('.dice-wallet-dropdown');
+    const svgOpen = document.querySelector('.dice-wallet-svg-open');
+    const svgClose = document.querySelector('.dice-wallet-svg-close');
+    const body = document.querySelector('body');
+    walletContainer.addEventListener('click', function (e) {
+      if (
+        e.target.parentElement.classList.contains(
+          'dice-wallet-value-container'
+        ) ||
+        e.target.classList.contains('dice-wallet-dropdown') ||
+        walletDropdown.contains(e.target)
+      )
+        return;
+      walletDropdown.classList.toggle('hidden');
+      svgOpen.classList.toggle('hidden');
+      svgClose.classList.toggle('hidden');
+      body.classList.toggle('pointer-events-none');
+      walletDropdown.classList.add('pointer-events-auto');
+      walletContainer.classList.add('pointer-events-auto');
+    });
+
+    document.addEventListener('click', function (e) {
+      if (
+        walletDropdown.classList.contains('hidden') ||
+        walletContainer.contains(e.target) ||
+        e.target.classList.contains('dice-wallet-dropdown')
+      )
+        return;
+      walletDropdown.classList.add('hidden');
+      svgOpen.classList.toggle('hidden');
+      svgClose.classList.toggle('hidden');
+      body.classList.remove('pointer-events-none');
+      walletDropdown.classList.remove('pointer-events-auto');
+      walletContainer.classList.remove('pointer-events-auto');
+    });
+  }
+
   updatePayout(value) {
     document.querySelector('.dice-payout').value = value;
   }
   updateMultiplier(value) {
     document.querySelector('.dice-multiplier').value = value;
   }
-  updateWincChance(value) {
+  updateWinChance(value) {
     document.querySelector('.dice-winchance').value = value;
   }
   updateRollValue(value) {
     document.getElementById('rangeValueContainer').value = value;
-    document.querySelector('.dice-range').step = 0.01;
+    const currentRoll = this.getRollType();
+    document.querySelector('.dice-rolltype-under').textContent = `Under ${
+      currentRoll === 'Roll Under'
+        ? Number(value).toFixed(2)
+        : (100.0 - value).toFixed(2)
+    }`;
+    document.querySelector('.dice-rolltype-over').textContent = `Over ${
+      currentRoll === 'Roll Over'
+        ? Number(value).toFixed(2)
+        : (100.0 - value).toFixed(2)
+    }`;
 
-    document.querySelector('.dice-range').value = value;
+    //document.querySelector('.dice-range').step = 0.01;
 
-    document.querySelector('.dice-range').step = 1.0;
+    //document.querySelector('.dice-range').value = value;
+
+    //document.querySelector('.dice-range').step = 1.0;
 
     this.changeRangeBackground();
   }
+  updateBetSize(value) {
+    document.querySelector('.dice-betAmount').value = value;
+  }
+  updateWallet(value) {
+    const walletValue = document.querySelector('.dice-wallet-value');
+    walletValue.textContent = value;
+  }
   getRollType() {
-    return document.querySelector('.dice-roll-title').textContent;
+    const rolltypeUnder = document.querySelector('.dice-rolltype-under');
+    return rolltypeUnder.classList.contains('dice-control-btn-active')
+      ? 'Roll Under'
+      : 'Roll Over';
+    //return document.querySelector('.dice-roll-title').textContent;
   }
 
   getRollValue() {
-    return document.querySelector('.dice-roll-value').value;
+    return document.querySelector('.dice-range').value;
   }
 
   getBetSize() {
@@ -288,34 +426,31 @@ class diceView {
     return document.querySelector('.dice-winchance').value;
   }
   addHandlerChangeRoll() {
-    const rollChangeContainer = document.querySelector('.dice-roll-container');
+    const rollTypeContainer = document.querySelector(
+      '.dice-rolltype-container'
+    );
 
-    rollChangeContainer.addEventListener(
+    rollTypeContainer.addEventListener(
       'click',
-      function () {
-        rollChangeContainer.classList.toggle('dice-roll-container--rotate');
-        const currentRoll = document.querySelector('.dice-roll-title');
-        const currentValueSlider =
-          document.querySelector('.dice-roll-value').value;
-        //const slider = document.querySelector('.dice-range');
-        //const diceRoll = document.querySelector('.dice-roll-value');
-        const rangeBubble = document.querySelector('.dice-range-bubble');
+      function (e) {
+        if (e.target.classList.contains('dice-control-btn')) {
+          if (e.target.classList.contains('dice-control-btn-active')) return;
 
-        setTimeout(
-          function () {
-            currentRoll.textContent === 'Roll Under'
-              ? (currentRoll.textContent = 'Roll Over')
-              : (currentRoll.textContent = 'Roll Under');
+          const rolltypeUnder = document.querySelector('.dice-rolltype-under');
+          const rolltypeOver = document.querySelector('.dice-rolltype-over');
+          rolltypeUnder.classList.toggle('dice-control-btn-active');
+          rolltypeOver.classList.toggle('dice-control-btn-active');
+          const dicerange = document.getElementById('rangeValueContainer');
 
-            const calcRollNumber = 50 + (50 - currentValueSlider);
+          const rangeBubble = document.querySelector('.dice-range-bubble');
+          const calcRollNumber = 50 + (50 - dicerange.value);
 
-            this.updateRollValue(calcRollNumber);
-            this.changeRangeBackground();
-          }.bind(this),
-          300
-        );
+          this.updateRollValue(calcRollNumber);
 
-        rangeBubble.classList.add('invisible');
+          this.changeRangeBackground();
+
+          rangeBubble.classList.add('invisible');
+        }
       }.bind(this)
     );
   }
@@ -326,7 +461,10 @@ class diceView {
     betBtn.addEventListener(
       'click',
       function () {
-        //const value = randomInt(1, 100);
+        betBtn.disabled = true;
+        betBtn.classList.add('bg-highlightAccent');
+        betBtn.classList.add('text-white');
+
         const betSize = this.getBetSize();
         if (!betSize) return;
 
@@ -335,9 +473,99 @@ class diceView {
     );
   }
 
+  addHandlerPlayForRealBtn(handler) {
+    const playBtn = document.querySelector('.dice-playforreal-btn');
+
+    playBtn.addEventListener(
+      'click',
+      function () {
+        handler();
+      }.bind(this)
+    );
+  }
+
+  addHandlerHalfBetBtn(handler) {
+    const halfBtn = document.querySelector('.dice-halfbet-btn');
+
+    halfBtn.addEventListener(
+      'click',
+      function () {
+        handler();
+        // triggers again the listenner on input
+        let event = new Event('input', { bubbles: true });
+        const betSizeInput = document.querySelector('.dice-betAmount');
+        betSizeInput.dispatchEvent(event);
+      }.bind(this)
+    );
+  }
+
+  addHandlerDoubleBetBtn(handler) {
+    const doubleBtn = document.querySelector('.dice-doublebet-btn');
+
+    doubleBtn.addEventListener(
+      'click',
+      function () {
+        handler();
+        // triggers again the listenner on input
+        let event = new Event('input', { bubbles: true });
+        const betSizeInput = document.querySelector('.dice-betAmount');
+
+        betSizeInput.dispatchEvent(event);
+      }.bind(this)
+    );
+  }
+
+  addHandlerMinBetBtn(handler) {
+    const minBtn = document.querySelector('.dice-minbet-btn');
+
+    minBtn.addEventListener(
+      'click',
+      function () {
+        handler();
+        // triggers again the listenner on input
+        let event = new Event('input', { bubbles: true });
+        const betSizeInput = document.querySelector('.dice-betAmount');
+        betSizeInput.dispatchEvent(event);
+      }.bind(this)
+    );
+  }
+
+  addHandlerIncreaseWinChanceBtn(handler) {
+    const increaseBtn = document.querySelector(
+      '.dice-control-winchance-increase-btn'
+    );
+
+    increaseBtn.addEventListener(
+      'click',
+      function () {
+        handler();
+
+        // triggers again the listenner on input
+        let event = new Event('input', { bubbles: true });
+        const winChanceInput = document.querySelector('.dice-winchance');
+        winChanceInput.dispatchEvent(event);
+      }.bind(this)
+    );
+  }
+  addHandlerDecreaseWinChanceBtn(handler) {
+    const decreaseBtn = document.querySelector(
+      '.dice-control-winchance-decrease-btn'
+    );
+
+    decreaseBtn.addEventListener(
+      'click',
+      function () {
+        handler();
+        // triggers again the listenner on input
+        let event = new Event('input', { bubbles: true });
+        const winChanceInput = document.querySelector('.dice-winchance');
+        winChanceInput.dispatchEvent(event);
+      }.bind(this)
+    );
+  }
   updateRollResult(numberGenerated, isWinner) {
     const rangeBubble = document.querySelector('.dice-range-bubble');
-
+    const betBtn = document.querySelector('.dice-bet-btn');
     const sliderBubbleValueContainer = document.querySelector(
       '.dice-range-bubble-value'
     );
@@ -353,7 +581,9 @@ class diceView {
 
     sliderBubbleValueContainer.textContent = numberGenerated;
     this.updateBetHistory(numberGenerated, isWinner);
-
+    betBtn.disabled = false;
+    betBtn.classList.remove('bg-highlightAccent');
+    betBtn.classList.remove('text-white');
     //const thumbPosition = (numberGenerated - rangeInput.min) / (rangeInput.max - rangeInput.min);
     //const thumbPositionPercentage = thumbPosition * 100;
     //const translateX = thumbPositionPercentage - (thumbWidth / trackWidth) * 50;

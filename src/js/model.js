@@ -107,7 +107,7 @@ export class diceModel {
   };
   #data;
   #url =
-    'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/game_trx_historic/trxhist/';
+    'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/game_trx_historic/trxhist/single_bet/';
 
   constructor() {}
 
@@ -135,16 +135,19 @@ export class diceModel {
 
   calcRollValue(rollType, multiplier, winChance) {
     const edge = this.state.edge;
-    if (multiplier)
+    if (multiplier) {
+      this.state.multiplier = multiplier;
       return (this.state.rollValue =
         rollType === 'Roll Under'
           ? (100 - edge) / multiplier
           : -1 * ((100 - edge) / multiplier - 100));
+    }
 
-    if (winChance)
+    if (winChance) {
+      this.state.winChance = winChance;
       return (this.state.rollValue =
         rollType === 'Roll Under' ? 1 * winChance : -1 * (1 * winChance - 100));
-    else return;
+    } else return;
   }
   async sendBet(rollType, betSize, token) {
     /*this.state.numberGenerated =
@@ -166,7 +169,7 @@ export class diceModel {
       },
       body: {
         'type_game': 'dice',
-        'user_winrate_choice': this.state.winChance.toFixed(2),
+        'user_winrate_choice': `${Number(this.state.winChance).toFixed(2)}`,
         'is_roll_under': rollType === 'Roll Under' ? true : false,
         'date_game': new Date().toISOString(),
         'bet_amount': betSize,
@@ -177,6 +180,7 @@ export class diceModel {
     const res = await helper.req(this.#url, this.#data);
     this.state.numberGenerated = res.response.rolled_dice * 1;
     this.state.isWinner = res.response.is_winner;
+    console.log(this.#data);
     console.log(res);
   }
 }
@@ -186,7 +190,7 @@ export class loginModel {
     token: '',
     error: '',
   };
-  #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/token/';
+  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/user/token/';
   #data;
   constructor(email, password) {
     this.email = email;
@@ -218,7 +222,7 @@ export class loginModel {
 }
 
 export class userDetailsModel {
-  #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/me/';
+  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/user/me/';
   #data;
   #token;
   constructor(token) {
@@ -258,7 +262,7 @@ export class registerModel {
     },
   };
 
-  #url = 'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/user/create/';
+  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/user/create/';
   #data;
   constructor(name, email, password) {
     this.name = name;
@@ -297,7 +301,7 @@ export class walletsModel {
   };
 
   #url =
-    'http://ec2-35-173-177-221.compute-1.amazonaws.com/api/profile_user/profile/';
+    'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/profile_user/profile/';
   #data;
   #token;
   constructor(token) {
@@ -452,5 +456,108 @@ export class SlotsModel {
         prevEl: `.slots-nav-prev`,
       },
     });
+  }
+}
+
+export class ProvablyFairModel {
+  state = {
+    error: '',
+    seedDetails: {
+      clientSeed: '',
+      nonce: '',
+      hashedServerSeed: '',
+    },
+  };
+  #url = 'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/seeds/seed/';
+  #data;
+  #token;
+  constructor(token) {
+    this.#token = token;
+
+    this.#data = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+    };
+  }
+  async requestSeedDetails() {
+    const res = await helper.req(this.#url, this.#data);
+    this.state.seedDetails.clientSeed = res.response[0].client_seed;
+    this.state.seedDetails.nonce = res.response[0].nonce;
+    this.state.seedDetails.hashedServerSeed =
+      res.response[0].hashed_server_seed_for_user;
+    this.state.error = res.error;
+  }
+
+  async changeClientSeed(newClientSeed) {
+    const data = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+      body: {
+        client_seed: newClientSeed,
+        visible: false,
+      },
+    };
+    const res = await helper.req(this.#url, data);
+    console.log(res);
+    this.state.seedDetails.clientSeed = res.response[0].client_seed;
+    this.state.seedDetails.nonce = res.response[0].nonce;
+    this.state.seedDetails.hashedServerSeed =
+      res.response[0].hashed_server_seed_for_user;
+    this.state.error = res.error;
+  }
+  async changeServerSeed() {
+    const url =
+      'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/seeds/seed/change_server_seed/';
+    const data = {
+      method: 'PUT',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+    };
+    const res = await helper.req(url, data);
+    console.log(res.response);
+
+    this.state.seedDetails.nonce = 0;
+    this.state.seedDetails.hashedServerSeed = res.response.hashed_server_seed;
+    this.state.error = res.error;
+  }
+}
+
+export class diceLiveStatsModel {
+  state = {
+    error: '',
+    data: {},
+    lastBetID: '',
+  };
+  #url =
+    'http://ec2-54-145-243-39.compute-1.amazonaws.com/api/game_trx_historic/trxhist/';
+  #data;
+  #token;
+  constructor(token) {
+    this.#token = token;
+
+    this.#data = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+    };
+  }
+
+  async requestLiveStats() {
+    const res = await helper.req(this.#url, this.#data);
+    this.state.data = res.response;
+
+    if (res.response[0]) this.state.lastBetID = res.response[0].id;
+    this.state.error = res.error;
+    console.log(res);
   }
 }

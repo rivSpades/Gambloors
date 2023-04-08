@@ -31,16 +31,17 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="https://cdnjs.com/libraries/axios"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <title>Gambloors</title>
   </head>
 
   <body
-    class="bg-secondary  overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none  "
+    class="relative bg-secondary  overflow-y-scroll overflow-hidden scroll-smooth h-screen select-none  "
   >
     <!--TOP NAV -->
     <header
-      class="w-[var(--topnavWidth)] h-24 z-[998] bg-transparent  flex items-center justify-between absolute top-0 transition-all   duration-300"
+      class="w-[var(--topnavWidth)] h-24 z-[998] bg-transparent  flex items-center justify-between fixed top-0 transition-all   duration-500"
     >
       <!--TOP NAV Left-->
 
@@ -69,28 +70,14 @@
 
       <!--TOP NAV Right-->
 
-      <nav class="nav-right flex items-center space-x-12 relative">
-        <!--TOP NAV Right Buttons-->
-        <div class="nav-auth-btns p-3">
-          <button
-            type="button"
-            class="nav-btn-login top-nav-right-btn border text-primaryWhite border-primaryWhite hover:bg-accent hover:text-white"
-          >
-            Login
-          </button>
-          <button
-            type="button"
-            class="nav-btn-register top-nav-right-btn text-highlightWhite bg-highlight hover:bg-highlightAccent hover:text-white"
-          >
-            Register
-          </button>
-        </div>
+      <nav class="nav-right flex  items-center space-x-12 relative">
+       
       </nav>
     </header>
 
   <!--SIDEBAR-->
     <div
-        class="nav-sidebar hidden xl:block xl:fixed top-0 left-0 z-[998] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary  border-r-accent  border-r-[0.05px] "
+        class="nav-sidebar hidden xl:block xl:fixed top-0 left-0 z-[998] w-64 h-full p-4 overflow-y-auto transition-transform -translate-x-full bg-primary  border-r-accent  border-r-[0.05px] duration-500 text-highlight"
         tabindex="-1"
         aria-labelledby="drawer-navigation-label"
       >
@@ -139,7 +126,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -157,7 +144,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -177,7 +164,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -218,7 +205,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -238,7 +225,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -256,7 +243,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -297,7 +284,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -317,7 +304,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -337,7 +324,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -357,7 +344,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -378,7 +365,7 @@
                       xmlns="http://www.w3.org/2000/svg"
                       width="192"
                       height="192"
-                      fill="#f5cb09"
+                      fill="currentColor"
                       viewBox="0 0 256 256"
                       class="sidebar-svg"
                     >
@@ -484,16 +471,20 @@
  </div>
     <!--MAIN-->
 
-    <main class="main-home">
+    <main class="main-home  ">
     
-      
+ 
    
     </main>
+   
+
+
+
 
     <!--Footer -->
 
     <footer
-      class=" w-full xl:w-[var(--footerWidth)] px-6 pt-6 pb-32 md:px-16 md:pt-16 bg-primary rounded-lg"
+      class=" w-full xl:w-[var(--footerWidth)] px-6 pt-6 pb-32 md:px-16 md:pt-16 bg-primary rounded-lg transition-transform duration-500"
     >
       <!--Footer container -->
       <div class="footer-container xl:mx-auto xl:w-[70%]">
