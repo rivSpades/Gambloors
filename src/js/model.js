@@ -97,12 +97,22 @@ export class diceModel {
     multiplier: 0,
     numberGenerated: 0,
     rollValue: 50,
+    isWinner: '',
 
     diceData: {
       numberGenerated: '',
       betSize: '',
       currentRoll: '',
       rollValue: '',
+    },
+    autoBet: {
+      numberBets: '',
+      maxBetAmount: '',
+      balanceBelow: '',
+      balanceAbove: '',
+      winPreviousBet: '',
+      onLoss: '',
+      onWin: '',
     },
   };
   #data;
@@ -150,16 +160,6 @@ export class diceModel {
     } else return;
   }
   async sendBet(rollType, betSize, token) {
-    /*this.state.numberGenerated =
-      Math.floor(Math.random() * (max - min) + 1) + min;
-    this.state.diceData.currentRoll = currentRoll;
-    this.state.diceData.rollValue = rollValue;
-    this.state.diceData.betSize = betSize;
-    this.state.diceData.numberGenerated = this.state.numberGenerated;
-
-    this.state.payload.body = JSON.stringify({
-      data: this.state.diceData,
-    });*/
     if (!token || !rollType || !betSize) return;
     this.#data = {
       method: 'POST',
@@ -180,9 +180,10 @@ export class diceModel {
     const res = await helper.req(this.#url, this.#data);
     this.state.numberGenerated = res.response.rolled_dice * 1;
     this.state.isWinner = res.response.is_winner;
-    console.log(this.#data);
     console.log(res);
   }
+
+  autobet() {}
 }
 
 export class loginModel {

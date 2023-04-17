@@ -106,12 +106,12 @@ class diceView {
 
     <!--Manual/Auto-->
 
-    <ul class="flex flex-wrap   w-fit rounded-lg p-1 bg-secondary">
-    <li class="mr-2">
-        <a href="#" class="dice-manual-auto-a dice-manual-auto-a-active">manual</a>
+    <ul class="dice-manual-auto-container flex flex-between  gap-2  rounded-lg p-2 bg-secondary">
+    <li class="">
+        <p class="dice-manual dice-manual-auto-a dice-manual-auto-a-active">manual</a>
     </li>
-    <li class="mr-2">
-        <a href="#"  class="dice-manual-auto-a">auto</a>
+    <li class="">
+        <p  class="dice-auto dice-manual-auto-a">auto</a>
     </li>
     
 </ul>
@@ -247,8 +247,164 @@ ${data ? settings : ''}
           </div>
 
 
+      
+
+
+
+
+</div> <!--div grid container-->
+
   </section>`;
     this.targetElement.insertAdjacentHTML('beforeend', html);
+  }
+
+  renderAutoBet() {
+    const html = `    <!--AUTO BET-->
+          
+    <!--Row 10-->
+    <div class="dice-grid-item dice-autobet    lg:w-1/2  ">
+
+    <div class="dice-numberbets-container flex-grow   ">
+    <p class="dice-input-title">Number of bets</p>
+    <div class=" dice-input-container w-full  ">
+          <input type="number"  value="5"  autocomplete="off"   class="dice-numberbets dice-input ">
+          <span class="invisible font-semibold">bets</span>
+          
+</div>
+         
+ </div>      
+    
+ <div class="dice-maxbetamount-container flex-grow   ">
+ <p class="dice-input-title">Max Bet Amount</p>
+ <div class=" dice-input-container w-full  ">
+       <input type="number"  value="100.000"  autocomplete="off"   class="dice-maxbetamount dice-input ">
+       <span class="font-semibold">fun</span>
+</div>
+      
+</div>      
+
+</div>
+
+<!--Row 11-->
+<div class="dice-grid-item dice-autobet     lg:w-1/2">
+
+<div class="dice-on-container">
+<p class="dice-input-title uppercase">On Loss</p>
+<div class="dice-radio-container ">
+<input id="radio-onloss-changebet" type="radio" value="" name="radio-onloss" class="w-6 h-6 " checked>
+<label for="radio-onloss-changebet" class="dice-input-title   ">Increase bet by</label>
+</div>
+
+<div class=" dice-input-container w-full  ">
+    <input type="number"  value="50"  autocomplete="off"   class="dice-changebet dice-changebet-onloss dice-input ">
+    <span class="font-semibold">%</span>   
+</div>
+
+
+<div class="dice-radio-container ">
+<input id="radio-onloss-basebet" type="radio" value="" name="radio-onloss" class="w-6 h-6">
+<label for="radio-onloss-basebet" class="dice-input-title">Reset to base bet</label>
+</div>
+
+<div class="dice-radio-container">
+<input id="radio-onloss-stopautobet" type="radio" value="" name="radio-onloss" class="w-6 h-6 ">
+<label for="radio-onloss-stopautobet" class="dice-input-title   ">Stop Autobet</label>
+</div>
+
+</div>      
+
+<div class="dice-on-container  ">
+<p class="dice-input-title uppercase">On Win</p>
+<div class="dice-radio-container ">
+<input id="radio-onwin-changebet" type="radio" value="" name="radio-onwin" class="w-6 h-6" checked>
+<label for="radio-onwin-changebet" class="dice-input-title  ">Increase bet by</label>
+</div>
+
+<div class=" dice-input-container w-full ">
+ <input type="number"  value="50"  autocomplete="off"   class="dice-changebet dice-changebet-onwin dice-input ">
+ <span class="font-semibold">%</span>   
+</div>
+
+<div class="dice-radio-container ">
+<input id="radio-onwin-basebet" type="radio" value="" name="radio-onwin" class="w-6 h-6 ">
+<label for="radio-onwin-basebet" class="dice-input-title   ">Reset to base bet</label>
+</div>
+
+<div class="dice-radio-container">
+<input id="radio-onwin-stopautobet" type="radio" value="" name="radio-onwin" class="w-6 h-6 ">
+<label for="radio-onwin-stopautobet" class="dice-input-title   ">Stop Autobet</label>
+</div>
+
+</div>               
+</div>
+
+
+<!--Row 12-->
+<div class="dice-grid-item dice-autobet  lg:w-1/2">
+
+</div>
+
+<!--Row 13-->
+<div class="dice-grid-item flex-col dice-autobet lg:w-1/2">
+<p class="dice-input-title uppercase  ">Stop If </p>
+<div class="flex flex-col sm:flex-row gap-6">
+<div class="dice-on-container">
+
+    <p class="dice-input-title">Balance Below</p>
+    <div class=" dice-input-container w-full  ">
+          <input type="number"  value="0"  autocomplete="off"   class="dice-balancebelow dice-input ">
+          <span class="font-semibold">fun</span>    
+</div>
+         
+ </div>      
+
+ <div class="dice-on-container  ">
+ <p class="dice-input-title">Balance Above</p>
+ <div class=" dice-input-container w-full   ">
+       <input type="number"  value="100.000"  autocomplete="off"   class="dice-balanceabove dice-input ">
+       <span class="font-semibold">fun</span>    
+</div>
+      
+</div>      
+</div>
+</div>`;
+
+    const diceContainer = document.querySelector('.dice-container');
+    diceContainer.insertAdjacentHTML('beforeend', html);
+  }
+
+  renderBetBtn(type) {
+    if (type === 'auto') {
+      const diceBetBtn = document.querySelector('.dice-bet-btn');
+      //diceBetBtn.classList.remove('dice-bet-btn');
+      diceBetBtn.classList.add('dice-autobet-btn');
+      diceBetBtn.textContent = 'Start Autobet';
+    } else {
+      const autoBetBtn = document.querySelector('.dice-autobet-btn');
+      // autoBetBtn.classList.add('dice-bet-btn');
+      autoBetBtn.classList.remove('dice-autobet-btn');
+      autoBetBtn.textContent = 'Roll Dice';
+    }
+  }
+
+  addHandlerManualAuto(handler) {
+    const manualAutoContainer = document.querySelector(
+      '.dice-manual-auto-container'
+    );
+    manualAutoContainer.addEventListener('click', function (e) {
+      if (
+        e.target.classList.contains('dice-manual-auto-a-active') ||
+        !e.target.classList.contains('dice-manual-auto-a')
+      )
+        return;
+
+      const manualBtn = document.querySelector('.dice-manual');
+      const autoBtn = document.querySelector('.dice-auto');
+      manualBtn.classList.toggle('dice-manual-auto-a-active');
+      autoBtn.classList.toggle('dice-manual-auto-a-active');
+      if (e.target.classList.contains('dice-auto')) handler('auto');
+      else handler('manual');
+    });
   }
 
   addHandlerCheckPvFair(handler) {
@@ -425,6 +581,12 @@ ${data ? settings : ''}
   getWinChance() {
     return document.querySelector('.dice-winchance').value;
   }
+  getOnWinBetSize() {
+    return document.querySelector('.dice-changebet-onwin').value;
+  }
+  getOnLossBetSize() {
+    return document.querySelector('.dice-changebet-onloss').value;
+  }
   addHandlerChangeRoll() {
     const rollTypeContainer = document.querySelector(
       '.dice-rolltype-container'
@@ -460,10 +622,10 @@ ${data ? settings : ''}
 
     betBtn.addEventListener(
       'click',
-      function () {
-        betBtn.disabled = true;
-        betBtn.classList.add('bg-highlightAccent');
-        betBtn.classList.add('text-white');
+      function (e) {
+        if (e.target.classList.contains('dice-autobet-btn')) return;
+        console.log('entra no bet');
+        this.disableBetBtn(betBtn);
 
         const betSize = this.getBetSize();
         if (!betSize) return;
@@ -471,6 +633,46 @@ ${data ? settings : ''}
         handler();
       }.bind(this)
     );
+  }
+
+  addHandlerBtnAutoBet(handler) {
+    const autoBetBtn = document.querySelector('.dice-bet-btn');
+
+    autoBetBtn.addEventListener(
+      'click',
+      function (e) {
+        if (!e.target.classList.contains('dice-autobet-btn')) return;
+        console.log('entra no auto bet');
+        const betSize = this.getBetSize();
+        if (!betSize) return;
+
+        const numberBets = document.querySelector('.dice-numberbets').value;
+        const maxBetAmount = document.querySelector('.dice-maxbetamount').value;
+        const balanceBelow = document.querySelector('.dice-balancebelow').value;
+        const balanceAbove = document.querySelector('.dice-balanceabove').value;
+        const onLoss = document.querySelector(
+          'input[name = "radio-onloss"]:checked'
+        );
+        const onWin = document.querySelector(
+          'input[name = "radio-onwin"]:checked'
+        );
+
+        handler(
+          numberBets,
+          maxBetAmount,
+          onLoss.id,
+          onWin.id,
+          balanceBelow,
+          balanceAbove
+        );
+      }.bind(this)
+    );
+  }
+
+  disableBetBtn(btn) {
+    btn.disabled = true;
+    btn.classList.add('bg-highlightAccent');
+    btn.classList.add('text-white');
   }
 
   addHandlerPlayForRealBtn(handler) {

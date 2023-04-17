@@ -263,6 +263,118 @@ export class controllerDice {
     startControllerDiceLiveStats.init();
   }
 
+  controlRenderAutoBet(type) {
+    if (type === 'auto') {
+      diceView.renderAutoBet();
+      diceView.renderBetBtn('auto');
+      const diceAutoBet = document.querySelector('.dice-autobet');
+
+      diceAutoBet.scrollIntoView();
+    } else {
+      diceView.renderBetBtn('manual');
+      const autoBetRows = document.querySelectorAll('.dice-autobet');
+
+      autoBetRows.forEach((row) => row.remove());
+    }
+  }
+
+  async controlAutoBet(
+    numberBets,
+    maxBetAmount,
+    onLoss,
+    onWin,
+    balanceBelow,
+    balanceAbove
+  ) {
+    if (!userDetails) return loginModalView.openLoginModal();
+    const rollType = diceView.getRollType();
+
+    let betSize = Number(diceView.getBetSize());
+
+    this.updateAutoBetSettings(
+      numberBets,
+      maxBetAmount,
+      onLoss,
+      onWin,
+      balanceBelow,
+      balanceAbove
+    );
+
+    let rep = 1;
+    let done = false;
+    let autoBetSettings;
+    diceModel.state.isWinner = '';
+    async function autoBet() {
+      while (rep <= +diceModel.state.autoBet.numberBets) {
+        console.log(diceModel.state.isWinner);
+        console.log(true === diceModel.state.isWinner);
+
+        if (diceModel.state.isWinner === true) {
+          autoBetSettings = diceModel.state.autoBet.onWin;
+        } else if (diceModel.state.isWinner === false) {
+          autoBetSettings = diceModel.state.autoBet.onLoss;
+        } else betSize = Number(diceView.getBetSize());
+
+        switch (autoBetSettings) {
+          case 'radio-onloss-basebet':
+          case 'radio-onwin-basebet':
+            betSize = Number(diceView.getBetSize());
+            break;
+          case 'radio-onloss-changebet':
+          case 'radio-onwin-changebet':
+            betSize =
+              betSize + betSize * (Number(diceView.getOnWinBetSize()) / 100) <=
+              diceModel.state.autoBet.maxBetAmount
+                ? betSize + betSize * (Number(diceView.getOnWinBetSize()) / 100)
+                : betSize;
+
+            break;
+          case 'radio-onloss-stopautobet':
+          case 'radio-onwin-stopautobet':
+            rep = +diceModel.state.autoBet.numberBets;
+            done = true;
+
+            break;
+        }
+
+        if (
+          userWallets.state.walletDetails.fun <
+            diceModel.state.autoBet.balanceBelow ||
+          userWallets.state.walletDetails.fun >
+            diceModel.state.autoBet.balanceAbove
+        ) {
+          done = true;
+          rep = +diceModel.state.autoBet.numberBets;
+        }
+        console.log(diceModel.state);
+        console.log(betSize);
+        rep++;
+        if (!done) {
+          await this.executeBet(betSize.toFixed(2), rollType);
+          await new Promise((resolve) => setTimeout(resolve, 3000));
+        }
+      }
+    }
+
+    autoBet.call(this);
+  }
+
+  updateAutoBetSettings(
+    numberBets,
+    maxBetAmount,
+    onLoss,
+    onWin,
+    balanceBelow,
+    balanceAbove
+  ) {
+    diceModel.state.autoBet.numberBets = numberBets;
+    diceModel.state.autoBet.maxBetAmount = maxBetAmount;
+    diceModel.state.autoBet.onLoss = onLoss;
+    diceModel.state.autoBet.onWin = onWin;
+    diceModel.state.autoBet.balanceBelow = balanceBelow;
+    diceModel.state.autoBet.balanceAbove = balanceAbove;
+  }
+
   updateDice(trigger) {
     const rollType = diceView.getRollType();
 
@@ -309,7 +421,10 @@ export class controllerDice {
     const rollType = diceView.getRollType();
 
     const betSize = diceView.getBetSize();
+    await this.executeBet(betSize, rollType);
+  }
 
+  async executeBet(betSize, rollType) {
     await diceModel.sendBet(rollType, betSize, localStorage.getItem('token'));
 
     await userWallets.requestWallets();
@@ -352,12 +467,16 @@ export class controllerDice {
 
     diceView.render(userWallets ? userWallets.state.walletDetails : undefined);
     diceView.addHandlerWalletContainer();
+    diceView.addHandlerBtnBet(this.controlBtnBet.bind(this));
+
+    diceView.addHandlerManualAuto(this.controlRenderAutoBet.bind(this));
+    diceView.addHandlerBtnAutoBet(this.controlAutoBet.bind(this));
     diceView.addHandlerInputRange(this.controlInputRange.bind(this));
     diceView.addHandlerInputBetSize(this.controlInputBetSize.bind(this));
     diceView.addHandlerInputMultiplier(this.controlInputMultiplier.bind(this));
     diceView.addHandlerInputWinChance(this.controlInputWinChance.bind(this));
     diceView.addHandlerChangeRoll();
-    diceView.addHandlerBtnBet(this.controlBtnBet.bind(this));
+
     diceView.addHandlerHalfBetBtn(this.controlHalfBetBtn.bind(this));
     diceView.addHandlerDoubleBetBtn(this.controlDoubleBetBtn.bind(this));
     diceView.addHandlerMinBetBtn(this.controlMinBetBtn.bind(this));
@@ -367,6 +486,7 @@ export class controllerDice {
     diceView.addHandlerDecreaseWinChanceBtn(
       this.controlDecreaseWinChanceBtn.bind(this)
     );
+
     if (userDetails) {
       diceView.addHandlerCheckPvFair(this.controlPvFairBtn.bind(this));
       diceView.addHandlerLiveStats(this.controlLiveStatsBtn.bind(this));
