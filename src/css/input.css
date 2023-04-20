@@ -54,15 +54,15 @@
   }
 
   .bottomnav-btn {
-    @apply inline-flex flex-col items-center justify-center px-5 hover:bg-accent;
+    @apply inline-flex flex-col items-center justify-center px-5 hover:text-highlight;
   }
 
   .bottomnav-svg {
-    @apply w-6 h-6 mb-1 text-primaryWhite group-hover:text-white;
+    @apply w-6 h-6 mb-1 text-primaryWhite group-hover:text-highlight;
   }
 
   .bottomnav-btn-text {
-    @apply text-sm text-primaryWhite group-hover:text-white;
+    @apply text-sm uppercase text-primaryWhite group-hover:text-highlight;
   }
 
   .home-classes {
@@ -192,7 +192,7 @@
     @apply bg-accent/5 text-highlight hover:bg-none;
   }
   .footer-svg {
-    @apply w-6 h-6;
+    @apply w-10 h-10;
   }
 
   .footer-a {

@@ -82,7 +82,7 @@ class diceView {
   `;
 
     const html = `<section id="game-dice" class="w-full  ">
-    <div class="dice-container lg:bg-primary lg:border lg:border-accent select-none  lg:p-12    grid  grid-cols-3 grid-rows-12 gap-x-0  gap-y-8 lg:gap-y-12 items-start text-primaryWhite ">
+    <div class="dice-container mb-32 lg:bg-primary lg:border lg:border-accent select-none  lg:p-12    grid  grid-cols-3 grid-rows-12 gap-x-0  gap-y-8 lg:gap-y-12 items-start text-primaryWhite ">
 
     <!--Row 1-->
     

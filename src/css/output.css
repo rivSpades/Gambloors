@@ -720,8 +720,8 @@ input[type='number']::-webkit-inner-spin-button,
 }
 
 .bottomnav-btn:hover {
-  --tw-bg-opacity: 1;
-  background-color: rgb(58 58 57 / var(--tw-bg-opacity));
+  --tw-text-opacity: 1;
+  color: rgb(199 165 75 / var(--tw-text-opacity));
 }
 
 .bottomnav-svg {
@@ -734,19 +734,20 @@ input[type='number']::-webkit-inner-spin-button,
 
 .group:hover .bottomnav-svg {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(199 165 75 / var(--tw-text-opacity));
 }
 
 .bottomnav-btn-text {
   font-size: 0.875rem;
   line-height: 1.25rem;
+  text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(189 189 189 / var(--tw-text-opacity));
 }
 
 .group:hover .bottomnav-btn-text {
   --tw-text-opacity: 1;
-  color: rgb(255 255 255 / var(--tw-text-opacity));
+  color: rgb(199 165 75 / var(--tw-text-opacity));
 }
 
 .home-classes {
@@ -1272,8 +1273,8 @@ input[type='number']::-webkit-inner-spin-button,
 }
 
 .footer-svg {
-  height: 1.5rem;
-  width: 1.5rem;
+  height: 2.5rem;
+  width: 2.5rem;
 }
 
 .footer-a {
@@ -1299,12 +1300,6 @@ input[type='number']::-webkit-inner-spin-button,
   text-transform: uppercase;
   --tw-text-opacity: 1;
   color: rgb(189 189 189 / var(--tw-text-opacity));
-}
-
-.footer-text-title-right {
-  margin-bottom: 1.5rem;
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 
 .sr-only {
@@ -1375,8 +1370,8 @@ input[type='number']::-webkit-inner-spin-button,
   top: -2rem;
 }
 
-.bottom-0 {
-  bottom: 0px;
+.bottom-4 {
+  bottom: 1rem;
 }
 
 .bottom-5 {
@@ -1459,6 +1454,10 @@ input[type='number']::-webkit-inner-spin-button,
   margin: 1.5rem;
 }
 
+.m-auto {
+  margin: auto;
+}
+
 .mx-0 {
   margin-left: 0px;
   margin-right: 0px;
@@ -1483,6 +1482,10 @@ input[type='number']::-webkit-inner-spin-button,
 
 .mb-2 {
   margin-bottom: 0.5rem;
+}
+
+.mb-32 {
+  margin-bottom: 8rem;
 }
 
 .mb-4 {
@@ -1722,6 +1725,10 @@ input[type='number']::-webkit-inner-spin-button,
   width: 70%;
 }
 
+.w-\[var\(--footerWidth\)\] {
+  width: var(--footerWidth);
+}
+
 .w-\[var\(--topnavWidth\)\] {
   width: var(--topnavWidth);
 }
@@ -1744,10 +1751,6 @@ input[type='number']::-webkit-inner-spin-button,
 
 .max-w-full {
   max-width: 100%;
-}
-
-.max-w-lg {
-  max-width: 32rem;
 }
 
 .max-w-sm {
@@ -1855,6 +1858,10 @@ input[type='number']::-webkit-inner-spin-button,
 
 .justify-between {
   justify-content: space-between;
+}
+
+.gap-1 {
+  gap: 0.25rem;
 }
 
 .gap-10 {
@@ -2080,10 +2087,6 @@ input[type='number']::-webkit-inner-spin-button,
 
 .border-r-\[0\.05px\] {
   border-right-width: 0.05px;
-}
-
-.border-t {
-  border-top-width: 1px;
 }
 
 .border-t-\[0\.05px\] {
@@ -2342,10 +2345,6 @@ input[type='number']::-webkit-inner-spin-button,
   padding-bottom: 4rem;
 }
 
-.pb-32 {
-  padding-bottom: 8rem;
-}
-
 .pb-4 {
   padding-bottom: 1rem;
 }
@@ -2364,10 +2363,6 @@ input[type='number']::-webkit-inner-spin-button,
 
 .pt-1 {
   padding-top: 0.25rem;
-}
-
-.pt-6 {
-  padding-top: 1.5rem;
 }
 
 .pt-7 {
@@ -2837,6 +2832,18 @@ input[type='number']::-webkit-inner-spin-button,
 }
 
 @media (min-width: 640px) {
+  .sm\:col-start-4 {
+    grid-column-start: 4;
+  }
+
+  .sm\:col-end-5 {
+    grid-column-end: 5;
+  }
+
+  .sm\:grid {
+    display: grid;
+  }
+
   .sm\:h-10 {
     height: 2.5rem;
   }
@@ -2877,12 +2884,28 @@ input[type='number']::-webkit-inner-spin-button,
     width: 1.5rem;
   }
 
+  .sm\:w-\[70vw\] {
+    width: 70vw;
+  }
+
+  .sm\:w-auto {
+    width: auto;
+  }
+
   .sm\:grow-0 {
     flex-grow: 0;
   }
 
+  .sm\:grid-cols-5 {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
   .sm\:flex-row {
     flex-direction: row;
+  }
+
+  .sm\:justify-normal {
+    justify-content: normal;
   }
 
   .sm\:gap-10 {
@@ -2891,6 +2914,14 @@ input[type='number']::-webkit-inner-spin-button,
 
   .sm\:gap-4 {
     gap: 1rem;
+  }
+
+  .sm\:gap-8 {
+    gap: 2rem;
+  }
+
+  .sm\:p-0 {
+    padding: 0px;
   }
 
   .sm\:p-5 {
@@ -3030,18 +3061,9 @@ input[type='number']::-webkit-inner-spin-button,
     padding: 6rem;
   }
 
-  .md\:px-16 {
-    padding-left: 4rem;
-    padding-right: 4rem;
-  }
-
   .md\:px-56 {
     padding-left: 14rem;
     padding-right: 14rem;
-  }
-
-  .md\:pt-16 {
-    padding-top: 4rem;
   }
 
   .md\:text-xl {
@@ -3105,25 +3127,12 @@ input[type='number']::-webkit-inner-spin-button,
     position: fixed;
   }
 
-  .xl\:mx-auto {
-    margin-left: auto;
-    margin-right: auto;
-  }
-
   .xl\:block {
     display: block;
   }
 
   .xl\:hidden {
     display: none;
-  }
-
-  .xl\:w-\[70\%\] {
-    width: 70%;
-  }
-
-  .xl\:w-\[var\(--footerWidth\)\] {
-    width: var(--footerWidth);
   }
 }
 

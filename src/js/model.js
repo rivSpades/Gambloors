@@ -181,9 +181,8 @@ export class diceModel {
     this.state.numberGenerated = res.response.rolled_dice * 1;
     this.state.isWinner = res.response.is_winner;
     console.log(res);
+    console.log(this.#data);
   }
-
-  autobet() {}
 }
 
 export class loginModel {

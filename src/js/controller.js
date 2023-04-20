@@ -15,6 +15,7 @@ import originalsView from './views/originalsView.js';
 import slotsView from './views/slotsView.js';
 import provablyFairModalView from './views/provablyFairModalView.js';
 import diceLiveStatsView from './views/diceLiveStatsView.js';
+import gameDescriptionView from './views/gameDescriptionView.js';
 
 const diceModel = new model.diceModel();
 const LastNewsModel = new model.LastNewsModel();
@@ -335,13 +336,16 @@ export class controllerDice {
             done = true;
 
             break;
+          default:
+            done = false;
+            break;
         }
 
         if (
-          userWallets.state.walletDetails.fun <
-            diceModel.state.autoBet.balanceBelow ||
-          userWallets.state.walletDetails.fun >
-            diceModel.state.autoBet.balanceAbove
+          userWallets.state.walletDetails.fun * 1 <
+            diceModel.state.autoBet.balanceBelow * 1 ||
+          userWallets.state.walletDetails.fun * 1 >
+            diceModel.state.autoBet.balanceAbove * 1
         ) {
           done = true;
           rep = +diceModel.state.autoBet.numberBets;
@@ -466,6 +470,7 @@ export class controllerDice {
     if (userWallets) await userWallets.requestWallets();
 
     diceView.render(userWallets ? userWallets.state.walletDetails : undefined);
+    gameDescriptionView.render();
     diceView.addHandlerWalletContainer();
     diceView.addHandlerBtnBet(this.controlBtnBet.bind(this));
 

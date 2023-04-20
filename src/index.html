@@ -385,11 +385,14 @@
         </div>
       </div>
    <!--BOTTOM NAV-->
+   <div class="fixed xl:hidden bottom-4 p-6 w-full z-[999]">
    <div
-   class="fixed xl:hidden bottom-0 left-0 z-[999] w-full h-16 bg-primary border-t border-accent"
+   class=" w-full rounded-full    h-16 bg-primary border border-accent"
  >
-   <div class="grid h-full max-w-lg grid-cols-5 mx-auto">
-     <button type="button" class="bottomnav-btn group">
+   <div class="grid h-full w-full grid-cols-5 mx-auto">
+    
+     <a href="#"  class="bottomnav-btn group">
+      
        <svg
          class="bottomnav-svg"
          aria-hidden="true"
@@ -403,9 +406,11 @@
            clip-rule="evenodd"
          ></path>
        </svg>
+      
        <span class="bottomnav-btn-text">Menu</span>
-     </button>
-     <button type="button" class="bottomnav-btn group">
+      
+      </a>
+      <a href="#dice"  class="bottomnav-btn group">
        <svg
        xmlns="http://www.w3.org/2000/svg"
        aria-hidden="true"
@@ -425,9 +430,9 @@
            d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z"
          ></path>
        </svg>
-       <span class="bottomnav-btn-text">Casino</span>
-     </button>
-     <button type="button" class="bottomnav-btn group">
+       <span class="bottomnav-btn-text">Dice</span>
+      </a>
+      <a href="#"  class="bottomnav-btn group">
        <svg
          class="bottomnav-svg"
          fill="currentColor"
@@ -440,19 +445,13 @@
          ></path>
        </svg>
        <span class="bottomnav-btn-text">Home</span>
-     </button>
-     <button type="button" class="bottomnav-btn group">
-       <svg 
-       xmlns="http://www.w3.org/2000/svg" 
-       
-       class="bottomnav-svg"
-         fill="currentColor"
-       viewBox="0 0 256 256">
-       <path d="M184,89.57V84c0-25.08-37.83-44-88-44S8,58.92,8,84v40c0,20.89,26.25,37.49,64,42.46V172c0,25.08,37.83,44,88,44s88-18.92,88-44V132C248,111.3,222.58,94.68,184,89.57ZM56,146.87C36.41,141.4,24,132.39,24,124V109.93c8.16,5.78,19.09,10.44,32,13.57Zm80-23.37c12.91-3.13,23.84-7.79,32-13.57V124c0,8.39-12.41,17.4-32,22.87Zm-16,71.37C100.41,189.4,88,180.39,88,172v-4.17c2.63.1,5.29.17,8,.17,3.88,0,7.67-.13,11.39-.35A121.92,121.92,0,0,0,120,171.41Zm0-44.62A163,163,0,0,1,96,152a163,163,0,0,1-24-1.75V126.46A183.74,183.74,0,0,0,96,128a183.74,183.74,0,0,0,24-1.54Zm64,48a165.45,165.45,0,0,1-48,0V174.4a179.48,179.48,0,0,0,24,1.6,183.74,183.74,0,0,0,24-1.54ZM232,172c0,8.39-12.41,17.4-32,22.87V171.5c12.91-3.13,23.84-7.79,32-13.57Z"></path>
-     </svg>
-       <span class="bottomnav-btn-text">Bets</span>
-     </button>
-     <button type="button" class="bottomnav-btn group">
+      </a>
+      <a href="#"  class="bottomnav-btn group">
+        <svg xmlns="http://www.w3.org/2000/svg" class="bottomnav-svg"
+        fill="currentColor"   aria-hidden="true" viewBox="0 0 256 256"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm40-68a28,28,0,0,1-28,28h-4v8a8,8,0,0,1-16,0v-8H104a8,8,0,0,1,0-16h36a12,12,0,0,0,0-24H116a28,28,0,0,1,0-56h4V72a8,8,0,0,1,16,0v8h16a8,8,0,0,1,0,16H116a12,12,0,0,0,0,24h24A28,28,0,0,1,168,148Z"></path></svg>
+       <span class="bottomnav-btn-text">Wallet</span>
+    </a>
+    <a href="#"  class="bottomnav-btn group">
        <svg
        xmlns="http://www.w3.org/2000/svg"
        class="bottomnav-svg"
@@ -466,17 +465,21 @@
        ></path>
      </svg>
        <span class="bottomnav-btn-text">Chat</span>
-     </button>
+    </a>
    </div>
  </div>
+</div>
     <!--MAIN-->
 
     <main class="main-home  ">
     
- 
-   
+    
+      
+     
     </main>
    
+
+
 
 
 
@@ -484,88 +487,57 @@
     <!--Footer -->
 
     <footer
-      class=" w-full xl:w-[var(--footerWidth)] px-6 pt-6 pb-32 md:px-16 md:pt-16 bg-primary rounded-lg transition-transform duration-500"
+      class="w-[var(--footerWidth)] m-auto  mb-32  p-6 sm:p-0 transition-transform duration-500 sm:w-[70vw] "
     >
       <!--Footer container -->
-      <div class="footer-container xl:mx-auto xl:w-[70%]">
-        <div class="md:flex md:justify-between">
-          <!--Footer Left -->
-          <div class="footer-left-container flex flex-col gap-6 mb-16 lg:mb-0">
-            <a href="#" class="flex items-center">
-              <span class="footer-text-title tracking-wide text-2xl"
-                >Gambloors</span
-              >
-            </a>
-            <p class="text-base text-primaryWhite">
-              Copyright © 2023 Gambloors™ All Rights Reserved.
-            </p>
-            <div class="flex mt-4 space-x-6">
-              <a href="#" class="footer-a">
-                <svg
-                  class="footer-svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <span class="sr-only">Facebook page</span>
-              </a>
-              <a href="#" class="footer-a">
-                <svg
-                  class="footer-svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    fill-rule="evenodd"
-                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
-                    clip-rule="evenodd"
-                  />
-                </svg>
-                <span class="sr-only">Instagram page</span>
-              </a>
-              <a href="#" class="footer-a">
-                <svg
-                  class="footer-svg"
-                  fill="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
-                  />
-                </svg>
-                <span class="sr-only">Twitter page</span>
-              </a>
-            </div>
-          </div>
-          <!-- Footer Right-->
+      <div class="footer-container w-full  m-auto">
+        <div class="flex flex-col gap-4">
+        
+          <!-- Footer Nav-->
           <div
-            class="footer-nav-container grid md:grid-cols-3 md:gap-6 gap-8 grid-cols-2"
+            class=" bg-primary   border border-accent p-6 rounded-lg  footer-nav-container flex justify-between sm:grid sm:grid-cols-5 "
           >
             <div>
-              <h2 class="footer-text-title footer-text-title-right">Casino</h2>
+              
               <ul class="footer-right-ul">
                 <li>
                   <a href="https://flowbite.com/" class="footer-a">Dice</a>
                 </li>
                 <li>
-                  <a href="https://tailwindcss.com/" class="footer-a">Slots</a>
+                  <a href="https://tailwindcss.com/" class="footer-a">Provably Fair</a>
                 </li>
                 <li>
-                  <a href="https://tailwindcss.com/" class="footer-a">Table</a>
+                  <a href="https://tailwindcss.com/" class="footer-a">Play Responsibly</a>
+                </li>
+                <li>
+                  <a href="https://tailwindcss.com/" class="footer-a">Help Center</a>
                 </li>
               </ul>
             </div>
-            <div>
-              <h2 class="footer-text-title footer-text-title-right">Support</h2>
+            <div class="sm:col-start-4 sm:col-end-5">
+              
               <ul class="footer-right-ul">
+                <li>
+                  <a
+                    href="https://github.com/themesberg/flowbite"
+                    class="footer-a"
+                    >Terms & Conditions</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/themesberg/flowbite"
+                    class="footer-a"
+                    >Privacy Policy</a
+                  >
+                </li>
+                <li>
+                  <a
+                    href="https://github.com/themesberg/flowbite"
+                    class="footer-a"
+                    >About Us</a
+                  >
+                </li>
                 <li>
                   <a
                     href="https://github.com/themesberg/flowbite"
@@ -573,29 +545,80 @@
                     >Live Chat</a
                   >
                 </li>
-                <li>
-                  <a
-                    href="https://github.com/themesberg/flowbite"
-                    class="footer-a"
-                    >FAQ</a
-                  >
-                </li>
               </ul>
             </div>
-            <div>
-              <h2 class="footer-text-title footer-text-title-right">
-                About us
-              </h2>
-              <ul class="footer-right-ul">
-                <li>
-                  <a href="#" class="footer-a">Privacy Policy</a>
-                </li>
-                <li>
-                  <a href="#" class="footer-a">Terms &amp; Conditions</a>
-                </li>
-              </ul>
-            </div>
+           
           </div>
+
+
+  <!--Footer Social -->
+  <div class="footer-left-container flex flex-col items-center gap-1 lg:mb-0">
+    <a href="#" class="flex items-center">
+      <span class="footer-text-title tracking-wide text-2xl"
+        >Gambloors</span
+      >
+    </a>
+    <p class="text-base mb-6 text-primaryWhite">
+      Online Crypto Casino
+    </p>
+    <div class="flex  w-full sm:w-auto sm:gap-8  justify-between sm:justify-normal">
+     
+      <a href="#" class="footer-a">
+        <svg
+          class="footer-svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <span class="sr-only">Instagram page</span>
+      </a>
+      <a href="#" class="footer-a">
+        <svg
+          class="footer-svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"
+          />
+        </svg>
+        <span class="sr-only">Twitter page</span>
+      </a>
+      <a href="#" class="footer-a">
+        <svg
+          class="footer-svg"
+          fill="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            fill-rule="evenodd"
+            d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"
+            clip-rule="evenodd"
+          />
+        </svg>
+        <span class="sr-only">Facebook page</span>
+      </a>
+     
+      <a href="#" class="footer-a">
+        <svg class="footer-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 256 256"><path d="M236.88,26.19a9,9,0,0,0-9.16-1.57L25.06,103.93a14.22,14.22,0,0,0,2.43,27.21L80,141.45V200a15.92,15.92,0,0,0,10,14.83,15.91,15.91,0,0,0,17.51-3.73l25.32-26.26L173,220a15.88,15.88,0,0,0,10.51,4,16.3,16.3,0,0,0,5-.79,15.85,15.85,0,0,0,10.67-11.63L239.77,35A9,9,0,0,0,236.88,26.19Zm-61.14,36L86.15,126.35l-49.6-9.73ZM96,200V152.52l24.79,21.74Zm87.53,8L100.85,135.5l119-85.29Z"></path></svg>
+        <span class="sr-only">Telegram</span>
+      </a>
+      <a href="#" class="footer-a">
+        <svg  class="footer-svg" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" fill="currentColor" viewBox="0 0 256 256"><path d="M104,140a12,12,0,1,1-12-12A12,12,0,0,1,104,140Zm60-12a12,12,0,1,0,12,12A12,12,0,0,0,164,128Zm74.45,64.9-67,29.71a16.17,16.17,0,0,1-21.71-9.1l-8.11-22q-6.72.45-13.63.46t-13.63-.46l-8.11,22a16.18,16.18,0,0,1-21.71,9.1l-67-29.71a15.93,15.93,0,0,1-9.06-18.51L38,58A16.07,16.07,0,0,1,51,46.14l36.06-5.93a16.22,16.22,0,0,1,18.26,11.88l3.26,12.84Q118.11,64,128,64t19.4.93l3.26-12.84a16.21,16.21,0,0,1,18.26-11.88L205,46.14A16.07,16.07,0,0,1,218,58l29.53,116.38A15.93,15.93,0,0,1,238.45,192.9ZM232,178.28,202.47,62s0,0-.08,0L166.33,56a.17.17,0,0,0-.17,0l-2.83,11.14c5,.94,10,2.06,14.83,3.42A8,8,0,0,1,176,86.31a8.09,8.09,0,0,1-2.16-.3A172.25,172.25,0,0,0,128,80a172.25,172.25,0,0,0-45.84,6,8,8,0,1,1-4.32-15.4c4.82-1.36,9.78-2.48,14.82-3.42L89.83,56s0,0-.12,0h0L53.61,61.93a.17.17,0,0,0-.09,0L24,178.33,91,208a.23.23,0,0,0,.22,0L98,189.72a173.2,173.2,0,0,1-20.14-4.32A8,8,0,0,1,82.16,170,171.85,171.85,0,0,0,128,176a171.85,171.85,0,0,0,45.84-6,8,8,0,0,1,4.32,15.41A173.2,173.2,0,0,1,158,189.72L164.75,208a.22.22,0,0,0,.21,0Z"></path></svg>
+        <span class="sr-only">Discord</span>
+      </a>
+
+    </div>
+  </div>
+
         </div>
       </div>
     </footer>

@@ -17,7 +17,7 @@ class sideBarView {
         );
         document.documentElement.style.setProperty(
           '--footerWidth',
-          ` calc(100% - ${sideNav.offsetWidth}px)`
+          ` calc(70vw - ${sideNav.offsetWidth}px)`
         );
         topNav.style.left = sideNav.offsetWidth + 'px';
         footer.style.transform = `translateX(${sideNav.offsetWidth}px )`;
