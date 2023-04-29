@@ -10,9 +10,7 @@ import userdetailsView from './views/userdetailsView.js';
 import walletView from './views/walletView.js';
 import herocardView from './views/herocardView.js';
 import homeView from './views/homeView.js';
-import lastnewsView from './views/lastNewsView.js';
-import originalsView from './views/originalsView.js';
-import slotsView from './views/slotsView.js';
+
 import provablyFairModalView from './views/provablyFairModalView.js';
 import diceLiveStatsView from './views/diceLiveStatsView.js';
 import gameDescriptionView from './views/gameDescriptionView.js';
@@ -128,7 +126,7 @@ export class controllerTopNav {
 
       topNavView.render(userDetails.state.userDetails);
 
-      topNavView.addHandlerRender();
+      //topNavView.addHandlerRender();
       topNavView.addHandlerUserDetails();
       startControllerSignout.init();
     } else topNavView.render(undefined);
@@ -567,7 +565,7 @@ export class controllerHeroCard {
   }
 }
 
-export class controllerLastNews {
+/*export class controllerLastNews {
   init() {
     lastnewsView.render(LastNewsModel.loadData());
     LastNewsModel.setSettings();
@@ -587,17 +585,17 @@ export class controllerSlots {
     SlotsModel.setSettings();
   }
 }
-
+*/
 export class controllerHome {
   init() {
     const startControllerHeroCard = new controllerHeroCard();
     //const startControllerLastNews = new controllerLastNews();
-    const startControllerOriginals = new controllerOriginals();
-    const startControllerSlots = new controllerSlots();
+    //const startControllerOriginals = new controllerOriginals();
+    //const startControllerSlots = new controllerSlots();
     homeView.render();
     startControllerHeroCard.init();
     //startControllerLastNews.init();
-    startControllerOriginals.init();
-    startControllerSlots.init();
+    //startControllerOriginals.init();
+    //startControllerSlots.init();
   }
 }

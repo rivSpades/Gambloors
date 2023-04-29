@@ -46,8 +46,9 @@ class clearView {
   centralizeContent(target) {
     switch (target) {
       case 'home':
-        this.setMargin(); //apply for the first time
-        window.addEventListener('resize', this.setMargin); //apply on resize
+        //this.setMargin(); //apply for the first time
+        //window.addEventListener('resize', this.setMargin); //apply on resize
+
         //main.style.marginTop = margin / 2 + 'px';
 
         /* function handleMediaQuery(event) {

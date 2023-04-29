@@ -70,11 +70,11 @@
   }
 
   .main-herocard {
-    @apply mb-28  bg-secondary rounded-lg h-[50vh] lg:h-full;
+    @apply bg-secondary rounded-lg;
   }
 
   .main-herocard-left-top {
-    @apply text-left flex flex-col justify-center  gap-24 lg:gap-32;
+    @apply text-left flex flex-col justify-center  gap-24 lg:gap-32 h-full;
   }
 
   .main-herocard-left-bottom {
@@ -82,18 +82,14 @@
   }
 
   .main-herocard-left-bottom-text {
-    @apply align-bottom mb-6 font-bold text-xl text-primaryWhite leading-10 lg:mb-8;
+    @apply mb-6 font-semibold text-xl text-primaryWhite leading-10 lg:mb-8;
   }
 
   .main-herocard-left-top-text {
-    @apply mb-4 text-3xl font-bold text-primaryWhite  leading-10 md:text-4xl xl:text-5xl;
+    @apply mb-4 text-3xl  font-extrabold lg:font-bold text-primaryWhite  leading-10  xl:text-5xl;
   }
   .main-herocard-left-bottom-btn {
-    @apply self-start w-fit inline-flex items-center text-highlightWhite bg-highlight hover:bg-highlightAccent hover:text-white transition duration-75  font-bold rounded-lg px-5 py-2.5 text-base text-center mr-2 mb-2;
-  }
-
-  .main-herocard-right {
-    @apply hidden md:mt-0 md:col-span-1 lg:flex md:justify-end md:items-center;
+    @apply self-start w-fit inline-flex items-center text-highlightWhite bg-highlight hover:bg-highlightAccent hover:text-white transition duration-75  font-semibold rounded-lg px-5 py-2.5 text-base text-center mr-2 mb-2;
   }
 
   .main-herocard-right-img {
@@ -101,7 +97,7 @@
   }
 
   .main-herocard-grid {
-    @apply grid h-full  lg:h-[45rem] px-8 md:px-32 py-8  lg:gap-8 xl:gap-0  lg:grid-cols-2;
+    @apply grid h-full  lg:h-[45rem]  py-8  lg:gap-8 xl:gap-0  grid-cols-1 lg:grid-cols-2;
   }
 
   .main-games-container-header {

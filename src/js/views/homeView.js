@@ -1,7 +1,7 @@
 class HomeView {
   targetElement = document.querySelector('main');
   render() {
-    const html = `<section id="home-lobby" class="flex flex-col justify-start gap-32 "> </section>`;
+    const html = `<section id="home-lobby" class="flex flex-col justify-start  lg:gap-0  mt-24 "> </section>`;
     this.targetElement.insertAdjacentHTML('beforeend', html);
   }
 }
