@@ -75,7 +75,7 @@ class HeroCardView {
 
            <div class="main-herocard-right   relative flex  lg:ml-0  ">
            
-           <img class="w-[80%]" src="img/coelho.png" alt="coelho" />
+           <img class="w-[80%]" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/coelho.png" alt="coelho" />
 
            <svg class=" w-1/3 right-[5%] bottom-[5%] absolute sm:w-[25%]  self-center h-full  " viewBox="0 0 120 114" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g filter="url(#filter0_dd_278_2879)">
@@ -120,7 +120,7 @@ class HeroCardView {
 
        
        
-       <img class=" w-[80%] "  src="img/dice_landing.png" alt="diceimage"/>
+       <img class=" w-[80%] "  src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/dice_landing.png" alt="diceimage"/>
        </div>
            <div class=" flex flex-col gap-6">
            <div class="flex flex-col gap-1">
