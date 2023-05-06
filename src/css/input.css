@@ -204,4 +204,11 @@
   .footer-text-title-right {
     @apply mb-6 text-lg;
   }
+  .profile-header-btn {
+    @apply flex-grow lg:grow-0 rounded-lg bg-secondary font-bold inline-block px-4 lg:w-full py-3 cursor-pointer hover:bg-primaryWhite hover:text-secondary;
+  }
+
+  .profile-header-btn-selected {
+    @apply bg-primaryWhite  text-secondary;
+  }
 }

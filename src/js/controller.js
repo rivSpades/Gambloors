@@ -14,11 +14,9 @@ import homeView from './views/homeView.js';
 import provablyFairModalView from './views/provablyFairModalView.js';
 import diceLiveStatsView from './views/diceLiveStatsView.js';
 import gameDescriptionView from './views/gameDescriptionView.js';
+import accountSettingsView from './views/accountSettingsView.js';
 
 const diceModel = new model.diceModel();
-const LastNewsModel = new model.LastNewsModel();
-const OriginalsModel = new model.OriginalsModel();
-const SlotsModel = new model.SlotsModel();
 
 let userLogin;
 let userDetails;
@@ -29,6 +27,7 @@ let startControllerSideBar;
 let startControllerTopNav;
 
 let startControllerDice;
+let startControllerAccount;
 let startControllerLoginModal;
 let startControllerRegister;
 let startControllerUserData;
@@ -56,6 +55,9 @@ export class controllerStart {
         clearView.addClasses('dice');
         startControllerDice.init();
         break;
+      case 'account':
+        clearView.addClasses('home');
+        startControllerAccount.init();
     }
   }
 
@@ -69,8 +71,10 @@ export class controllerStart {
     startControllerHome = new controllerHome();
     startControllerSignout = new controllerSignout();
     startControllerDice = new controllerDice();
+
     startControllerProvablyFairModal = new controllerProvablyFairModal();
     startControllerDiceLiveStats = new controlDiceLiveStatsModal();
+    startControllerAccount = new controllerAccount();
 
     startControllerUserData.init();
     startControllerTopNav.init();
@@ -179,6 +183,25 @@ export class controllerSignout {
   }
   init() {
     signoutView.addHandlerSignout(this.controlSignout.bind(this));
+  }
+}
+
+export class controllerAccount {
+  controlHeaderBtns(selectBody) {
+    accountSettingsView.renderBody(selectBody, userDetails.state.userDetails);
+
+    accountSettingsView.selectHeaderButton(selectBody);
+  }
+
+  init() {
+    if (userDetails) {
+      accountSettingsView.render();
+      accountSettingsView.selectHeaderButton('profile');
+      accountSettingsView.renderBody('profile');
+      accountSettingsView.addHandlerHeaderBtns(
+        this.controlHeaderBtns.bind(this)
+      );
+    } else loginModalView.openLoginModal();
   }
 }
 
