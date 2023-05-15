@@ -2,7 +2,7 @@ class accountSettingsView {
   targetElement = document.querySelector('main');
 
   render() {
-    const html = ` <section id="account">
+    const html = ` <section id="account-settings">
     <ul class="profile-header-btns-container flex justify-between gap-1   text-sm bg-secondary p-3 rounded-lg font-medium text-center text-primaryWhite w-full lg:w-full mx-auto mt-[20%]">
     <li data-body="profile" class="profile-header-btn profile-header-btn-selected ">
       Profile
@@ -80,7 +80,7 @@ class accountSettingsView {
         <p class="text-primaryWhite font-bold text-3xl ">Change E-mail</p>
         <div class="flex flex-col gap-2   w-full ">
         <label for="account-email" class="  w-fit  text-primaryWhite">E-mail</label>
-        <input type="email" name="email" id="account-email" value="${data.email}"  class=" lg:w-1/4 border border-accent/20 text-sm rounded-l-lg   p-2.5" >
+        <input type="email" name="email" id="account-email" value="${data.email}"  class="lg:w-1/4 border border-accent/20 text-sm rounded-l-lg p-2.5" >
               </div>
           
               <button type="button" class="w-fit font-bold rounded-lg text-sm px-5 py-2.5  text-secondary bg-diceGreen">Save</button>

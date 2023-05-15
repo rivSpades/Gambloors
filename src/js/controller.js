@@ -15,6 +15,7 @@ import provablyFairModalView from './views/provablyFairModalView.js';
 import diceLiveStatsView from './views/diceLiveStatsView.js';
 import gameDescriptionView from './views/gameDescriptionView.js';
 import accountSettingsView from './views/accountSettingsView.js';
+import walletSettingsView from './views/walletSettingsView.js';
 
 const diceModel = new model.diceModel();
 
@@ -28,6 +29,7 @@ let startControllerTopNav;
 
 let startControllerDice;
 let startControllerAccount;
+let startControllerWalletSettings;
 let startControllerLoginModal;
 let startControllerRegister;
 let startControllerUserData;
@@ -35,6 +37,7 @@ let startControllerHome;
 let startControllerSignout;
 let startControllerProvablyFairModal;
 let startControllerDiceLiveStats;
+
 export class controllerStart {
   constructor() {}
 
@@ -58,6 +61,11 @@ export class controllerStart {
       case 'account':
         clearView.addClasses('home');
         startControllerAccount.init();
+        break;
+      case 'wallet':
+        clearView.addClasses('home');
+        startControllerWalletSettings.init();
+        break;
     }
   }
 
@@ -75,6 +83,7 @@ export class controllerStart {
     startControllerProvablyFairModal = new controllerProvablyFairModal();
     startControllerDiceLiveStats = new controlDiceLiveStatsModal();
     startControllerAccount = new controllerAccount();
+    startControllerWalletSettings = new controllerWalletSettings();
 
     startControllerUserData.init();
     startControllerTopNav.init();
@@ -201,6 +210,35 @@ export class controllerAccount {
       accountSettingsView.addHandlerHeaderBtns(
         this.controlHeaderBtns.bind(this)
       );
+    } else loginModalView.openLoginModal();
+  }
+}
+
+export class controllerWalletSettings {
+  controlHeaderBtns(selectBody) {
+    walletSettingsView.renderBody(selectBody, userDetails.state.userDetails);
+
+    walletSettingsView.selectHeaderButton(selectBody);
+    if (selectBody === 'deposit') {
+      walletSettingsView.addHandlerClipboardBtn();
+      walletSettingsView.addHandlerSelectCurrency(selectBody);
+      walletSettingsView.generateQRCode('00xx15465sb2jkmnf');
+    } else if (selectBody === 'withdrawal') {
+      walletSettingsView.addHandlerSelectCurrency(selectBody);
+    }
+  }
+
+  init() {
+    if (userDetails) {
+      walletSettingsView.render();
+      walletSettingsView.selectHeaderButton('deposit');
+      walletSettingsView.renderBody('deposit');
+      walletSettingsView.addHandlerHeaderBtns(
+        this.controlHeaderBtns.bind(this)
+      );
+      walletSettingsView.addHandlerClipboardBtn();
+      walletSettingsView.addHandlerSelectCurrency('deposit');
+      walletSettingsView.generateQRCode('00xx15465sb2jkmnf');
     } else loginModalView.openLoginModal();
   }
 }

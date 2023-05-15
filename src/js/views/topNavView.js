@@ -78,7 +78,7 @@ class topNavView {
 </div>
 <ul class="py-2 text-sm text-primaryWhite" >
   <li>
-    <a href="#" class="block px-4 py-2 hover:bg-accent">Wallet</a>
+    <a href="#wallet" class="block px-4 py-2 hover:bg-accent">Wallet</a>
   </li>
   <li>
   <a href="#account" class="block px-4 py-2 hover:bg-accent">Settings</a>
