@@ -85,7 +85,9 @@ class walletSettingsView {
     const walletTitle = document.querySelector('.wallet-title');
     currencyContainer.addEventListener('click', function (e) {
       if (e.target.closest('svg')) {
-        walletImg.src = `img/${e.target.closest('svg').dataset.currency}.png`;
+        walletImg.src = `https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/${
+          e.target.closest('svg').dataset.currency
+        }.png`;
         walletTitle.textContent = `${
           e.target.closest('svg').dataset.title
         } ${body}`;
@@ -197,7 +199,7 @@ class walletSettingsView {
           <div class="z-10  border-8 border-white border-" id="qrcode"></div>
           <div class="flex flex-col items-center cursor-pointer">
           <div class="z-0 absolute  w-1/3 sm:w-[15%] right-0 top-0 -translate-y-1/4">
-          <img class="wallet-img" src="img/btc_wallet.png"/>
+          <img class="wallet-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/btc_wallet.png"/>
           </div>
           
 
@@ -229,7 +231,7 @@ class walletSettingsView {
       case 'withdrawal':
         html = `
         <div class="z-[0] absolute  w-1/3 sm:w-[15%] right-0 top-0 -translate-y-1/4">
-          <img class="wallet-img" src="img/btc_wallet.png"/>
+          <img class="wallet-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/btc_wallet.png"/>
           </div>
           <p class="wallet-title capitalize z-10 text-primaryWhite font-bold text-3xl ">Bitcoin (BTC) Withdrawal</p>
           <div class="flex z-10 flex-col gap-6">
