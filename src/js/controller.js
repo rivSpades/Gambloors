@@ -216,29 +216,68 @@ export class controllerAccount {
 
 export class controllerWalletSettings {
   controlHeaderBtns(selectBody) {
-    walletSettingsView.renderBody(selectBody, userDetails.state.userDetails);
+    walletSettingsView.renderBody(selectBody, userWallets.state.walletsAddress);
 
     walletSettingsView.selectHeaderButton(selectBody);
     if (selectBody === 'deposit') {
       walletSettingsView.addHandlerClipboardBtn();
-      walletSettingsView.addHandlerSelectCurrency(selectBody);
-      walletSettingsView.generateQRCode('00xx15465sb2jkmnf');
+      walletSettingsView.addHandlerSelectCurrency(
+        'deposit',
+        this.controlDepositWallet.bind(this)
+      );
+      this.control;
+      //walletSettingsView.generateQRCode(userWallets.state.walletDetails.btc);
     } else if (selectBody === 'withdrawal') {
       walletSettingsView.addHandlerSelectCurrency(selectBody);
     }
+  }
+
+  async controlDepositWallet(currency) {
+    await userWallets.requestWalletsAddress();
+
+    walletSettingsView.renderBody('deposit', userWallets.state.walletsAddress);
+    walletSettingsView.addHandlerSelectCurrency(
+      'deposit',
+      this.controlDepositWallet.bind(this)
+    );
+    if (userWallets.state.walletsAddress[currency.toLowerCase()])
+      walletSettingsView.generateQRCode(
+        userWallets.state.walletsAddress[currency.toLowerCase()].public_key
+      );
+
+    if (!userWallets.state.walletsAddress[currency.toLowerCase()])
+      walletSettingsView.addHandlerCreateWallet(
+        this.controlCreateWallet.bind(this)
+      );
+  }
+
+  async controlCreateWallet(currency) {
+    console.log(currency);
+    if (userWallets.state.walletDetails[currency]) return;
+    await userWallets.createWallet(currency);
+    this.controlDepositWallet(currency);
   }
 
   init() {
     if (userDetails) {
       walletSettingsView.render();
       walletSettingsView.selectHeaderButton('deposit');
-      walletSettingsView.renderBody('deposit');
+      walletSettingsView.renderBody(
+        'deposit',
+        userWallets.state.walletsAddress
+      );
       walletSettingsView.addHandlerHeaderBtns(
         this.controlHeaderBtns.bind(this)
       );
       walletSettingsView.addHandlerClipboardBtn();
-      walletSettingsView.addHandlerSelectCurrency('deposit');
-      walletSettingsView.generateQRCode('00xx15465sb2jkmnf');
+      walletSettingsView.addHandlerSelectCurrency(
+        'deposit',
+        this.controlDepositWallet.bind(this)
+      );
+      //walletSettingsView.generateQRCode(userWallets.state.walletDetails.btc);
+      walletSettingsView.addHandlerCreateWallet(
+        this.controlCreateWallet.bind(this)
+      );
     } else loginModalView.openLoginModal();
   }
 }

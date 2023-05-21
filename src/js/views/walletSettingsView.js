@@ -1,6 +1,7 @@
 class walletSettingsView {
   targetElement = document.querySelector('main');
-
+  currentWallet = 'btc';
+  walletTitle = 'Bitcoin (BTC)';
   render() {
     const html = ` <section id="wallet-settings">
       <ul class="profile-header-btns-container flex justify-between gap-1   text-sm bg-secondary p-3 rounded-lg font-medium text-center text-primaryWhite w-full lg:w-full mx-auto mt-[20%]">
@@ -47,8 +48,10 @@ class walletSettingsView {
     headerBtnsContainer.addEventListener(
       'click',
       function (e) {
-        if (e.target.classList.contains('profile-header-btn'))
+        if (e.target.classList.contains('profile-header-btn')) {
+          this.currentWallet = 'btc';
           handler(e.target.dataset.body);
+        }
       }.bind(this)
     );
   }
@@ -58,6 +61,7 @@ class walletSettingsView {
     const checkButton = document.querySelector('.check-btn');
     const displayInput = document.getElementById('deposit-address');
     const popup = document.querySelector('.popup');
+    if (!copyButton) return;
     copyButton.addEventListener(
       'click',
       function () {
@@ -79,45 +83,84 @@ class walletSettingsView {
     );
   }
 
-  addHandlerSelectCurrency(body) {
+  addHandlerSelectCurrency(body, handler) {
     const currencyContainer = document.querySelector('.currency-container');
     const walletImg = document.querySelector('.wallet-img');
     const walletTitle = document.querySelector('.wallet-title');
-    currencyContainer.addEventListener('click', function (e) {
-      if (e.target.closest('svg')) {
-        walletImg.src = `https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/${
-          e.target.closest('svg').dataset.currency
-        }.png`;
-        walletTitle.textContent = `${
-          e.target.closest('svg').dataset.title
-        } ${body}`;
+    currencyContainer.addEventListener(
+      'click',
+      function (e) {
+        if (e.target.closest('svg')) {
+          walletImg.src = `https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/${
+            e.target.closest('svg').dataset.currency
+          }.png`;
+          walletTitle.textContent = `${
+            e.target.closest('svg').dataset.title
+          } ${body}`;
 
-        if (body === 'withdrawal') {
-          const line2 = document.querySelector('.line-2');
-          const line3 = document.querySelector('.line-3');
-          line2.textContent = `Minimum withdrawal for ${
-            e.target.closest('svg').dataset.symbol
-          } is 0.002  ${e.target.closest('svg').dataset.symbol}`;
-          line3.textContent = `Fees: 0.0001 ${
-            e.target.closest('svg').dataset.symbol
-          } will be subtracted for payment processing fees.`;
+          if (body === 'withdrawal') {
+            const line2 = document.querySelector('.line-2');
+            const line3 = document.querySelector('.line-3');
+            line2.textContent = `Minimum withdrawal for ${
+              e.target.closest('svg').dataset.symbol
+            } is 0.002  ${e.target.closest('svg').dataset.symbol}`;
+            line3.textContent = `Fees: 0.0001 ${
+              e.target.closest('svg').dataset.symbol
+            } will be subtracted for payment processing fees.`;
+            this.currentWallet = e.target.closest('svg').dataset.symbol;
+          }
+          if (body === 'deposit') {
+            this.currentWallet = e.target
+              .closest('svg')
+              .dataset.symbol.toLowerCase();
+            this.walletTitle = e.target.closest('svg').dataset.title;
+            handler(e.target.closest('svg').dataset.symbol);
+          }
         }
-      }
-    });
+      }.bind(this)
+    );
+  }
+
+  addHandlerCreateWallet(handler) {
+    const createWalletBtn = document.querySelector('.wallet-create-btn');
+    if (!createWalletBtn) return;
+    createWalletBtn.addEventListener(
+      'click',
+      function () {
+        handler(this.currentWallet);
+      }.bind(this)
+    );
   }
 
   generateQRCode(walletAddress) {
-    const qrcode = new QRCode(document.getElementById('qrcode'), {
+    /*const depositBtn = document.querySelector('.wallet-deposit-btn');
+    const createWalletBtn = document.querySelector('.wallet-create-btn');*/
+    const qrcodeContainer = document.getElementById('qrcode');
+
+    const qrcode = new QRCode(qrcodeContainer, {
       text: walletAddress,
       width: 240,
       height: 240,
     });
+    //console.log(qrcode);
+
+    /*depositAddressInput.classList.remove('hidden');
+      depositBtn.classList.remove('hidden');
+      createWalletBtn.classList.add('hidden');
+      qrcodeContainer.classList.remove('hidden');
+    } else {
+      depositAddressInput.classList.add('hidden');
+      depositBtn.classList.add('hidden');
+      createWalletBtn.classList.remove('hidden');
+      qrcodeContainer.classList.add('hidden');
+    }*/
     //document.getElementById('address').innerText = walletAddress;
   }
 
   renderBody(selectBody, data) {
     let html;
     const profileBody = document.querySelector('.body-container');
+    console.log(this.currentWallet);
     const currenciesContainer = ` 
 
     <div class="currency-container flex justify-between  lg:justify-center lg:gap-6 ">
@@ -178,9 +221,37 @@ class walletSettingsView {
 
 
 </div>`;
+    const depositAddressInput = `<div class="wallet-deposit-address flex flex-col  gap-2 z-10 lg:w-1/4 w-full ">
+<label for="deposit-address" class="w-fit  text-primaryWhite">Deposit Address</label>
+<div class="flex justify-between bg-white pr-5 text-secondary rounded-lg border border-accent/20">
+<input type="text" name="depositAddress" value=${
+      data[this.currentWallet] && data[this.currentWallet].public_key
+    } id="deposit-address" class="lg:w-1/4   text-sm rounded-l-lg p-2.5 w-full" readonly>
+<svg xmlns="http://www.w3.org/2000/svg" class="w-6 clipboard-btn" fill="currentColor" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 check-btn" fill="currentColor" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
+</div>
+
+
+      </div>`;
+    const createWalletBtn = ` <div>
+      <button type="button" class="wallet-create-btn w-fit font-bold rounded-lg text-sm px-5 py-2.5  text-secondary bg-diceGreen">Create Wallet
+   
+      
+</button>
+
+      </div>`;
+    const depositBtn = ` <button type="button" class="wallet-deposit-btn flex gap-2 w-fit font-bold rounded-lg text-sm px-5 py-2.5  text-secondary bg-diceGreen"><span>Deposit Done</span>
+       
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-5" fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
+</button>`;
+    const qrcode = `<div class=" z-10  border-8 border-white border-" id="qrcode"></div>`;
+
     switch (selectBody) {
       case 'deposit':
       case undefined:
+        console.log(data);
+        //this.currentWallet = 'btc';
+        //this.walletTitle = 'Bitcoin (BTC)';
         html = `
         <div class=" opacity-0 popup absolute top-0 right-0 z-[999] duration-300 transition-opacity">
         <div id="toast-success" class="flex items-center w-full max-w-xs p-4 mb-4 text-gray-500 bg-white rounded-lg shadow dark:text-gray-400 dark:bg-gray-800" role="alert">
@@ -195,35 +266,30 @@ class walletSettingsView {
         </button>
     </div>
     </div>
-          <p class="z-10 wallet-title text-primaryWhite font-bold text-3xl capitalize text-center">Bitcoin (BTC) Deposit</p>
-          <div class="z-10  border-8 border-white border-" id="qrcode"></div>
+          <p class="z-10 wallet-title text-primaryWhite font-bold text-3xl capitalize text-center">${
+            this.walletTitle
+          } Deposit</p>
+          ${data[this.currentWallet] ? qrcode : ''}
           <div class="flex flex-col items-center cursor-pointer">
           <div class="z-0 absolute  w-1/3 sm:w-[15%] right-0 top-0 -translate-y-1/4">
-          <img class="wallet-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/btc_wallet.png"/>
+          <img class="wallet-img" src="https://raw.githubusercontent.com/rivSpades/Gambloors/master/src/img/${
+            this.currentWallet
+          }_wallet.png"/>
           </div>
           
 
           
           </div>
-          <div class="flex flex-col gap-2 z-10 lg:w-1/4 w-full ">
-          <label for="deposit-address" class="w-fit  text-primaryWhite">Deposit Address</label>
-          <div class="flex justify-between bg-white pr-5 text-secondary rounded-lg border border-accent/20">
-          <input type="text" name="depositAddress" value="00xx15465sb2jkmnf" id="deposit-address" class="lg:w-1/4   text-sm rounded-l-lg p-2.5 w-full" readonly>
-          <svg xmlns="http://www.w3.org/2000/svg" class="w-6 clipboard-btn" fill="currentColor" viewBox="0 0 256 256"><path d="M216,32H88a8,8,0,0,0-8,8V80H40a8,8,0,0,0-8,8V216a8,8,0,0,0,8,8H168a8,8,0,0,0,8-8V176h40a8,8,0,0,0,8-8V40A8,8,0,0,0,216,32ZM160,208H48V96H160Zm48-48H176V88a8,8,0,0,0-8-8H96V48H208Z"></path></svg>
-          <svg xmlns="http://www.w3.org/2000/svg" class="hidden w-6 check-btn" fill="currentColor" viewBox="0 0 256 256"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"></path></svg>
-          </div>
-         
-                </div>
+          
+${data[this.currentWallet] ? depositAddressInput : ''}
+               ${!data[this.currentWallet] ? createWalletBtn : ''}
 
                 <p class="text-primaryWhite  font-semibold">You can deposit in other currencies!</p>
 
                 ${currenciesContainer}
   
-       <button type="button" class="flex gap-2 w-fit font-bold rounded-lg text-sm px-5 py-2.5  text-secondary bg-diceGreen"><span>Deposit Done</span>
+      ${data[this.currentWallet] ? depositBtn : ''}
        
-       <svg xmlns="http://www.w3.org/2000/svg" class="w-5" fill="currentColor" viewBox="0 0 256 256"><path d="M181.66,133.66l-80,80a8,8,0,0,1-11.32-11.32L164.69,128,90.34,53.66a8,8,0,0,1,11.32-11.32l80,80A8,8,0,0,1,181.66,133.66Z"></path></svg>
-</button>
-       </button>
           
           `;
 
@@ -258,6 +324,7 @@ class walletSettingsView {
 
                 
           `;
+
         break;
       case 'history':
         html = ``;

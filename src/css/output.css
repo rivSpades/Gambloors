@@ -2156,12 +2156,12 @@ input[type='number']::-webkit-inner-spin-button,
   border-width: 1px;
 }
 
-.border-\[1\.5rem\] {
-  border-width: 1.5rem;
-}
-
 .border-8 {
   border-width: 8px;
+}
+
+.border-\[1\.5rem\] {
+  border-width: 1.5rem;
 }
 
 .border-b-4 {

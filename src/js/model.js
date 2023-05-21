@@ -300,6 +300,7 @@ export class walletsModel {
       btc: '',
       eth: '',
     },
+    walletsAddress: { btc: '', eth: '', ltc: '' },
   };
 
   #url =
@@ -324,6 +325,52 @@ export class walletsModel {
     this.state.walletDetails.eth = res.response[0].ETH_amount;
     this.state.walletDetails.btc = res.response[0].BTC_amount;
     this.state.error = res.error;
+    console.log(res);
+  }
+
+  async requestWalletsAddress() {
+    const url =
+      'https://still-frog-f6ef.riverspades336061.workers.dev/api/wallets/wallet/';
+    const data = {
+      method: 'GET',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+    };
+    const res = await helper.req(url, data);
+
+    this.state.walletsAddress.btc = res.response.find(
+      (wallet) => wallet.blockchain === 'btc'
+    );
+    this.state.walletsAddress.eth = res.response.find(
+      (wallet) => wallet.blockchain === 'eth'
+    );
+    this.state.walletsAddress.ltc = res.response.find(
+      (wallet) => wallet.blockchain === 'ltc'
+    );
+    this.state.walletsAddress.dash = res.response.find(
+      (wallet) => wallet.blockchain === 'dash'
+    );
+  }
+
+  async createWallet(currency) {
+    const url =
+      'https://still-frog-f6ef.riverspades336061.workers.dev/api/wallets/wallet/';
+    const data = {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/json',
+        'Authorization': `Token ${this.#token}`,
+      },
+      body: {
+        blockchain: currency,
+      },
+    };
+    const res = await helper.req(url, data);
+    console.log(res);
+    console.log(data);
+    this.requestWallets();
   }
 }
 
